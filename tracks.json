@@ -1,0 +1,15 @@
+[
+  {"n":1,"title":"Right Now","sub":"D'Yea Intro","threat":"COLD OPEN / SIGNAL BOOT","anchor":"Signal acquired.","explicit":false,"encrypted":true},
+  {"n":2,"title":"I Am D'Yea","sub":null,"threat":"ANTHEMIC / DECLARATION","anchor":"He's all around the world.","explicit":false,"encrypted":true},
+  {"n":3,"title":"Bassstar","sub":"Who's Funkin' You Now?","threat":"LOWRIDER / SUB-BASS","anchor":"Where funk don't grow, I get my funk from a jar.","explicit":true,"encrypted":false},
+  {"n":4,"title":"Phaser","sub":"feat. Gene Heinous","threat":"RAP-ROCK / KINETIC","anchor":"Life is a phase in phases.","explicit":true,"encrypted":false},
+  {"n":5,"title":"Divine-A-Abolic","sub":null,"threat":"HEAVY / DISTORTED","anchor":null,"explicit":false,"encrypted":true},
+  {"n":6,"title":"Kick A Little Revolution","sub":null,"threat":"DRIVING / DEFIANT","anchor":null,"explicit":false,"encrypted":true},
+  {"n":7,"title":"Sweet Home Galaxy","sub":null,"threat":"GROOVE / WIDESCREEN","anchor":null,"explicit":false,"encrypted":true},
+  {"n":8,"title":"All Around The World","sub":null,"threat":"HIGH-ENERGY / TOUR","anchor":"Who's the top dog in Prague? It's D'YEA.","explicit":true,"encrypted":false},
+  {"n":9,"title":"Break Down The Walls","sub":null,"threat":"BUILD / RELEASE","anchor":null,"explicit":false,"encrypted":true},
+  {"n":10,"title":"(Tell Me) Are You Down With D'Yea?","sub":null,"threat":"CALL-RESPONSE / HOOK","anchor":null,"explicit":false,"encrypted":true},
+  {"n":11,"title":"Bassstar","sub":"Fevertech Low-Rider Remix","threat":"REMIX / DUB","anchor":null,"explicit":false,"encrypted":true},
+  {"n":12,"title":"D'Yealand","sub":null,"threat":"COSMIC / CLOSER","anchor":null,"explicit":false,"encrypted":true},
+  {"n":13,"title":"Are You Down With D'Yea?","sub":"Turtle Bend Remix","threat":"REMIX / ALL-HARDWARE SYNTH","anchor":null,"explicit":false,"encrypted":true}
+]

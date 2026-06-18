@@ -1,0 +1,20 @@
+---
+const { size = 212 } = Astro.props;
+---
+<svg class="seal" width={size} height={size} viewBox="0 0 200 200" role="img" aria-label="The Bassstar seal">
+  <defs>
+    <radialGradient id="sealg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C24BFF"/><stop offset="100%" stop-color="#1a0f2e"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="92" fill="none" stroke="#E8B23A" stroke-width="1" opacity=".7"/>
+  <circle cx="100" cy="100" r="78" fill="none" stroke="#E8B23A" stroke-width=".5" opacity=".4"/>
+  <g class="glyphs" fill="#E8B23A" opacity=".85" font-family="'Chakra Petch',monospace" font-size="8.5" letter-spacing="3">
+    <text x="100" y="21" text-anchor="middle">BASSSTAR · MISSION</text>
+    <text x="100" y="186" text-anchor="middle">WHO'S FUNKIN' YOU NOW</text>
+  </g>
+  <ellipse cx="100" cy="100" rx="60" ry="24" fill="none" stroke="#2BE04F" stroke-width="1" opacity=".5" transform="rotate(28 100 100)"/>
+  <ellipse cx="100" cy="100" rx="60" ry="24" fill="none" stroke="#C24BFF" stroke-width="1" opacity=".5" transform="rotate(-28 100 100)"/>
+  <path d="M100 58 L108 92 L142 92 L114 112 L124 146 L100 126 L76 146 L86 112 L58 92 L92 92 Z" fill="url(#sealg)" stroke="#E8B23A" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="6" fill="#E8B23A"/>
+</svg>
