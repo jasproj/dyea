@@ -2,9 +2,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>D'YEA — Transmission Incoming</title>
+<title>D'YEA — Funk Rock Recon</title>
 <meta name="description" content="D'YEA — intergalactic funk-rock from the Bassstar Sector. The Bassstar Mission signal is being re-routed. Get on the frequency.">
-<meta property="og:title" content="D'YEA — Transmission Incoming">
+<meta property="og:title" content="D'YEA — Funk Rock Recon">
 <meta property="og:description" content="Intergalactic funk-rock from the Bassstar Sector. The Bassstar Mission signal is being re-routed.">
 <meta property="og:type" content="music.album">
 <meta property="og:url" content="https://dyea.music/">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="D'YEA — Bassstar Mission">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="D'YEA — Transmission Incoming">
+<meta name="twitter:title" content="D'YEA — Funk Rock Recon">
 <meta name="twitter:description" content="Intergalactic funk-rock from the Bassstar Sector. The Bassstar Mission signal is being re-routed.">
 <meta name="twitter:image" content="https://dyea.music/og.png?v=2">
 <link rel="canonical" href="https://dyea.music/">
@@ -57,7 +57,6 @@ body {
 a { color: inherit; text-decoration: none; }
 ::selection { background: var(--acid); color: #000; }
 
-/* ── Page ── */
 .page {
   position: relative; z-index: 2;
   flex: 1;
@@ -68,17 +67,14 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
 }
 
-/* ── Jar — big and dominant ── */
+/* ── Jar ── */
 .jar-wrap {
   position: relative;
   width: clamp(280px, 60vw, 520px);
   margin: 0 auto 32px;
 }
-.jar-wrap img {
-  width: 100%; height: auto; display: block;
-}
+.jar-wrap img { width: 100%; height: auto; display: block; }
 
-/* ── Eyebrow / Heading ── */
 .eyebrow {
   font-family: 'Chakra Petch', monospace;
   text-transform: uppercase;
@@ -106,42 +102,28 @@ h1 .ac { color: var(--gold); }
 .sub {
   color: var(--faint);
   font-size: .92rem;
-  max-width: 440px;
+  max-width: 480px;
   margin-top: 10px;
 }
 
-/* ═══════════════════════════════════════════
-   CRT MONITOR
-   ═══════════════════════════════════════════ */
+/* ═══ CRT MONITOR ═══ */
 .monitor {
   position: relative;
   width: 100%;
   max-width: 640px;
   margin: 44px auto 0;
 }
-
 .monitor-bezel {
   background: linear-gradient(180deg, #2a2d30 0%, #1a1c1e 40%, #111314 100%);
   border-radius: 14px;
   padding: 14px 14px 18px;
-  box-shadow:
-    0 2px 0 #333638,
-    0 -1px 0 #0a0b0c,
-    inset 0 1px 0 rgba(255,255,255,.06),
-    0 8px 40px rgba(0,0,0,.6);
+  box-shadow: 0 2px 0 #333638, 0 -1px 0 #0a0b0c, inset 0 1px 0 rgba(255,255,255,.06), 0 8px 40px rgba(0,0,0,.6);
 }
-
 .monitor-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 0 8px 10px;
 }
-.monitor-indicators {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
+.monitor-indicators { display: flex; gap: 8px; align-items: center; }
 .monitor-led {
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--crt-green);
@@ -153,157 +135,103 @@ h1 .ac { color: var(--gold); }
   box-shadow: 0 0 6px var(--gold), 0 0 12px rgba(232,178,58,.3);
   animation-delay: 1s;
 }
-@keyframes ledPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: .4; }
-}
+@keyframes ledPulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
 .monitor-label {
-  font-family: 'Chakra Petch', monospace;
-  font-size: .52rem;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: #555;
+  font-family: 'Chakra Petch', monospace; font-size: .52rem;
+  letter-spacing: .22em; text-transform: uppercase; color: #555;
 }
 .monitor-model {
-  font-family: 'Chakra Petch', monospace;
-  font-size: .48rem;
-  letter-spacing: .12em;
-  color: #444;
-  text-transform: uppercase;
+  font-family: 'Chakra Petch', monospace; font-size: .48rem;
+  letter-spacing: .12em; color: #444; text-transform: uppercase;
 }
-
 .monitor-inner {
-  background: #080808;
-  border-radius: 6px;
-  border: 2px solid #0c0d0e;
+  background: #080808; border-radius: 6px; border: 2px solid #0c0d0e;
   box-shadow: inset 0 0 30px rgba(0,0,0,.8), inset 0 0 4px rgba(51,255,102,.05);
-  overflow: hidden;
-  position: relative;
+  overflow: hidden; position: relative;
+}
+.monitor-inner::after {
+  content: ''; position: absolute; inset: 0; border-radius: 6px;
+  box-shadow: inset 0 0 60px rgba(51,255,102,.04); pointer-events: none;
 }
 
+/* ── CRT screen — FIXED SIZE, no reflow ── */
 .crt {
   position: relative;
   background: var(--crt-bg);
   padding: 22px 24px 18px;
+  height: 260px;       /* LOCKED — never changes */
   overflow: hidden;
 }
-
-/* Scanlines */
 .crt::before {
-  content: '';
-  position: absolute; inset: 0;
+  content: ''; position: absolute; inset: 0;
   background: repeating-linear-gradient(180deg, rgba(0,0,0,.15) 0px, rgba(0,0,0,.15) 1px, transparent 1px, transparent 3px);
   pointer-events: none; z-index: 3;
 }
-/* Vignette */
 .crt::after {
-  content: '';
-  position: absolute; inset: 0;
+  content: ''; position: absolute; inset: 0;
   background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.45) 100%);
   pointer-events: none; z-index: 3;
 }
 
-.monitor-inner::after {
-  content: '';
-  position: absolute; inset: 0;
-  border-radius: 6px;
-  box-shadow: inset 0 0 60px rgba(51,255,102,.04);
-  pointer-events: none;
-}
-
-/* Interference layers */
+/* Interference */
 .crt-spike {
-  position: absolute;
-  left: 0; right: 0;
-  height: 2px;
+  position: absolute; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.05) 10%, rgba(255,255,255,.7) 30%, rgba(255,255,255,.9) 50%, rgba(255,255,255,.7) 70%, rgba(255,255,255,.05) 90%, transparent 100%);
-  z-index: 5; opacity: 0; pointer-events: none;
-  filter: blur(.5px);
+  z-index: 5; opacity: 0; pointer-events: none; filter: blur(.5px);
   box-shadow: 0 0 8px rgba(255,255,255,.4), 0 0 20px rgba(255,255,255,.15);
 }
-
 .crt-noise {
   position: absolute; inset: 0; z-index: 4; opacity: 0; pointer-events: none;
   background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px);
 }
 .crt-noise.flash { animation: noiseFlash .12s steps(2) forwards; }
-@keyframes noiseFlash {
-  0% { opacity: 0; }
-  25% { opacity: .8; }
-  50% { opacity: .4; }
-  75% { opacity: .9; }
-  100% { opacity: 0; }
-}
-
+@keyframes noiseFlash { 0% { opacity: 0; } 25% { opacity: .8; } 50% { opacity: .4; } 75% { opacity: .9; } 100% { opacity: 0; } }
 .crt-burst {
-  position: absolute; inset: 0; z-index: 6; opacity: 0; pointer-events: none;
-  background: white;
+  position: absolute; inset: 0; z-index: 6; opacity: 0; pointer-events: none; background: white;
 }
 .crt-burst.flash { animation: burstFlash .08s ease-out forwards; }
-@keyframes burstFlash {
-  0% { opacity: .6; }
-  100% { opacity: 0; }
-}
-
+@keyframes burstFlash { 0% { opacity: .6; } 100% { opacity: 0; } }
 .crt-static-bar {
-  position: absolute; left: 0; right: 0; height: 0;
-  z-index: 5; pointer-events: none;
+  position: absolute; left: 0; right: 0; height: 0; z-index: 5; pointer-events: none;
   background: linear-gradient(180deg, transparent, rgba(255,255,255,.15) 20%, rgba(255,255,255,.35) 50%, rgba(255,255,255,.15) 80%, transparent);
   opacity: 0;
 }
 .crt-static-bar.sweep { animation: barSweep .3s ease-out forwards; }
-@keyframes barSweep {
-  0% { opacity: .7; height: 4px; }
-  50% { opacity: .5; height: 8px; }
-  100% { opacity: 0; height: 2px; }
-}
+@keyframes barSweep { 0% { opacity: .7; height: 4px; } 50% { opacity: .5; height: 8px; } 100% { opacity: 0; height: 2px; } }
 
-/* Screen header */
+/* Header inside CRT */
 .crt-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-  padding-bottom: 10px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px; padding-bottom: 10px;
   border-bottom: 1px solid rgba(51,255,102,.15);
   position: relative; z-index: 2;
 }
 .crt-status { display: flex; align-items: center; gap: 8px; }
 .crt-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: var(--crt-green);
-  box-shadow: 0 0 4px var(--crt-green);
+  background: var(--crt-green); box-shadow: 0 0 4px var(--crt-green);
   animation: ledPulse 2.4s ease-in-out infinite;
 }
 .crt-dot.warn { background: var(--gold); box-shadow: 0 0 4px var(--gold); }
 .crt-dot.err { background: #ff4444; box-shadow: 0 0 4px #ff4444; }
 .crt-title {
-  font-family: 'VT323', monospace;
-  font-size: .9rem;
-  letter-spacing: .1em;
-  color: var(--crt-green);
-  text-shadow: 0 0 8px var(--crt-green-glow);
-  text-transform: uppercase;
+  font-family: 'VT323', monospace; font-size: .9rem; letter-spacing: .1em;
+  color: var(--crt-green); text-shadow: 0 0 8px var(--crt-green-glow); text-transform: uppercase;
 }
 .crt-freq {
-  font-family: 'VT323', monospace;
-  font-size: .78rem;
-  color: var(--crt-green-dim);
-  text-shadow: 0 0 6px rgba(51,255,102,.1);
+  font-family: 'VT323', monospace; font-size: .78rem;
+  color: var(--crt-green-dim); text-shadow: 0 0 6px rgba(51,255,102,.1);
 }
 
-/* ── FIXED HEIGHT body with scroll ── */
+/* ── Text area — absolutely positioned inside fixed .crt ── */
 .crt-body {
-  position: relative;
+  position: absolute;
+  top: 70px;    /* below header */
+  left: 24px;
+  right: 24px;
+  bottom: 18px;
   z-index: 2;
-  height: 170px;
   overflow: hidden;
-}
-.crt-body-inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-height: 100%;
 }
 
 .tx-line {
@@ -315,29 +243,14 @@ h1 .ac { color: var(--gold); }
   white-space: pre-wrap;
   margin-bottom: 3px;
   opacity: 0;
-  transform: translateY(4px);
-  transition: opacity .4s var(--ease), transform .4s var(--ease);
+  transition: opacity .35s var(--ease);
 }
-.tx-line.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.tx-line.fading {
-  opacity: 0;
-  transform: translateY(-8px);
-}
-.tx-line.glitch {
-  animation: txGlitch .25s steps(3) forwards;
-}
-.tx-line.lost {
-  animation: txLost 1.4s var(--ease) forwards;
-}
+.tx-line.visible { opacity: 1; }
+.tx-line.glitch { animation: txGlitch .25s steps(3) forwards; }
+.tx-line.lost { animation: txLost 1.4s var(--ease) forwards; }
 .tx-tag {
-  font-size: .82rem;
-  letter-spacing: .08em;
-  color: var(--crt-green-dim);
-  display: block;
-  margin-bottom: 1px;
+  font-size: .82rem; letter-spacing: .08em;
+  color: var(--crt-green-dim); display: block; margin-bottom: 1px;
 }
 .tx-tag.warn { color: var(--gold); text-shadow: 0 0 6px rgba(232,178,58,.2); }
 .tx-tag.err { color: #ff4444; text-shadow: 0 0 6px rgba(255,68,68,.2); }
@@ -349,159 +262,94 @@ h1 .ac { color: var(--gold); }
   100% { opacity: 1; transform: skewX(0); filter: none; }
 }
 @keyframes txLost {
-  0% { opacity: 1; transform: translateX(0); filter: none; }
+  0% { opacity: 1; filter: none; }
   15% { opacity: .8; transform: skewX(-2deg); }
   35% { opacity: .5; transform: translateX(5px) skewX(4deg); filter: brightness(1.5); }
-  55% { opacity: .25; letter-spacing: .2em; transform: translateX(-3px); }
+  55% { opacity: .25; letter-spacing: .2em; }
   75% { opacity: .08; letter-spacing: .5em; filter: blur(2px); }
-  100% { opacity: 0; letter-spacing: .8em; filter: blur(3px); transform: translateX(16px); }
+  100% { opacity: 0; letter-spacing: .8em; filter: blur(3px); }
 }
 
+/* Signal lost message — inside the fixed body */
 .tx-lost-msg {
   display: none;
-  font-family: 'VT323', monospace;
-  font-size: 1rem;
-  letter-spacing: .12em;
-  color: #ff4444;
-  text-shadow: 0 0 8px rgba(255,68,68,.3);
-  text-align: center;
-  text-transform: uppercase;
+  font-family: 'VT323', monospace; font-size: 1rem; letter-spacing: .12em;
+  color: #ff4444; text-shadow: 0 0 8px rgba(255,68,68,.3);
+  text-align: center; text-transform: uppercase;
   padding: 8px 0 0;
-  position: relative; z-index: 2;
   animation: lostPulse 1s ease-in-out infinite;
 }
 .tx-lost-msg.show { display: block; }
-@keyframes lostPulse {
-  0%, 100% { opacity: .4; }
-  50% { opacity: 1; }
-}
+@keyframes lostPulse { 0%, 100% { opacity: .4; } 50% { opacity: 1; } }
 
 .monitor-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 8px 0;
+  display: flex; align-items: center; justify-content: center; padding: 8px 8px 0;
 }
 .monitor-badge {
-  font-family: 'Chakra Petch', monospace;
-  font-size: .46rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: #444;
+  font-family: 'Chakra Petch', monospace; font-size: .46rem;
+  letter-spacing: .18em; text-transform: uppercase; color: #444;
   background: linear-gradient(180deg, #222 0%, #1a1a1a 100%);
-  padding: 2px 10px;
-  border-radius: 2px;
-  border: 1px solid #2a2a2a;
+  padding: 2px 10px; border-radius: 2px; border: 1px solid #2a2a2a;
 }
 
 /* ── Capture ── */
-.capture-section {
-  margin-top: 40px;
-  width: 100%;
-  max-width: 480px;
-}
+.capture-section { margin-top: 40px; width: 100%; max-width: 480px; }
 .capture-label {
-  font-family: 'Chakra Petch', monospace;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  font-size: .66rem;
-  color: var(--acid);
-  margin-bottom: 12px;
+  font-family: 'Chakra Petch', monospace; text-transform: uppercase;
+  letter-spacing: .14em; font-size: .66rem; color: var(--acid); margin-bottom: 12px;
 }
-.capture {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+.capture { display: flex; gap: 10px; flex-wrap: wrap; }
 .capture input[type="email"] {
-  flex: 1; min-width: 200px;
-  background: var(--raised);
-  border: 1px solid var(--line);
-  color: var(--ash);
-  font-family: 'Chakra Petch', monospace;
-  letter-spacing: .06em;
-  font-size: .84rem;
-  padding: 14px 16px;
-  border-radius: 2px;
-  transition: border-color .15s;
+  flex: 1; min-width: 200px; background: var(--raised);
+  border: 1px solid var(--line); color: var(--ash);
+  font-family: 'Chakra Petch', monospace; letter-spacing: .06em;
+  font-size: .84rem; padding: 14px 16px; border-radius: 2px; transition: border-color .15s;
 }
 .capture input[type="email"]::placeholder { color: var(--faint); }
-.capture input[type="email"]:focus {
-  outline: 2px solid var(--acid); outline-offset: 2px;
-  border-color: var(--acid);
-}
+.capture input[type="email"]:focus { outline: 2px solid var(--acid); outline-offset: 2px; border-color: var(--acid); }
 .btn-gold {
   display: inline-flex; align-items: center; gap: .5em;
-  font-family: 'Chakra Petch', monospace;
-  font-weight: 700; text-transform: uppercase;
-  letter-spacing: .14em; font-size: .8rem;
-  padding: 14px 24px;
-  border: 1px solid transparent; border-radius: 2px;
-  cursor: pointer;
+  font-family: 'Chakra Petch', monospace; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .14em; font-size: .8rem; padding: 14px 24px;
+  border: 1px solid transparent; border-radius: 2px; cursor: pointer;
   background: var(--gold); color: #000;
   transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s;
 }
 .btn-gold:hover, .btn-gold:focus-visible {
-  background: var(--gold-bright);
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 3px #e8b23a38;
+  background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 0 0 3px #e8b23a38;
 }
 .capture-success {
-  display: none;
-  font-family: 'Chakra Petch', monospace;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  font-size: .76rem;
-  color: var(--acid);
-  padding: 16px 0;
+  display: none; font-family: 'Chakra Petch', monospace; text-transform: uppercase;
+  letter-spacing: .14em; font-size: .76rem; color: var(--acid); padding: 16px 0;
 }
 .capture-success.show { display: block; }
 .capture.hide { display: none; }
 
-/* ── Sync ── */
 .sync-link {
-  margin-top: 36px;
-  font-family: 'Chakra Petch', monospace;
-  font-size: .66rem;
-  text-transform: uppercase;
-  letter-spacing: .16em;
+  margin-top: 36px; font-family: 'Chakra Petch', monospace;
+  font-size: .66rem; text-transform: uppercase; letter-spacing: .16em;
 }
 .sync-link a {
-  color: var(--gold);
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
+  color: var(--gold); border-bottom: 1px solid var(--line); padding-bottom: 2px;
   transition: color .15s, border-color .15s;
 }
-.sync-link a:hover, .sync-link a:focus-visible {
-  color: var(--gold-bright);
-  border-color: var(--gold-bright);
-}
+.sync-link a:hover, .sync-link a:focus-visible { color: var(--gold-bright); border-color: var(--gold-bright); }
 
-/* ── Footer ── */
 footer {
-  position: relative; z-index: 2;
-  text-align: center;
-  padding: 28px 24px 36px;
-  border-top: 1px solid rgba(255,255,255,.04);
-  color: var(--faint);
-  font-size: .72rem;
-  line-height: 1.7;
+  position: relative; z-index: 2; text-align: center;
+  padding: 28px 24px 36px; border-top: 1px solid rgba(255,255,255,.04);
+  color: var(--faint); font-size: .72rem; line-height: 1.7;
 }
 footer a { color: var(--gold); }
 .footer-ascap {
-  font-family: 'Chakra Petch', monospace;
-  font-size: .58rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--faint);
-  margin-top: 6px;
+  font-family: 'Chakra Petch', monospace; font-size: .58rem;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-top: 6px;
 }
 
 :focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .tx-line { opacity: 1 !important; transform: none !important; }
+  .tx-line { opacity: 1 !important; }
   .tx-lost-msg.show { display: none; }
   .crt-noise, .crt-burst, .crt-static-bar, .crt-spike { display: none !important; }
 }
@@ -520,7 +368,6 @@ footer a { color: var(--gold); }
   <p class="tagline">The Bassstar Mission is being prepared for relaunch</p>
   <p class="sub">13 tracks, remastered, remixed plus new tracks ATMOS mixed and special guest appearances.</p>
 
-  <!-- CRT MONITOR -->
   <div class="monitor" aria-label="Intercepted lyric transmission">
     <div class="monitor-bezel">
       <div class="monitor-top">
@@ -536,7 +383,6 @@ footer a { color: var(--gold); }
           <div class="crt-noise" id="crt-noise" aria-hidden="true"></div>
           <div class="crt-burst" id="crt-burst" aria-hidden="true"></div>
           <div class="crt-spike" id="crt-spike" aria-hidden="true"></div>
-
           <div class="crt-header">
             <div class="crt-status">
               <div class="crt-dot" id="crt-dot"></div>
@@ -544,10 +390,9 @@ footer a { color: var(--gold); }
             </div>
             <span class="crt-freq" id="crt-freq">FREQ 001.BSM</span>
           </div>
-          <div class="crt-body">
-            <div class="crt-body-inner" id="tx-body"></div>
+          <div class="crt-body" id="tx-body">
+            <!-- lines injected here — lost msg too -->
           </div>
-          <div class="tx-lost-msg" id="tx-lost">/// Signal lost — recalibrating ///</div>
         </div>
       </div>
       <div class="monitor-bottom">
@@ -582,7 +427,6 @@ footer a { color: var(--gold); }
 (function() {
   var MAX_VISIBLE = 6;
   var body = document.getElementById('tx-body');
-  var lostEl = document.getElementById('tx-lost');
   var noiseEl = document.getElementById('crt-noise');
   var burstEl = document.getElementById('crt-burst');
   var spikeEl = document.getElementById('crt-spike');
@@ -591,7 +435,11 @@ footer a { color: var(--gold); }
   var freqEl = document.getElementById('crt-freq');
   var screen = document.getElementById('crt-screen');
 
-  // All lyric lines in a flat pool — sequences cycle through chunks
+  // Create the lost message element inside the body
+  var lostEl = document.createElement('div');
+  lostEl.className = 'tx-lost-msg';
+  lostEl.textContent = '/// Signal lost — recalibrating ///';
+
   var sequences = [
     {
       title: 'Mission File 01 — Right Now',
@@ -604,19 +452,19 @@ footer a { color: var(--gold); }
         { tag: 'signal weak', text: "Right now on a digital break, against the pivotal lake", glitch: true },
         { text: "that connects the way we feel and the way we think" },
         { tag: 'signal degrading', text: "Right now and the sinistrie of man", glitch: true },
-        { tag: 'signal lost', text: "ri░ht n░w tru░h is a gui░e and lo░e is a pr░░e", lost: true },
+        { tag: 'signal lost', text: "ri\u2591ht n\u2591w tru\u2591h is a gui\u2591e and lo\u2591e is a pr\u2591\u2591e", lost: true },
       ]
     },
     {
       title: 'Mission File 03 — Bassstar',
       freq: 'FREQ 003.BSM',
       lines: [
-        { tag: 'signal acquired', text: "Rollin' in the back of a funky-ass car —" },
+        { tag: 'signal acquired', text: "Rollin' in the back of a funky-ass car \u2014" },
         { text: "I'm a Bassstar. Kneel where you are." },
         { tag: 'decoding', text: "Where funk don't grow, I get my funk from a jar" },
         { tag: 'signal weak', text: "Bassstar rockin' on Bassstar Avenue", glitch: true },
         { text: "Check your aptitude. Adjust your amplitude." },
-        { tag: 'signal lost', text: "SCR░░M BA░░STAR — li░░n' it, k░ck░n░ ░t!", lost: true },
+        { tag: 'signal lost', text: "SCR\u2591\u2591M BA\u2591\u2591STAR \u2014 li\u2591\u2591n' it, k\u2591ck\u2591n\u2591 \u2591t!", lost: true },
       ]
     },
     {
@@ -629,7 +477,7 @@ footer a { color: var(--gold); }
         { text: "HELL yeah" },
         { tag: 'signal weak', text: "Sonic is my backbone when I lay my fat backtrack on", glitch: true },
         { tag: 'signal degrading', text: "he's the Bastard who will blow your ass to outer space!", glitch: true },
-        { tag: 'signal lost', text: "Li░e is a pha░e in ph░░es", lost: true },
+        { tag: 'signal lost', text: "Li\u2591e is a pha\u2591e in ph\u2591\u2591es", lost: true },
       ]
     },
     {
@@ -639,9 +487,9 @@ footer a { color: var(--gold); }
         { tag: 'signal acquired', text: "Mack with the fat track, guaranteed to stone ya" },
         { tag: 'decoding', text: "D'YEA rocks the pops with the rock that drops the tops" },
         { text: "Heinous starts to drop as the crowd starts to rock" },
-        { tag: 'signal weak', text: "D'YEA's like Wonderman — in demand", glitch: true },
+        { tag: 'signal weak', text: "D'YEA's like Wonderman \u2014 in demand", glitch: true },
         { text: "Flyin' up on all you villains" },
-        { tag: 'signal lost', text: "He's A██ Aro░nd Th░ ░o░ld!", lost: true },
+        { tag: 'signal lost', text: "He's A\u2588\u2588 Aro\u2591nd Th\u2591 \u2591o\u2591ld!", lost: true },
       ]
     },
     {
@@ -651,7 +499,7 @@ footer a { color: var(--gold); }
         { tag: 'signal acquired', text: "Right now in the days of mystics and greed" },
         { tag: 'decoding', text: "and the rise of imperialistic machines" },
         { tag: 'signal weak', text: "the ministries of propaganda, so now y'all stand up", glitch: true },
-        { tag: 'signal lost', text: "ri░ht n░w ri░ht n░w ri░░t n░░", lost: true },
+        { tag: 'signal lost', text: "ri\u2591ht n\u2591w ri\u2591ht n\u2591w ri\u2591\u2591t n\u2591\u2591", lost: true },
       ]
     },
     {
@@ -662,79 +510,57 @@ footer a { color: var(--gold); }
         { tag: 'decoding', text: "Sonic with the sub-bass soul that will blow this" },
         { text: "Got the 18s kickin' in the trunk" },
         { tag: 'signal weak', text: "Rollin' in the Grand Marquis", glitch: true },
-        { tag: 'signal lost', text: "Ba░░star s░und thi░ker th░n m░la░░es", lost: true },
+        { tag: 'signal lost', text: "Ba\u2591\u2591star s\u2591und thi\u2591ker th\u2591n m\u2591la\u2591\u2591es", lost: true },
       ]
     },
   ];
 
   var seqIdx = 0;
-  var visibleLines = [];
+  var lineEls = [];
   var spikeInterval, noiseInterval;
 
-  // ── Interference FX ──
   function triggerSpike() {
     var y = Math.floor(Math.random() * screen.offsetHeight);
     spikeEl.style.top = y + 'px';
     spikeEl.style.opacity = '1';
     spikeEl.style.transition = 'none';
-    setTimeout(function() {
-      spikeEl.style.transition = 'opacity .15s';
-      spikeEl.style.opacity = '0';
-    }, 60 + Math.random() * 80);
+    setTimeout(function() { spikeEl.style.transition = 'opacity .15s'; spikeEl.style.opacity = '0'; }, 60 + Math.random() * 80);
   }
-
-  function triggerNoise() {
-    noiseEl.classList.remove('flash');
-    void noiseEl.offsetWidth;
-    noiseEl.classList.add('flash');
-  }
-
-  function triggerBurst() {
-    burstEl.classList.remove('flash');
-    void burstEl.offsetWidth;
-    burstEl.classList.add('flash');
-  }
-
+  function triggerNoise() { noiseEl.classList.remove('flash'); void noiseEl.offsetWidth; noiseEl.classList.add('flash'); }
+  function triggerBurst() { burstEl.classList.remove('flash'); void burstEl.offsetWidth; burstEl.classList.add('flash'); }
   function triggerStaticBar() {
     var bar = document.createElement('div');
     bar.className = 'crt-static-bar';
     bar.style.top = Math.floor(Math.random() * screen.offsetHeight) + 'px';
     screen.appendChild(bar);
-    void bar.offsetWidth;
-    bar.classList.add('sweep');
+    void bar.offsetWidth; bar.classList.add('sweep');
     setTimeout(function() { bar.remove(); }, 400);
   }
-
   function startInterference() {
     spikeInterval = setInterval(function() {
       if (Math.random() < .35) triggerSpike();
       if (Math.random() < .2) triggerStaticBar();
     }, 800);
-    noiseInterval = setInterval(function() {
-      if (Math.random() < .25) triggerNoise();
-    }, 2200);
+    noiseInterval = setInterval(function() { if (Math.random() < .25) triggerNoise(); }, 2200);
   }
-
-  function stopInterference() {
-    clearInterval(spikeInterval);
-    clearInterval(noiseInterval);
-  }
-
+  function stopInterference() { clearInterval(spikeInterval); clearInterval(noiseInterval); }
   function heavyInterference() {
     triggerBurst();
-    setTimeout(triggerNoise, 50);
-    setTimeout(triggerSpike, 100);
-    setTimeout(triggerStaticBar, 120);
-    setTimeout(triggerSpike, 200);
-    setTimeout(triggerNoise, 300);
-    setTimeout(triggerStaticBar, 350);
+    setTimeout(triggerNoise, 50); setTimeout(triggerSpike, 100);
+    setTimeout(triggerStaticBar, 120); setTimeout(triggerSpike, 200);
+    setTimeout(triggerNoise, 300); setTimeout(triggerStaticBar, 350);
   }
 
-  // ── Line management — fixed window, scroll old lines out ──
+  function clearLines() {
+    lineEls.forEach(function(el) { el.remove(); });
+    lineEls = [];
+    if (lostEl.parentNode) lostEl.remove();
+    lostEl.classList.remove('show');
+  }
+
   function addLine(item) {
     var div = document.createElement('div');
     div.className = 'tx-line';
-
     var html = '';
     if (item.tag) {
       var cls = 'tx-tag';
@@ -745,79 +571,45 @@ footer a { color: var(--gold); }
     html += item.text;
     div.innerHTML = html;
     body.appendChild(div);
+    requestAnimationFrame(function() { div.classList.add('visible'); });
+    lineEls.push(div);
 
-    // Fade in
-    requestAnimationFrame(function() {
-      div.classList.add('visible');
-    });
-
-    visibleLines.push(div);
-
-    // If over max, fade out oldest
-    while (visibleLines.length > MAX_VISIBLE) {
-      var old = visibleLines.shift();
-      old.classList.remove('visible');
-      old.classList.add('fading');
-      (function(el) {
-        setTimeout(function() { el.remove(); }, 400);
-      })(old);
+    // Fade out oldest if over max
+    while (lineEls.length > MAX_VISIBLE) {
+      var old = lineEls.shift();
+      old.style.opacity = '0';
+      (function(el) { setTimeout(function() { el.remove(); }, 350); })(old);
     }
-
     return div;
   }
 
-  // ── Sequence runner ──
   function runSequence() {
     var seq = sequences[seqIdx % sequences.length];
-    // Clear all lines
-    visibleLines.forEach(function(el) { el.remove(); });
-    visibleLines = [];
-    body.innerHTML = '';
-    lostEl.classList.remove('show');
-
+    clearLines();
     titleEl.textContent = seq.title;
     freqEl.textContent = seq.freq;
     dotEl.className = 'crt-dot';
-
     startInterference();
 
     var delay = 0;
     seq.lines.forEach(function(item, i) {
       delay += item.lost ? 2200 : item.glitch ? 1500 : 1000;
-
       setTimeout(function() {
-        // Update dot status
         if (item.lost) dotEl.className = 'crt-dot err';
         else if (item.glitch) dotEl.className = 'crt-dot warn';
 
         var div = addLine(item);
+        if (item.glitch) setTimeout(function() { triggerSpike(); div.classList.add('glitch'); }, 400);
+        if (item.lost) setTimeout(function() { heavyInterference(); div.classList.add('lost'); }, 600);
 
-        if (item.glitch) {
-          setTimeout(function() {
-            triggerSpike();
-            div.classList.add('glitch');
-          }, 400);
-        }
-
-        if (item.lost) {
-          setTimeout(function() {
-            heavyInterference();
-            div.classList.add('lost');
-          }, 600);
-        }
-
-        // Last line — show lost msg, then restart
         if (i === seq.lines.length - 1) {
           setTimeout(function() {
             stopInterference();
+            body.appendChild(lostEl);
             lostEl.classList.add('show');
             dotEl.className = 'crt-dot err';
           }, 1600);
-
-          setTimeout(function() {
-            seqIdx++;
-            runSequence();
-          }, 5000);
+          setTimeout(function() { seqIdx++; runSequence(); }, 5000);
         }
       }, delay);
     });
@@ -826,38 +618,22 @@ footer a { color: var(--gold); }
   setTimeout(runSequence, 1000);
 })();
 
-// Formspree
 (function() {
   var form = document.getElementById('capture-form');
   var success = document.getElementById('capture-success');
-
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
     var btn = form.querySelector('button');
     btn.textContent = 'Transmitting\u2026';
     btn.disabled = true;
     try {
-      var res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        form.classList.add('hide');
-        success.classList.add('show');
-      } else {
-        btn.textContent = 'Error \u2014 retry';
-        btn.disabled = false;
-      }
-    } catch(err) {
-      btn.textContent = 'Error \u2014 retry';
-      btn.disabled = false;
-    }
+      var res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (res.ok) { form.classList.add('hide'); success.classList.add('show'); }
+      else { btn.textContent = 'Error \u2014 retry'; btn.disabled = false; }
+    } catch(err) { btn.textContent = 'Error \u2014 retry'; btn.disabled = false; }
   });
 })();
 </script>
 
 </body>
 </html>
-<!-- deploy bump -->
-<!-- deploy bump -->
