@@ -17,39 +17,33 @@
 <meta name="twitter:description" content="Intergalactic funk-rock out of St. Pete, FL. The Bassstar Mission signal is being re-routed.">
 <meta name="twitter:image" content="https://dyea.music/og.png?v=2">
 <link rel="canonical" href="https://dyea.music/">
-<meta name="theme-color" content="#08070D">
+<meta name="theme-color" content="#000000">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Chakra+Petch:wght@500;700&family=Space+Grotesk:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
 <style>
 :root {
-  --void: #08070D;
-  --gunmetal: #13121B;
-  --raised: #1B1A26;
-  --line: rgba(232,178,58,.16);
   --gold: #E8B23A;
   --gold-bright: #FFC94D;
-  --magenta: #C24BFF;
-  --violet: #7B3FF2;
   --acid: #2BE04F;
   --ash: #ECE7DA;
   --dim: #9A93A6;
   --faint: #6B6675;
+  --line: rgba(232,178,58,.16);
+  --raised: #0a0a0a;
   --ease: cubic-bezier(.2,.7,.2,1);
   --crt-green: #33ff66;
   --crt-green-dim: #1a9940;
   --crt-green-glow: rgba(51,255,102,.15);
   --crt-bg: #050a06;
-  --crt-bezel: #1a1c1e;
-  --crt-bezel-edge: #2a2d30;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--void);
+  background: #000;
   color: var(--ash);
   font-family: 'Space Grotesk', system-ui, sans-serif;
   line-height: 1.55;
@@ -61,28 +55,7 @@ body {
 }
 
 a { color: inherit; text-decoration: none; }
-::selection { background: var(--acid); color: var(--void); }
-
-/* ── Atmosphere ── */
-.fx { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-.fx-grid {
-  background-image:
-    linear-gradient(rgba(232,178,58,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(232,178,58,.05) 1px, transparent 1px);
-  background-size: 54px 54px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
-}
-.fx-scan {
-  background: repeating-linear-gradient(180deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
-  opacity: .5;
-}
-.fx-glow {
-  position: fixed; border-radius: 50%; filter: blur(140px);
-  z-index: 0; pointer-events: none; opacity: .4;
-}
-.fx-glow.violet { width: 620px; height: 620px; background: var(--violet); top: -180px; left: -160px; }
-.fx-glow.magenta { width: 520px; height: 520px; background: #5a0f5e; bottom: -160px; right: -140px; }
+::selection { background: var(--acid); color: #000; }
 
 /* ── Page ── */
 .page {
@@ -91,39 +64,18 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 48px 24px 40px;
+  padding: 32px 24px 40px;
   text-align: center;
 }
 
-/* ── Brand ── */
-.brand {
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  letter-spacing: .1em;
-  margin-bottom: 32px;
-}
-.brand b { color: var(--gold); }
-
-/* ── Jar ── */
+/* ── Jar — big and dominant ── */
 .jar-wrap {
   position: relative;
-  width: clamp(220px, 46vw, 400px);
-  margin: 0 auto 40px;
+  width: clamp(280px, 60vw, 520px);
+  margin: 0 auto 32px;
 }
 .jar-wrap img {
   width: 100%; height: auto; display: block;
-  filter: drop-shadow(0 0 60px rgba(194,75,255,.3)) drop-shadow(0 0 120px rgba(123,63,242,.15));
-}
-.jar-pulse {
-  position: absolute; inset: -20%; border-radius: 50%;
-  background: radial-gradient(circle, rgba(194,75,255,.12) 0%, transparent 70%);
-  animation: pulse 4s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes pulse {
-  0%, 100% { transform: scale(.95); opacity: .6; }
-  50% { transform: scale(1.08); opacity: 1; }
 }
 
 /* ── Eyebrow / Heading ── */
@@ -137,10 +89,9 @@ a { color: inherit; text-decoration: none; }
 }
 h1 {
   font-family: 'Anton', sans-serif;
-  font-size: clamp(2.4rem, 10vw, 5.5rem);
+  font-size: clamp(2.2rem, 9vw, 5rem);
   line-height: .88;
   letter-spacing: .02em;
-  text-shadow: 0 2px 28px rgba(8,7,13,.85), 0 0 46px rgba(194,75,255,.35);
 }
 h1 .ac { color: var(--gold); }
 .tagline {
@@ -160,16 +111,15 @@ h1 .ac { color: var(--gold); }
 }
 
 /* ═══════════════════════════════════════════
-   CRT MONITOR — Spaceship display terminal
+   CRT MONITOR
    ═══════════════════════════════════════════ */
 .monitor {
   position: relative;
   width: 100%;
   max-width: 640px;
-  margin: 48px auto 0;
+  margin: 44px auto 0;
 }
 
-/* Outer bezel */
 .monitor-bezel {
   background: linear-gradient(180deg, #2a2d30 0%, #1a1c1e 40%, #111314 100%);
   border-radius: 14px;
@@ -181,7 +131,6 @@ h1 .ac { color: var(--gold); }
     0 8px 40px rgba(0,0,0,.6);
 }
 
-/* Top bezel bar with indicators */
 .monitor-top {
   display: flex;
   align-items: center;
@@ -223,7 +172,6 @@ h1 .ac { color: var(--gold); }
   text-transform: uppercase;
 }
 
-/* Inner screen bezel */
 .monitor-inner {
   background: #080808;
   border-radius: 6px;
@@ -233,40 +181,28 @@ h1 .ac { color: var(--gold); }
   position: relative;
 }
 
-/* The CRT screen surface */
 .crt {
   position: relative;
   background: var(--crt-bg);
   padding: 22px 24px 18px;
-  min-height: 200px;
   overflow: hidden;
 }
 
-/* CRT scanlines */
+/* Scanlines */
 .crt::before {
   content: '';
   position: absolute; inset: 0;
-  background: repeating-linear-gradient(
-    180deg,
-    rgba(0,0,0,.15) 0px,
-    rgba(0,0,0,.15) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  pointer-events: none;
-  z-index: 3;
+  background: repeating-linear-gradient(180deg, rgba(0,0,0,.15) 0px, rgba(0,0,0,.15) 1px, transparent 1px, transparent 3px);
+  pointer-events: none; z-index: 3;
 }
-
-/* CRT vignette */
+/* Vignette */
 .crt::after {
   content: '';
   position: absolute; inset: 0;
   background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.45) 100%);
-  pointer-events: none;
-  z-index: 3;
+  pointer-events: none; z-index: 3;
 }
 
-/* Green phosphor glow on screen edges */
 .monitor-inner::after {
   content: '';
   position: absolute; inset: 0;
@@ -275,95 +211,54 @@ h1 .ac { color: var(--gold); }
   pointer-events: none;
 }
 
-/* Horizontal ghost frequency spike */
+/* Interference layers */
 .crt-spike {
   position: absolute;
   left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255,255,255,.05) 10%,
-    rgba(255,255,255,.7) 30%,
-    rgba(255,255,255,.9) 50%,
-    rgba(255,255,255,.7) 70%,
-    rgba(255,255,255,.05) 90%,
-    transparent 100%
-  );
-  z-index: 5;
-  opacity: 0;
-  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.05) 10%, rgba(255,255,255,.7) 30%, rgba(255,255,255,.9) 50%, rgba(255,255,255,.7) 70%, rgba(255,255,255,.05) 90%, transparent 100%);
+  z-index: 5; opacity: 0; pointer-events: none;
   filter: blur(.5px);
   box-shadow: 0 0 8px rgba(255,255,255,.4), 0 0 20px rgba(255,255,255,.15);
 }
 
-/* White noise flash overlay */
 .crt-noise {
-  position: absolute; inset: 0;
-  z-index: 4;
-  opacity: 0;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(255,255,255,.03) 2px,
-      rgba(255,255,255,.03) 4px
-    );
+  position: absolute; inset: 0; z-index: 4; opacity: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px);
 }
-.crt-noise.flash {
-  animation: noiseFlash .12s steps(2) forwards;
-}
+.crt-noise.flash { animation: noiseFlash .12s steps(2) forwards; }
 @keyframes noiseFlash {
-  0% { opacity: 0; background-position: 0 0; }
-  25% { opacity: .8; background-position: 0 -3px; }
-  50% { opacity: .4; background-position: 0 2px; }
-  75% { opacity: .9; background-position: 0 -1px; }
+  0% { opacity: 0; }
+  25% { opacity: .8; }
+  50% { opacity: .4; }
+  75% { opacity: .9; }
   100% { opacity: 0; }
 }
 
-/* Full white-out burst */
 .crt-burst {
-  position: absolute; inset: 0;
-  z-index: 6;
-  opacity: 0;
-  pointer-events: none;
+  position: absolute; inset: 0; z-index: 6; opacity: 0; pointer-events: none;
   background: white;
 }
-.crt-burst.flash {
-  animation: burstFlash .08s ease-out forwards;
-}
+.crt-burst.flash { animation: burstFlash .08s ease-out forwards; }
 @keyframes burstFlash {
   0% { opacity: .6; }
   100% { opacity: 0; }
 }
 
-/* Horizontal static bars */
 .crt-static-bar {
-  position: absolute;
-  left: 0; right: 0;
-  height: 0;
-  z-index: 5;
-  pointer-events: none;
-  background: linear-gradient(180deg,
-    transparent,
-    rgba(255,255,255,.15) 20%,
-    rgba(255,255,255,.35) 50%,
-    rgba(255,255,255,.15) 80%,
-    transparent
-  );
+  position: absolute; left: 0; right: 0; height: 0;
+  z-index: 5; pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,.15) 20%, rgba(255,255,255,.35) 50%, rgba(255,255,255,.15) 80%, transparent);
   opacity: 0;
 }
-.crt-static-bar.sweep {
-  animation: barSweep .3s ease-out forwards;
-}
+.crt-static-bar.sweep { animation: barSweep .3s ease-out forwards; }
 @keyframes barSweep {
   0% { opacity: .7; height: 4px; }
   50% { opacity: .5; height: 8px; }
   100% { opacity: 0; height: 2px; }
 }
 
-/* Screen header line */
+/* Screen header */
 .crt-header {
   display: flex;
   align-items: center;
@@ -371,28 +266,17 @@ h1 .ac { color: var(--gold); }
   margin-bottom: 14px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(51,255,102,.15);
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 2;
 }
-.crt-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+.crt-status { display: flex; align-items: center; gap: 8px; }
 .crt-dot {
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--crt-green);
   box-shadow: 0 0 4px var(--crt-green);
   animation: ledPulse 2.4s ease-in-out infinite;
 }
-.crt-dot.warn {
-  background: var(--gold);
-  box-shadow: 0 0 4px var(--gold);
-}
-.crt-dot.err {
-  background: #ff4444;
-  box-shadow: 0 0 4px #ff4444;
-}
+.crt-dot.warn { background: var(--gold); box-shadow: 0 0 4px var(--gold); }
+.crt-dot.err { background: #ff4444; box-shadow: 0 0 4px #ff4444; }
 .crt-title {
   font-family: 'VT323', monospace;
   font-size: .9rem;
@@ -408,25 +292,39 @@ h1 .ac { color: var(--gold); }
   text-shadow: 0 0 6px rgba(51,255,102,.1);
 }
 
-/* Transmission text lines */
+/* ── FIXED HEIGHT body with scroll ── */
 .crt-body {
-  min-height: 130px;
   position: relative;
   z-index: 2;
+  height: 170px;
+  overflow: hidden;
 }
+.crt-body-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100%;
+}
+
 .tx-line {
   font-family: 'VT323', monospace;
   font-size: clamp(1rem, 2.2vw, 1.18rem);
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--crt-green);
   text-shadow: 0 0 6px var(--crt-green-glow), 0 0 20px rgba(51,255,102,.08);
-  opacity: 0;
   white-space: pre-wrap;
-  margin-bottom: 4px;
-  position: relative;
+  margin-bottom: 3px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
 }
-.tx-line.active {
-  animation: txIn .5s var(--ease) forwards;
+.tx-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.tx-line.fading {
+  opacity: 0;
+  transform: translateY(-8px);
 }
 .tx-line.glitch {
   animation: txGlitch .25s steps(3) forwards;
@@ -444,10 +342,6 @@ h1 .ac { color: var(--gold); }
 .tx-tag.warn { color: var(--gold); text-shadow: 0 0 6px rgba(232,178,58,.2); }
 .tx-tag.err { color: #ff4444; text-shadow: 0 0 6px rgba(255,68,68,.2); }
 
-@keyframes txIn {
-  0% { opacity: 0; transform: translateX(6px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
 @keyframes txGlitch {
   0% { opacity: 1; transform: skewX(0); filter: none; }
   33% { opacity: .7; transform: skewX(-4deg) translateX(-2px); filter: hue-rotate(90deg) brightness(2); }
@@ -463,7 +357,6 @@ h1 .ac { color: var(--gold); }
   100% { opacity: 0; letter-spacing: .8em; filter: blur(3px); transform: translateX(16px); }
 }
 
-/* Signal lost / recalibrating */
 .tx-lost-msg {
   display: none;
   font-family: 'VT323', monospace;
@@ -473,7 +366,8 @@ h1 .ac { color: var(--gold); }
   text-shadow: 0 0 8px rgba(255,68,68,.3);
   text-align: center;
   text-transform: uppercase;
-  padding: 14px 0 4px;
+  padding: 8px 0 0;
+  position: relative; z-index: 2;
   animation: lostPulse 1s ease-in-out infinite;
 }
 .tx-lost-msg.show { display: block; }
@@ -482,7 +376,6 @@ h1 .ac { color: var(--gold); }
   50% { opacity: 1; }
 }
 
-/* Bottom bezel detail */
 .monitor-bottom {
   display: flex;
   align-items: center;
@@ -545,7 +438,7 @@ h1 .ac { color: var(--gold); }
   padding: 14px 24px;
   border: 1px solid transparent; border-radius: 2px;
   cursor: pointer;
-  background: var(--gold); color: var(--void);
+  background: var(--gold); color: #000;
   transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s;
 }
 .btn-gold:hover, .btn-gold:focus-visible {
@@ -565,7 +458,7 @@ h1 .ac { color: var(--gold); }
 .capture-success.show { display: block; }
 .capture.hide { display: none; }
 
-/* ── Sync link ── */
+/* ── Sync ── */
 .sync-link {
   margin-top: 36px;
   font-family: 'Chakra Petch', monospace;
@@ -589,7 +482,7 @@ footer {
   position: relative; z-index: 2;
   text-align: center;
   padding: 28px 24px 36px;
-  border-top: 1px solid rgba(236,231,218,.06);
+  border-top: 1px solid rgba(255,255,255,.04);
   color: var(--faint);
   font-size: .72rem;
   line-height: 1.7;
@@ -608,7 +501,7 @@ footer a { color: var(--gold); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .tx-line { opacity: 1 !important; }
+  .tx-line { opacity: 1 !important; transform: none !important; }
   .tx-lost-msg.show { display: none; }
   .crt-noise, .crt-burst, .crt-static-bar, .crt-spike { display: none !important; }
 }
@@ -616,26 +509,18 @@ footer a { color: var(--gold); }
 </head>
 <body>
 
-<div class="fx fx-grid" aria-hidden="true"></div>
-<div class="fx fx-scan" aria-hidden="true"></div>
-<div class="fx-glow violet" aria-hidden="true"></div>
-<div class="fx-glow magenta" aria-hidden="true"></div>
-
 <main class="page">
 
-  <div class="brand">D'<b>YEA</b></div>
-
   <div class="jar-wrap">
-    <div class="jar-pulse" aria-hidden="true"></div>
-    <img src="hero.png" alt="D'YEA — Funk in a Jar" width="420" height="auto">
+    <img src="hero.png" alt="D'YEA — Funk in a Jar" width="520" height="auto">
   </div>
 
   <p class="eyebrow">Signal re-routing · St. Pete Sector</p>
-  <h1>Transmission<br>In<span class="ac">coming</span></h1>
+  <h1>Transmission In<span class="ac">coming</span></h1>
   <p class="tagline">The Bassstar Mission is being prepared for relaunch</p>
   <p class="sub">Intergalactic funk-rock with a Rock & Roll Hall of Fame drummer on the kit. 13 tracks. One frequency.</p>
 
-  <!-- ═══ CRT MONITOR ═══ -->
+  <!-- CRT MONITOR -->
   <div class="monitor" aria-label="Intercepted lyric transmission">
     <div class="monitor-bezel">
       <div class="monitor-top">
@@ -648,7 +533,6 @@ footer a { color: var(--gold); }
       </div>
       <div class="monitor-inner">
         <div class="crt" id="crt-screen">
-          <!-- Interference layers -->
           <div class="crt-noise" id="crt-noise" aria-hidden="true"></div>
           <div class="crt-burst" id="crt-burst" aria-hidden="true"></div>
           <div class="crt-spike" id="crt-spike" aria-hidden="true"></div>
@@ -658,9 +542,11 @@ footer a { color: var(--gold); }
               <div class="crt-dot" id="crt-dot"></div>
               <span class="crt-title" id="crt-title">Intercepted Signal</span>
             </div>
-            <span class="crt-freq" id="crt-freq">FREQ 003.BSM</span>
+            <span class="crt-freq" id="crt-freq">FREQ 001.BSM</span>
           </div>
-          <div class="crt-body" id="tx-body"></div>
+          <div class="crt-body">
+            <div class="crt-body-inner" id="tx-body"></div>
+          </div>
           <div class="tx-lost-msg" id="tx-lost">/// Signal lost — recalibrating ///</div>
         </div>
       </div>
@@ -694,6 +580,7 @@ footer a { color: var(--gold); }
 
 <script>
 (function() {
+  var MAX_VISIBLE = 6;
   var body = document.getElementById('tx-body');
   var lostEl = document.getElementById('tx-lost');
   var noiseEl = document.getElementById('crt-noise');
@@ -704,6 +591,7 @@ footer a { color: var(--gold); }
   var freqEl = document.getElementById('crt-freq');
   var screen = document.getElementById('crt-screen');
 
+  // All lyric lines in a flat pool — sequences cycle through chunks
   var sequences = [
     {
       title: 'Mission File 01 — Right Now',
@@ -780,16 +668,15 @@ footer a { color: var(--gold); }
   ];
 
   var seqIdx = 0;
+  var visibleLines = [];
   var spikeInterval, noiseInterval;
 
   // ── Interference FX ──
-
   function triggerSpike() {
     var y = Math.floor(Math.random() * screen.offsetHeight);
     spikeEl.style.top = y + 'px';
     spikeEl.style.opacity = '1';
     spikeEl.style.transition = 'none';
-    // Horizontal sweep
     setTimeout(function() {
       spikeEl.style.transition = 'opacity .15s';
       spikeEl.style.opacity = '0';
@@ -818,7 +705,6 @@ footer a { color: var(--gold); }
     setTimeout(function() { bar.remove(); }, 400);
   }
 
-  // Random interference during playback
   function startInterference() {
     spikeInterval = setInterval(function() {
       if (Math.random() < .35) triggerSpike();
@@ -834,7 +720,6 @@ footer a { color: var(--gold); }
     clearInterval(noiseInterval);
   }
 
-  // Heavy interference burst (on signal lost)
   function heavyInterference() {
     triggerBurst();
     setTimeout(triggerNoise, 50);
@@ -843,17 +728,53 @@ footer a { color: var(--gold); }
     setTimeout(triggerSpike, 200);
     setTimeout(triggerNoise, 300);
     setTimeout(triggerStaticBar, 350);
-    setTimeout(triggerSpike, 450);
+  }
+
+  // ── Line management — fixed window, scroll old lines out ──
+  function addLine(item) {
+    var div = document.createElement('div');
+    div.className = 'tx-line';
+
+    var html = '';
+    if (item.tag) {
+      var cls = 'tx-tag';
+      if (item.tag.indexOf('lost') > -1 || item.tag.indexOf('degrading') > -1) cls += ' err';
+      else if (item.tag.indexOf('weak') > -1) cls += ' warn';
+      html += '<span class="' + cls + '">// ' + item.tag + '</span>';
+    }
+    html += item.text;
+    div.innerHTML = html;
+    body.appendChild(div);
+
+    // Fade in
+    requestAnimationFrame(function() {
+      div.classList.add('visible');
+    });
+
+    visibleLines.push(div);
+
+    // If over max, fade out oldest
+    while (visibleLines.length > MAX_VISIBLE) {
+      var old = visibleLines.shift();
+      old.classList.remove('visible');
+      old.classList.add('fading');
+      (function(el) {
+        setTimeout(function() { el.remove(); }, 400);
+      })(old);
+    }
+
+    return div;
   }
 
   // ── Sequence runner ──
-
   function runSequence() {
     var seq = sequences[seqIdx % sequences.length];
+    // Clear all lines
+    visibleLines.forEach(function(el) { el.remove(); });
+    visibleLines = [];
     body.innerHTML = '';
     lostEl.classList.remove('show');
 
-    // Update header
     titleEl.textContent = seq.title;
     freqEl.textContent = seq.freq;
     dotEl.className = 'crt-dot';
@@ -862,66 +783,47 @@ footer a { color: var(--gold); }
 
     var delay = 0;
     seq.lines.forEach(function(item, i) {
-      delay += item.lost ? 2400 : item.glitch ? 1600 : 1100;
+      delay += item.lost ? 2200 : item.glitch ? 1500 : 1000;
 
       setTimeout(function() {
-        var div = document.createElement('div');
-        div.className = 'tx-line';
+        // Update dot status
+        if (item.lost) dotEl.className = 'crt-dot err';
+        else if (item.glitch) dotEl.className = 'crt-dot warn';
 
-        var html = '';
-        if (item.tag) {
-          var cls = 'tx-tag';
-          if (item.tag.indexOf('lost') > -1 || item.tag.indexOf('degrading') > -1) cls += ' err';
-          else if (item.tag.indexOf('weak') > -1) cls += ' warn';
-          html += '<span class="' + cls + '">// ' + item.tag + '</span>';
+        var div = addLine(item);
+
+        if (item.glitch) {
+          setTimeout(function() {
+            triggerSpike();
+            div.classList.add('glitch');
+          }, 400);
         }
-        html += item.text;
-        div.innerHTML = html;
-        body.appendChild(div);
 
-        // Update status dot
         if (item.lost) {
-          dotEl.className = 'crt-dot err';
-        } else if (item.glitch) {
-          dotEl.className = 'crt-dot warn';
+          setTimeout(function() {
+            heavyInterference();
+            div.classList.add('lost');
+          }, 600);
         }
 
-        requestAnimationFrame(function() {
-          if (item.lost) {
-            div.classList.add('active');
-            setTimeout(function() {
-              heavyInterference();
-              div.classList.remove('active');
-              div.classList.add('lost');
-            }, 700);
-          } else if (item.glitch) {
-            div.classList.add('active');
-            setTimeout(function() {
-              triggerSpike();
-              div.classList.add('glitch');
-            }, 500);
-          } else {
-            div.classList.add('active');
-          }
-        });
-
+        // Last line — show lost msg, then restart
         if (i === seq.lines.length - 1) {
           setTimeout(function() {
             stopInterference();
             lostEl.classList.add('show');
             dotEl.className = 'crt-dot err';
-          }, 1800);
+          }, 1600);
 
           setTimeout(function() {
             seqIdx++;
             runSequence();
-          }, 5500);
+          }, 5000);
         }
       }, delay);
     });
   }
 
-  setTimeout(runSequence, 1200);
+  setTimeout(runSequence, 1000);
 })();
 
 // Formspree
