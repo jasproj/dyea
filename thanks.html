@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D'YEA — Signal Locked</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Chakra+Petch:wght@500;700&family=Space+Grotesk:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #E8B23A;
+  --gold-bright: #FFC94D;
+  --acid: #2BE04F;
+  --ash: #ECE7DA;
+  --dim: #9A93A6;
+  --faint: #6B6675;
+  --crt-green: #33ff66;
+  --crt-bg: #050a06;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #000;
+  color: var(--ash);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--acid); color: #000; }
+
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.jar-wrap {
+  width: clamp(160px, 36vw, 280px);
+  margin: 0 auto 32px;
+}
+.jar-wrap img { width: 100%; height: auto; display: block; }
+
+.confirmed {
+  font-family: 'VT323', monospace;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--crt-green);
+  text-shadow: 0 0 8px rgba(51,255,102,.25);
+  letter-spacing: .08em;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2rem, 8vw, 4rem);
+  line-height: .9;
+  letter-spacing: .02em;
+  margin-bottom: 16px;
+}
+h1 .ac { color: var(--gold); }
+
+.msg {
+  color: var(--dim);
+  font-size: .94rem;
+  max-width: 440px;
+  margin-bottom: 40px;
+}
+
+/* ── CRT Listen Panel ── */
+.listen-panel {
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(180deg, #2a2d30 0%, #1a1c1e 40%, #111314 100%);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 2px 0 #333638, 0 -1px 0 #0a0b0c, inset 0 1px 0 rgba(255,255,255,.06), 0 8px 40px rgba(0,0,0,.6);
+}
+.listen-inner {
+  background: #080808;
+  border-radius: 6px;
+  border: 2px solid #0c0d0e;
+  box-shadow: inset 0 0 30px rgba(0,0,0,.8);
+  overflow: hidden;
+}
+.listen-screen {
+  position: relative;
+  background: var(--crt-bg);
+  padding: 24px 28px;
+}
+/* Scanlines */
+.listen-screen::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(180deg, rgba(0,0,0,.12) 0px, rgba(0,0,0,.12) 1px, transparent 1px, transparent 3px);
+  pointer-events: none; z-index: 1;
+}
+.listen-screen::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.4) 100%);
+  pointer-events: none; z-index: 1;
+}
+
+.listen-hdr {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(51,255,102,.15);
+  position: relative; z-index: 2;
+}
+.listen-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--crt-green);
+  box-shadow: 0 0 4px var(--crt-green);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+.listen-label {
+  font-family: 'VT323', monospace;
+  font-size: .9rem;
+  letter-spacing: .1em;
+  color: var(--crt-green);
+  text-shadow: 0 0 8px rgba(51,255,102,.15);
+  text-transform: uppercase;
+}
+
+.track-list {
+  list-style: none;
+  position: relative; z-index: 2;
+}
+.track-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(51,255,102,.06);
+}
+.track-list li:last-child { border-bottom: none; }
+.track-num {
+  font-family: 'VT323', monospace;
+  font-size: .9rem;
+  color: rgba(51,255,102,.4);
+  min-width: 28px;
+}
+.track-name {
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  color: var(--crt-green);
+  text-shadow: 0 0 6px rgba(51,255,102,.1);
+  flex: 1;
+}
+.track-play {
+  font-family: 'Chakra Petch', monospace;
+  font-size: .6rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--acid);
+  border: 1px solid rgba(43,224,79,.35);
+  border-radius: 2px;
+  padding: 4px 10px;
+  transition: .15s;
+}
+.track-play:hover {
+  background: var(--acid);
+  color: #000;
+}
+
+.listen-footer {
+  text-align: center;
+  padding: 14px 0 4px;
+  position: relative; z-index: 2;
+  border-top: 1px solid rgba(51,255,102,.1);
+  margin-top: 4px;
+}
+.listen-footer a {
+  font-family: 'Chakra Petch', monospace;
+  font-size: .64rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: color .15s;
+}
+.listen-footer a:hover { color: var(--gold-bright); }
+
+/* ── Badge ── */
+.panel-badge {
+  display: flex; justify-content: center; padding: 8px 0 0;
+}
+.panel-badge span {
+  font-family: 'Chakra Petch', monospace; font-size: .46rem;
+  letter-spacing: .18em; text-transform: uppercase; color: #444;
+  background: linear-gradient(180deg, #222, #1a1a1a);
+  padding: 2px 10px; border-radius: 2px; border: 1px solid #2a2a2a;
+}
+
+/* ── Back link ── */
+.back {
+  margin-top: 32px;
+  font-family: 'Chakra Petch', monospace;
+  font-size: .66rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+}
+.back a {
+  color: var(--faint);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding-bottom: 2px;
+  transition: color .15s;
+}
+.back a:hover { color: var(--ash); }
+
+footer {
+  text-align: center;
+  padding: 28px 24px 36px;
+  border-top: 1px solid rgba(255,255,255,.04);
+  color: var(--faint);
+  font-size: .72rem;
+  line-height: 1.7;
+}
+footer a { color: var(--gold); }
+.footer-ascap {
+  font-family: 'Chakra Petch', monospace; font-size: .58rem;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-top: 6px;
+}
+
+:focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <div class="jar-wrap">
+    <img src="hero.png" alt="D'YEA — Funk in a Jar" width="280" height="auto">
+  </div>
+
+  <p class="confirmed">/// Signal locked — you're on the crew roster ///</p>
+  <h1>Welcome to the<br>Bass<span class="ac">star</span></h1>
+  <p class="msg">You're in. While we prep the full relaunch, here's 7 tracks from the original Bassstar Mission transmission — straight from the archive.</p>
+
+  <div class="listen-panel">
+    <div class="listen-inner">
+      <div class="listen-screen">
+        <div class="listen-hdr">
+          <div class="listen-dot"></div>
+          <span class="listen-label">Bassstar Mission — Archive Playback</span>
+        </div>
+        <ul class="track-list">
+          <li>
+            <span class="track-num">01</span>
+            <span class="track-name">Right Now (D'Yea Intro)</span>
+            <a class="track-play" href="https://soundclick.com/dyea" target="_blank" rel="noopener">▶ Play</a>
+          </li>
+          <li>
+            <span class="track-num">02</span>
+            <span class="track-name">I Am D'Yea</span>
+            <a class="track-play" href="https://soundclick.com/dyea" target="_blank" rel="noopener">▶ Play</a>
+          </li>
+          <li>
+            <span class="track-num">03</span>
+            <span class="track-name">Bassstar (Who's Funkin' You Now?)</span>
+            <a class="track-play" href="https://soundclick.com/dyea" target="_blank" rel="noopener">▶ Play</a>
+          </li>
+          <li>
+            <span class="track-num">04</span>
+            <span class="track-name">Phaser (feat. Gene Heinous)</span>
+            <a class="track-play" href="https://soundclick.com/dyea" target="_blank" rel="noopener">▶ Play</a>
+          </li>
+          <li>
+            <span class="track-num">05</span>
+            <span class="track-name">All Around The World</span>
+            <a class="track-play" href="https://soundclick.com/dyea" target="_blank" rel="noopener">▶ Play</a>
+          </li>
+          <li>
+            <span class="track-num">06</span>
+            <span class="track-name">Break Down The Walls</span>
+            <a class="track-play" href="https://soundclick.com/dyea" target="_blank" rel="noopener">▶ Play</a>
+          </li>
+          <li>
+            <span class="track-num">07</span>
+            <span class="track-name">(Tell Me) Are You Down With D'Yea?</span>
+            <a class="track-play" href="https://soundclick.com/dyea" target="_blank" rel="noopener">▶ Play</a>
+          </li>
+        </ul>
+        <div class="listen-footer">
+          <a href="https://soundclick.com/dyea" target="_blank" rel="noopener">Open full archive on SoundClick →</a>
+        </div>
+      </div>
+    </div>
+    <div class="panel-badge">
+      <span>Sonic Throne Industries</span>
+    </div>
+  </div>
+
+  <div class="back">
+    <a href="/">← Back to Bassstar Sector</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2003–2026 D'YEA · Sonic Throne Publishing</p>
+  <p class="footer-ascap">Published with ASCAP</p>
+</footer>
+
+</body>
+</html>
