@@ -422,6 +422,34 @@ h1 .ac { color: var(--gold); }
 }
 .ab-capture.hide { display: none; }
 
+/* ── Next transmissions ── */
+.next-up { margin-top: 48px; width: 100%; max-width: 480px; }
+.next-label {
+  font-family: 'VT323', monospace; font-size: .95rem; letter-spacing: .2em;
+  color: var(--gold); text-transform: uppercase; text-shadow: 0 0 8px rgba(232,178,58,.2); margin-bottom: 18px;
+}
+.next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 520px) { .next-grid { grid-template-columns: 1fr; } }
+.next-card {
+  background: var(--raised); border: 1px solid rgba(232,178,58,.18); border-radius: 4px; padding: 18px 14px;
+}
+.next-tag { font-family: 'Chakra Petch', monospace; font-size: .54rem; letter-spacing: .18em; text-transform: uppercase; color: var(--acid); display: block; margin-bottom: 6px; }
+.next-title { font-family: 'Anton', sans-serif; font-size: 1.35rem; line-height: 1; letter-spacing: .02em; }
+.next-title .ac { color: var(--gold); }
+
+/* ── YouTube ── */
+.yt { margin-top: 40px; width: 100%; max-width: 480px; }
+.btn-yt {
+  display: inline-flex; align-items: center; gap: .6em;
+  font-family: 'Chakra Petch', monospace; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .14em; font-size: .78rem; padding: 14px 24px; border-radius: 2px;
+  border: 1px solid rgba(255,255,255,.18); color: var(--ash); background: transparent;
+  transition: transform .15s var(--ease), border-color .15s, background .15s;
+}
+.btn-yt svg { width: 18px; height: 18px; fill: #ff0033; }
+.btn-yt:hover { border-color: #ff0033; background: rgba(255,0,51,.08); transform: translateY(-2px); }
+.yt-sub { color: var(--faint); font-size: .78rem; margin-top: 10px; }
+
 .sync-link {
   margin-top: 36px; font-family: 'Chakra Petch', monospace;
   font-size: .66rem; text-transform: uppercase; letter-spacing: .16em;
@@ -508,6 +536,22 @@ footer a { color: var(--gold); }
         <span class="monitor-badge">Sonic Throne Industries</span>
       </div>
     </div>
+  </div>
+
+  <div class="next-up">
+    <p class="next-label">/// Next transmissions ///</p>
+    <div class="next-grid">
+      <div class="next-card"><span class="next-tag">New single</span><div class="next-title">Is This <span class="ac">Real</span></div></div>
+      <div class="next-card"><span class="next-tag">25th anniversary</span><div class="next-title">Bassstar <span class="ac">Mission</span><br>Remastered</div></div>
+    </div>
+  </div>
+
+  <div class="yt">
+    <a class="btn-yt" href="https://www.youtube.com/@bassstarmission" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"/></svg>
+      Bassstar Mission on YouTube
+    </a>
+    <p class="yt-sub">Subscribe for the video transmissions</p>
   </div>
 
   <div class="capture-section">
