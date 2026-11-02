@@ -507,19 +507,7 @@ footer a { color: var(--gold); }
     <div class="ab-cover" id="ab-cover-wrap">
       <img src="ab-cover.png" alt="D'YEA — American Band" width="280" height="280">
     </div>
-    <div class="ab-form-wrap">
-      <p class="ab-capture-label">Unlock the track</p>
-      <form class="ab-capture" id="ab-form" action="https://formspree.io/f/mykqkpel" method="POST">
-        <input type="hidden" name="_subject" value="D'YEA — American Band download">
-        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
-        <input type="email" name="email" placeholder="EMAIL" aria-label="Email address for download" required>
-        <button class="btn-ab" type="submit">Unlock ▶</button>
-      </form>
-      <div class="ab-download" id="ab-download">
-        <p class="ab-download-msg">/// Transmission unlocked — download your copy ///</p>
-        <a class="btn-download" href="american-band.mp3" download="DYEA-American-Band.mp3">⬇ Download American Band</a>
-      </div>
-    </div>
+    <a class="btn-download" href="/american-band">Unlock the free download ▶</a>
   </section>
 
   <div class="capture-section">
@@ -737,22 +725,6 @@ footer a { color: var(--gold); }
   }
 
   setTimeout(runSequence, 1000);
-})();
-
-(function() {
-  var abForm = document.getElementById('ab-form');
-  var abDownload = document.getElementById('ab-download');
-  abForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var btn = abForm.querySelector('button');
-    btn.textContent = 'Transmitting…';
-    btn.disabled = true;
-    try {
-      var res = await fetch(abForm.action, { method: 'POST', body: new FormData(abForm), headers: { 'Accept': 'application/json' } });
-      if (res.ok) { abForm.classList.add('hide'); abDownload.classList.add('show'); }
-      else { btn.textContent = 'Error — retry'; btn.disabled = false; }
-    } catch(err) { btn.textContent = 'Error — retry'; btn.disabled = false; }
-  });
 })();
 
 (function() {

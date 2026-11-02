@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D'YEA — American Band (Free Download)</title>
+<meta name="description" content="D'YEA's rewritten, re-fired take on American Band. Unreleased, not for sale — free download for the crew.">
+<meta property="og:title" content="D'YEA — American Band · Free Download">
+<meta property="og:description" content="Rewritten. Re-fired. Unreleased. Drop your email and unlock the track.">
+<meta property="og:type" content="music.song">
+<meta property="og:url" content="https://dyea.music/american-band">
+<meta property="og:image" content="https://dyea.music/ab-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="D'YEA — American Band — Free Download">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="D'YEA — American Band · Free Download">
+<meta name="twitter:description" content="Rewritten. Re-fired. Unreleased. Drop your email and unlock the track.">
+<meta name="twitter:image" content="https://dyea.music/ab-og.png">
+<link rel="canonical" href="https://dyea.music/american-band">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Chakra+Petch:wght@500;700&family=Space+Grotesk:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #E8B23A; --gold-bright: #FFC94D; --acid: #2BE04F;
+  --ash: #ECE7DA; --dim: #9A93A6; --faint: #6B6675;
+  --raised: #0a0a0a; --ease: cubic-bezier(.2,.7,.2,1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #000; color: var(--ash);
+  font-family: 'Space Grotesk', system-ui, sans-serif; line-height: 1.55;
+  -webkit-font-smoothing: antialiased; min-height: 100vh;
+  display: flex; flex-direction: column; overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--acid); color: #000; }
+
+.page {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  padding: 36px 24px 48px; text-align: center;
+}
+.eyebrow {
+  font-family: 'VT323', monospace; font-size: .95rem; letter-spacing: .2em;
+  color: var(--gold); text-transform: uppercase; text-shadow: 0 0 8px rgba(232,178,58,.2);
+  margin-bottom: 18px;
+}
+.cover {
+  width: clamp(240px, 56vw, 420px); margin: 0 auto 26px;
+  filter: drop-shadow(0 0 40px rgba(232,178,58,.18));
+}
+.cover img { width: 100%; height: auto; display: block; border-radius: 4px; }
+.badge {
+  display: inline-block; font-family: 'Chakra Petch', monospace; font-size: .56rem;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--acid);
+  border: 1px solid rgba(43,224,79,.35); padding: 4px 14px; border-radius: 2px; margin-bottom: 14px;
+}
+h1 {
+  font-family: 'Anton', sans-serif; font-size: clamp(2.4rem, 9vw, 5rem);
+  line-height: .88; letter-spacing: .02em;
+}
+h1 .ac { color: var(--gold); }
+.tagline {
+  font-family: 'Chakra Petch', monospace; text-transform: uppercase; letter-spacing: .18em;
+  font-size: clamp(.66rem, 1.6vw, .82rem); color: var(--dim); margin-top: 14px;
+}
+
+/* preview player */
+.preview {
+  margin: 28px auto 0; width: 100%; max-width: 440px;
+  background: linear-gradient(180deg, #1a1c1e, #0f1011);
+  border: 1px solid #222; border-radius: 10px; padding: 14px 16px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05);
+}
+.pv-btn {
+  width: 48px; height: 48px; flex: none; border-radius: 50%; border: 1px solid var(--gold);
+  background: transparent; color: var(--gold); cursor: pointer; font-size: 1rem;
+  display: grid; place-items: center; transition: .15s;
+}
+.pv-btn:hover, .pv-btn.playing { background: var(--gold); color: #000; }
+.pv-meta { flex: 1; text-align: left; min-width: 0; }
+.pv-label {
+  font-family: 'VT323', monospace; font-size: .9rem; letter-spacing: .12em;
+  color: var(--acid); text-transform: uppercase;
+}
+.pv-track { font-family: 'Chakra Petch', monospace; font-size: .74rem; color: var(--ash); letter-spacing: .06em; margin-top: 2px; }
+.pv-bar { height: 3px; background: #222; border-radius: 2px; margin-top: 8px; overflow: hidden; }
+.pv-fill { height: 100%; width: 0; background: var(--gold); transition: width .25s linear; }
+.pv-time { font-family: 'VT323', monospace; font-size: .9rem; color: var(--faint); flex: none; }
+
+/* story */
+.story {
+  max-width: 480px; margin: 30px auto 0; color: var(--dim); font-size: .92rem; line-height: 1.7;
+}
+.story strong { color: var(--ash); font-weight: 500; }
+.notice {
+  font-family: 'Chakra Petch', monospace; font-size: .6rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--faint); margin-top: 14px;
+}
+
+/* gate */
+.gate { margin-top: 34px; width: 100%; max-width: 440px; }
+.gate-label {
+  font-family: 'Chakra Petch', monospace; text-transform: uppercase;
+  letter-spacing: .14em; font-size: .66rem; color: var(--gold); margin-bottom: 12px;
+}
+.capture { display: flex; gap: 10px; flex-wrap: wrap; }
+.capture input[type="email"] {
+  flex: 1; min-width: 190px; background: var(--raised);
+  border: 1px solid rgba(232,178,58,.25); color: var(--ash);
+  font-family: 'Chakra Petch', monospace; letter-spacing: .06em;
+  font-size: .84rem; padding: 14px 16px; border-radius: 2px;
+}
+.capture input::placeholder { color: var(--faint); }
+.capture input:focus { outline: 2px solid var(--gold); outline-offset: 2px; border-color: var(--gold); }
+.btn-gold {
+  font-family: 'Chakra Petch', monospace; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .14em; font-size: .8rem; padding: 14px 24px; border: none; border-radius: 2px;
+  cursor: pointer; background: var(--gold); color: #000;
+  transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s;
+}
+.btn-gold:hover, .btn-gold:focus-visible { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 0 20px rgba(232,178,58,.3); }
+.capture.hide { display: none; }
+
+.unlocked { display: none; padding-top: 6px; }
+.unlocked.show { display: block; }
+.unlocked-msg {
+  font-family: 'VT323', monospace; font-size: 1.05rem; letter-spacing: .08em;
+  color: var(--acid); text-shadow: 0 0 8px rgba(43,224,79,.2); margin-bottom: 16px;
+}
+.btn-download {
+  display: inline-flex; align-items: center; gap: .5em;
+  font-family: 'Chakra Petch', monospace; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .14em; font-size: .84rem; padding: 16px 30px; border-radius: 2px;
+  background: var(--gold); color: #000;
+  transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s;
+}
+.btn-download:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 0 24px rgba(232,178,58,.35); }
+
+.share { margin-top: 26px; }
+.share-label {
+  font-family: 'Chakra Petch', monospace; font-size: .6rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--faint); margin-bottom: 10px;
+}
+.share-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.share-row a, .share-row button {
+  font-family: 'Chakra Petch', monospace; font-size: .64rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gold); background: transparent;
+  border: 1px solid rgba(232,178,58,.3); border-radius: 2px; padding: 8px 14px; cursor: pointer; transition: .15s;
+}
+.share-row a:hover, .share-row button:hover { background: var(--gold); color: #000; }
+.next-up {
+  margin-top: 44px; width: 100%; max-width: 440px;
+  border-top: 1px solid rgba(232,178,58,.15); padding-top: 26px;
+}
+.next-label {
+  font-family: 'VT323', monospace; font-size: .95rem; letter-spacing: .2em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 16px;
+}
+.next-item { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 16px; }
+.next-tag {
+  font-family: 'Chakra Petch', monospace; font-size: .56rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--acid);
+}
+.next-title { font-family: 'Anton', sans-serif; font-size: clamp(1.3rem, 4.5vw, 1.9rem); line-height: 1; letter-spacing: .02em; }
+.next-title .ac { color: var(--gold); }
+.next-sub { color: var(--dim); font-size: .86rem; line-height: 1.6; margin-top: 6px; }
+.crew-link { margin-top: 26px; font-family: 'Chakra Petch', monospace; font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }
+.crew-link a { color: var(--dim); border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: 2px; }
+.crew-link a:hover { color: var(--ash); }
+
+footer {
+  text-align: center; padding: 28px 24px 36px; border-top: 1px solid rgba(255,255,255,.04);
+  color: var(--faint); font-size: .72rem; line-height: 1.7;
+}
+.footer-ascap { font-family: 'Chakra Petch', monospace; font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; margin-top: 6px; }
+:focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<main class="page">
+  <p class="eyebrow">/// Bonus Intercept · Bassstar Sector ///</p>
+
+  <div class="cover"><img src="ab-cover.png" alt="D'YEA — American Band" width="420" height="420"></div>
+
+  <span class="badge">Unreleased · Free Download</span>
+  <h1>American <span class="ac">Band</span></h1>
+  <p class="tagline">Rewritten · Re-fired · Not on the album</p>
+
+  <div class="preview" aria-label="30 second preview">
+    <button class="pv-btn" id="pv-btn" aria-label="Play preview">▶</button>
+    <div class="pv-meta">
+      <div class="pv-label">Signal preview — 0:30</div>
+      <div class="pv-track">D'YEA — American Band</div>
+      <div class="pv-bar"><div class="pv-fill" id="pv-fill"></div></div>
+    </div>
+    <span class="pv-time" id="pv-time">0:30</span>
+    <audio id="pv-audio" src="american-band-preview.mp3" preload="none"></audio>
+  </div>
+
+  <p class="story">
+    Everybody's cut the Grand Funk classic. <strong>Nobody's rewritten it from the cockpit of a Bassstar.</strong>
+    This is the crew's own take — new verses, new fire, the same riff that started a thousand garage bands.
+    It's not on the Bassstar Mission relaunch and it never will be sold. It's for the crew, and the crew only.
+  </p>
+  <p class="notice">Free download only · Not for sale · Never streamed</p>
+
+  <div class="gate">
+    <p class="gate-label">Unlock the track</p>
+    <form class="capture" id="ab-form" action="https://formspree.io/f/mykqkpel" method="POST">
+      <input type="hidden" name="_subject" value="D'YEA — American Band download">
+      <input type="hidden" name="source" value="american-band-page">
+      <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+      <input type="email" name="email" placeholder="EMAIL" aria-label="Email address" required>
+      <button class="btn-gold" type="submit">Unlock ▶</button>
+    </form>
+    <div class="unlocked" id="unlocked">
+      <p class="unlocked-msg">/// Transmission unlocked — you're on the crew roster ///</p>
+      <a class="btn-download" href="american-band.mp3" download="DYEA-American-Band.mp3">⬇ Download American Band</a>
+      <div class="share">
+        <p class="share-label">Spread the signal</p>
+        <div class="share-row">
+          <a href="https://twitter.com/intent/tweet?text=D%27YEA%20%E2%80%94%20American%20Band%20(free%20download)&url=https%3A%2F%2Fdyea.music%2Famerican-band" target="_blank" rel="noopener">X</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdyea.music%2Famerican-band" target="_blank" rel="noopener">Facebook</a>
+          <button type="button" id="copy-link">Copy link</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="next-up">
+    <p class="next-label">/// Next transmissions ///</p>
+    <div class="next-item">
+      <span class="next-tag">New single</span>
+      <span class="next-title">Is This <span class="ac">Real</span></span>
+    </div>
+    <div class="next-item">
+      <span class="next-tag">25th anniversary</span>
+      <span class="next-title">Bassstar <span class="ac">Mission</span> — Remastered</span>
+    </div>
+    <p class="next-sub">13 tracks remastered, remixed, ATMOS mixed, plus new tracks and special guests. Your email above puts you first in line.</p>
+  </div>
+
+  <div class="crew-link"><a href="/">← Back to Bassstar Sector</a></div>
+</main>
+
+<footer>
+  <p>© 2003–2026 D'YEA · Sonic Throne Publishing</p>
+  <p class="footer-ascap">Published with ASCAP</p>
+</footer>
+
+<script>
+(function() {
+  var a = document.getElementById('pv-audio'), b = document.getElementById('pv-btn'),
+      f = document.getElementById('pv-fill'), t = document.getElementById('pv-time');
+  function fmt(s){ s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+('0'+s%60).slice(-2); }
+  b.addEventListener('click', function(){ a.paused ? a.play() : a.pause(); });
+  a.addEventListener('play', function(){ b.textContent='❚❚'; b.classList.add('playing'); });
+  a.addEventListener('pause', function(){ b.textContent='▶'; b.classList.remove('playing'); });
+  a.addEventListener('timeupdate', function(){
+    var d = a.duration || 30; f.style.width = (a.currentTime/d*100)+'%'; t.textContent = fmt(d - a.currentTime);
+  });
+  a.addEventListener('ended', function(){ f.style.width='0'; t.textContent='0:30'; });
+})();
+(function() {
+  var form = document.getElementById('ab-form'), out = document.getElementById('unlocked');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('button'); btn.textContent = 'Transmitting…'; btn.disabled = true;
+    try {
+      var res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
+      if (res.ok) { form.classList.add('hide'); out.classList.add('show'); }
+      else { btn.textContent = 'Error — retry'; btn.disabled = false; }
+    } catch(err) { btn.textContent = 'Error — retry'; btn.disabled = false; }
+  });
+  var cp = document.getElementById('copy-link');
+  cp.addEventListener('click', function(){
+    navigator.clipboard.writeText('https://dyea.music/american-band').then(function(){
+      cp.textContent = 'Copied'; setTimeout(function(){ cp.textContent = 'Copy link'; }, 1800);
+    });
+  });
+})();
+</script>
+</body>
+</html>
