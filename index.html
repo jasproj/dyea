@@ -325,6 +325,103 @@ h1 .ac { color: var(--gold); }
 .capture-success.show { display: block; }
 .capture.hide { display: none; }
 
+/* ── American Band Section ── */
+.ab-section {
+  margin-top: 56px;
+  width: 100%;
+  max-width: 560px;
+  text-align: center;
+}
+.ab-divider {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px;
+}
+.ab-divider::before, .ab-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 40%, var(--gold) 60%, transparent);
+  opacity: .3;
+}
+.ab-divider span {
+  font-family: 'VT323', monospace; font-size: .88rem;
+  color: var(--gold); letter-spacing: .2em; text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(232,178,58,.2);
+  white-space: nowrap;
+}
+.ab-badge {
+  display: inline-block;
+  font-family: 'Chakra Petch', monospace; font-size: .56rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(232,178,58,.3);
+  padding: 4px 14px; border-radius: 2px; margin-bottom: 16px;
+}
+.ab-title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.6rem, 6vw, 2.8rem);
+  line-height: .92; letter-spacing: .02em;
+  margin-bottom: 10px;
+}
+.ab-title .ac { color: var(--gold); }
+.ab-sub {
+  color: var(--dim); font-size: .86rem;
+  max-width: 440px; margin: 0 auto 24px;
+  line-height: 1.6;
+}
+.ab-cover {
+  width: clamp(180px, 40vw, 280px);
+  margin: 0 auto 24px;
+}
+.ab-cover img { width: 100%; height: auto; display: block; border-radius: 4px; }
+.ab-form-wrap {
+  max-width: 420px; margin: 0 auto;
+}
+.ab-capture-label {
+  font-family: 'Chakra Petch', monospace; text-transform: uppercase;
+  letter-spacing: .14em; font-size: .62rem; color: var(--gold); margin-bottom: 10px;
+}
+.ab-capture { display: flex; gap: 10px; flex-wrap: wrap; }
+.ab-capture input[type="email"] {
+  flex: 1; min-width: 180px; background: var(--raised);
+  border: 1px solid rgba(232,178,58,.2); color: var(--ash);
+  font-family: 'Chakra Petch', monospace; letter-spacing: .06em;
+  font-size: .84rem; padding: 14px 16px; border-radius: 2px; transition: border-color .15s;
+}
+.ab-capture input[type="email"]::placeholder { color: var(--faint); }
+.ab-capture input[type="email"]:focus { outline: 2px solid var(--gold); outline-offset: 2px; border-color: var(--gold); }
+.btn-ab {
+  display: inline-flex; align-items: center; gap: .5em;
+  font-family: 'Chakra Petch', monospace; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .14em; font-size: .78rem; padding: 14px 20px;
+  border: 1px solid var(--gold); border-radius: 2px; cursor: pointer;
+  background: transparent; color: var(--gold);
+  transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s, color .15s;
+}
+.btn-ab:hover, .btn-ab:focus-visible {
+  background: var(--gold); color: #000; transform: translateY(-2px);
+  box-shadow: 0 0 0 3px #e8b23a38;
+}
+.ab-download {
+  display: none; text-align: center; padding: 20px 0 0;
+}
+.ab-download.show { display: block; }
+.ab-download-msg {
+  font-family: 'VT323', monospace; font-size: 1rem;
+  color: var(--gold); letter-spacing: .08em; margin-bottom: 14px;
+  text-shadow: 0 0 8px rgba(232,178,58,.15);
+}
+.btn-download {
+  display: inline-flex; align-items: center; gap: .5em;
+  font-family: 'Chakra Petch', monospace; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .14em; font-size: .82rem; padding: 16px 28px;
+  border: none; border-radius: 2px; cursor: pointer;
+  background: var(--gold); color: #000; text-decoration: none;
+  transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s;
+}
+.btn-download:hover, .btn-download:focus-visible {
+  background: var(--gold-bright); transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(232,178,58,.3);
+}
+.ab-capture.hide { display: none; }
+
 .sync-link {
   margin-top: 36px; font-family: 'Chakra Petch', monospace;
   font-size: .66rem; text-transform: uppercase; letter-spacing: .16em;
@@ -400,6 +497,30 @@ footer a { color: var(--gold); }
       </div>
     </div>
   </div>
+
+  <!-- ═══ AMERICAN BAND BONUS TRACK ═══ -->
+  <section class="ab-section" id="american-band">
+    <div class="ab-divider"><span>/// Bonus Intercept ///</span></div>
+    <span class="ab-badge">Classified Transmission</span>
+    <h2 class="ab-title">American <span class="ac">Band</span></h2>
+    <p class="ab-sub">D'YEA's take on the classic — rewritten, re-fired, and unreleased. Drop your email to unlock the free download.</p>
+    <div class="ab-cover" id="ab-cover-wrap">
+      <img src="ab-cover.png" alt="D'YEA — American Band" width="280" height="280">
+    </div>
+    <div class="ab-form-wrap">
+      <p class="ab-capture-label">Unlock the track</p>
+      <form class="ab-capture" id="ab-form" action="https://formspree.io/f/mykqkpel" method="POST">
+        <input type="hidden" name="_subject" value="D'YEA — American Band download">
+        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+        <input type="email" name="email" placeholder="EMAIL" aria-label="Email address for download" required>
+        <button class="btn-ab" type="submit">Unlock ▶</button>
+      </form>
+      <div class="ab-download" id="ab-download">
+        <p class="ab-download-msg">/// Transmission unlocked — download your copy ///</p>
+        <a class="btn-download" href="american-band.mp3" download="DYEA-American-Band.mp3">⬇ Download American Band</a>
+      </div>
+    </div>
+  </section>
 
   <div class="capture-section">
     <p class="capture-label">Get on our frequency</p>
@@ -616,6 +737,22 @@ footer a { color: var(--gold); }
   }
 
   setTimeout(runSequence, 1000);
+})();
+
+(function() {
+  var abForm = document.getElementById('ab-form');
+  var abDownload = document.getElementById('ab-download');
+  abForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = abForm.querySelector('button');
+    btn.textContent = 'Transmitting…';
+    btn.disabled = true;
+    try {
+      var res = await fetch(abForm.action, { method: 'POST', body: new FormData(abForm), headers: { 'Accept': 'application/json' } });
+      if (res.ok) { abForm.classList.add('hide'); abDownload.classList.add('show'); }
+      else { btn.textContent = 'Error — retry'; btn.disabled = false; }
+    } catch(err) { btn.textContent = 'Error — retry'; btn.disabled = false; }
+  });
 })();
 
 (function() {
