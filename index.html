@@ -3,10 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>D'YEA — Funk Rock Recon</title>
-<meta name="description" content="D'YEA — intergalactic funk-rock from the Bassstar Sector. The Bassstar Mission signal is being re-routed. Get on our frequency.">
 <meta property="og:title" content="D'YEA — Funk Rock Recon">
-<meta property="og:description" content="Intergalactic funk-rock from the Bassstar Sector. The Bassstar Mission signal is being re-routed.">
-<meta property="og:type" content="music.album">
+<meta property="og:description" content="Intergalactic funk-rock from the Bassstar Sector. The Bassstar Mission is coming back, remastered, with new tracks. Start with a free one.">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://dyea.music/">
 <meta property="og:image" content="https://dyea.music/og.png?v=2">
 <meta property="og:image:width" content="1200">
@@ -14,781 +13,432 @@
 <meta property="og:image:alt" content="D'YEA — Bassstar Mission">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="D'YEA — Funk Rock Recon">
-<meta name="twitter:description" content="Intergalactic funk-rock from the Bassstar Sector. The Bassstar Mission signal is being re-routed.">
+<meta name="twitter:description" content="Intergalactic funk-rock from the Bassstar Sector. The Bassstar Mission is coming back, remastered, with new tracks.">
 <meta name="twitter:image" content="https://dyea.music/og.png?v=2">
 <link rel="canonical" href="https://dyea.music/">
+<meta name="description" content="D'YEA: intergalactic funk-rock from the Bassstar Sector. The Bassstar Mission is coming back, remastered, with new tracks. Start with a free one.">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="image" href="hero.webp" fetchpriority="high">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Chakra+Petch:wght@500;700&family=Space+Grotesk:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-latin-900-italic.woff2" crossorigin>
 <style>
-:root {
-  --gold: #E8B23A;
-  --gold-bright: #FFC94D;
-  --acid: #2BE04F;
-  --ash: #ECE7DA;
-  --dim: #9A93A6;
-  --faint: #6B6675;
-  --line: rgba(232,178,58,.16);
-  --raised: #0a0a0a;
-  --ease: cubic-bezier(.2,.7,.2,1);
-  --crt-green: #33ff66;
-  --crt-green-dim: #1a9940;
-  --crt-green-glow: rgba(51,255,102,.15);
-  --crt-bg: #050a06;
-}
+@font-face { font-family: 'Barlow Condensed'; font-style: italic; font-weight: 900; font-display: swap; src: url(fonts/barlow-condensed-latin-900-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Barlow Condensed'; font-style: italic; font-weight: 700; font-display: swap; src: url(fonts/barlow-condensed-latin-700-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Barlow'; font-weight: 400; font-display: swap; src: url(fonts/barlow-latin-400-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Barlow'; font-weight: 600; font-display: swap; src: url(fonts/barlow-latin-600-normal.woff2) format('woff2'); }
+@font-face { font-family: 'VT323'; font-weight: 400; font-display: swap; src: url(fonts/vt323-latin-400-normal.woff2) format('woff2'); }
 
+:root {
+  --gold: #E8B23A; --amber: #FFC94D; --acid: #2BE04F; --bone: #ECE7DA; --smoke: #9B96A6; --ink: #000;
+  --crt-green: #33ff66; --crt-green-dim: #1a9940; --crt-bg: #050a06;
+  --pad: clamp(18px, 4.5vw, 64px);
+  --display: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+}
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
-body {
-  background: #000;
-  color: var(--ash);
-  font-family: 'Space Grotesk', system-ui, sans-serif;
-  line-height: 1.55;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-a { color: inherit; text-decoration: none; }
+body { background: var(--ink); color: var(--bone); font-family: 'Barlow', system-ui, sans-serif; font-size: 1.06rem; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
 ::selection { background: var(--acid); color: #000; }
+:focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
+.layer { position: relative; z-index: 2; }
 
-.page {
-  position: relative; z-index: 2;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 32px 24px 40px;
-  text-align: center;
-}
+/* display voice: heavy slanted condensed, the lettering off a tour van */
+.disp { font-family: var(--display); font-style: italic; font-weight: 900; text-transform: uppercase; line-height: .84; letter-spacing: -.01em; }
 
-/* ── Jar ── */
-.jar-wrap {
-  position: relative;
-  width: clamp(280px, 60vw, 520px);
-  margin: 0 auto 32px;
-}
-.jar-wrap img { width: 100%; height: auto; display: block; }
+/* ── top bar ── */
+.top { position: absolute; top: 0; left: 0; right: 0; z-index: 6; display: flex; align-items: center; justify-content: space-between; padding: 18px var(--pad); }
+.mark { font-family: var(--display); font-style: italic; font-weight: 900; font-size: 1.7rem; color: var(--gold); text-decoration: none; letter-spacing: .01em; }
+.top nav { display: flex; gap: clamp(14px, 2.4vw, 34px); align-items: center; }
+.top nav a { font-family: var(--display); font-style: italic; font-weight: 700; text-transform: uppercase; font-size: 1.12rem; letter-spacing: .04em; text-decoration: none; color: var(--bone); }
+.top nav a:hover { color: var(--amber); }
+.top nav a.join { color: #000; background: var(--gold); padding: 5px 14px 4px; transform: skewX(-8deg); }
+.top nav a.join:hover { background: var(--amber); color: #000; }
+@media (max-width: 640px) { .top nav a:not(.join) { display: none; } }
 
-.eyebrow {
-  font-family: 'Chakra Petch', monospace;
-  text-transform: uppercase;
-  letter-spacing: .3em;
-  font-size: .68rem;
-  color: var(--gold);
-  margin-bottom: 12px;
-}
-h1 {
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(2.2rem, 9vw, 5rem);
-  line-height: .88;
-  letter-spacing: .02em;
-}
-h1 .ac { color: var(--gold); }
-.tagline {
-  font-family: 'Chakra Petch', monospace;
-  text-transform: uppercase;
-  letter-spacing: .18em;
-  font-size: clamp(.68rem, 1.6vw, .84rem);
-  color: var(--dim);
-  margin-top: 16px;
-  max-width: 520px;
-}
-.sub {
-  color: var(--faint);
-  font-size: .92rem;
-  max-width: 480px;
-  margin-top: 10px;
+/* ── hero ── */
+.hero { position: relative; min-height: min(100svh, 980px); padding: clamp(92px, 13vh, 150px) var(--pad) clamp(36px, 6vh, 72px); display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+.hero h1 { font-size: clamp(5.2rem, 20.5vw, 21rem); color: var(--bone); position: relative; z-index: 1; margin-left: -.035em; }
+.hero h1 span { display: inline-block; }
+.hero h1 .w3 { display: block; color: var(--gold); }
+/* speed lines: the left edge of each word is cut into stripes, like it is moving */
+.hero h1 span { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 .62em), repeating-linear-gradient(180deg, #000 0 .045em, transparent .045em .09em); mask-image: linear-gradient(90deg, transparent 0, #000 .62em), repeating-linear-gradient(180deg, #000 0 .045em, transparent .045em .09em); padding-right: .08em; }
+.jar { position: absolute; z-index: 2; mix-blend-mode: screen; right: clamp(-40px, 1vw, 60px); top: 50%; width: min(46vw, 78vh, 640px); transform: translateY(-54%); pointer-events: none; }
+.jar img { width: 100%; height: auto; -webkit-mask-image: radial-gradient(ellipse 62% 60% at 50% 50%, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 62% 60% at 50% 50%, #000 62%, transparent 100%); }
+.jar::before { content: ''; position: absolute; inset: 12% 8%; border-radius: 50%; background: radial-gradient(closest-side, rgba(232,178,58,.42), rgba(43,224,79,.12) 60%, transparent); filter: blur(34px); animation: plasma 5.5s ease-in-out infinite; }
+@keyframes plasma { 0%, 100% { opacity: .55; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.05); } }
+.hero-foot { position: relative; z-index: 3; margin-top: clamp(18px, 3vh, 34px); max-width: 560px; }
+.hook { font-family: var(--display); font-style: italic; font-weight: 700; font-size: clamp(1.5rem, 3.1vw, 2.3rem); line-height: 1.05; color: var(--amber); text-transform: uppercase; }
+.hero-foot p.say { color: var(--smoke); margin-top: 12px; max-width: 46ch; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.btn { display: inline-block; font-family: var(--display); font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 1.35rem; letter-spacing: .03em; line-height: 1; text-decoration: none; padding: 15px 26px 13px; transform: skewX(-8deg); border: 2px solid var(--gold); cursor: pointer; transition: background .15s, color .15s, transform .15s; }
+.btn > span { display: inline-block; transform: skewX(8deg); }
+.btn.solid { background: var(--gold); color: #000; }
+.btn.solid:hover { background: var(--amber); border-color: var(--amber); transform: skewX(-8deg) translateY(-2px); }
+.btn.line { background: rgba(0,0,0,.55); color: var(--gold); }
+.btn.line:hover { background: var(--gold); color: #000; }
+
+@media (max-width: 760px) {
+  .hero { min-height: 0; justify-content: flex-start; padding-top: 84px; }
+  .hero h1 { font-size: 31vw; }
+  .hero h1 span { display: block; }
+  .jar { position: relative; right: auto; top: auto; transform: none; width: 92vw; margin: -24vw auto -9vw; align-self: center; }
 }
 
-/* ═══ CRT MONITOR ═══ */
-.monitor {
-  position: relative;
-  width: 100%;
-  max-width: 640px;
-  margin: 56px auto 0;
-}
-.monitor-bezel {
-  background: linear-gradient(180deg, #2a2d30 0%, #1a1c1e 40%, #111314 100%);
-  border-radius: 14px;
-  padding: 14px 14px 18px;
-  box-shadow: 0 2px 0 #333638, 0 -1px 0 #0a0b0c, inset 0 1px 0 rgba(255,255,255,.06), 0 8px 40px rgba(0,0,0,.6);
-}
-.monitor-top {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 8px 10px;
-}
-.monitor-indicators { display: flex; gap: 8px; align-items: center; }
-.monitor-led {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--crt-green);
-  box-shadow: 0 0 6px var(--crt-green), 0 0 12px rgba(51,255,102,.3);
-  animation: ledPulse 3s ease-in-out infinite;
-}
-.monitor-led.amber {
-  background: var(--gold);
-  box-shadow: 0 0 6px var(--gold), 0 0 12px rgba(232,178,58,.3);
-  animation-delay: 1s;
-}
-@keyframes ledPulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
-.monitor-label {
-  font-family: 'Chakra Petch', monospace; font-size: .52rem;
-  letter-spacing: .22em; text-transform: uppercase; color: #555;
-}
-.monitor-model {
-  font-family: 'Chakra Petch', monospace; font-size: .48rem;
-  letter-spacing: .12em; color: #444; text-transform: uppercase;
-}
-.monitor-inner {
-  background: #080808; border-radius: 6px; border: 2px solid #0c0d0e;
-  box-shadow: inset 0 0 30px rgba(0,0,0,.8), inset 0 0 4px rgba(51,255,102,.05);
-  overflow: hidden; position: relative;
-}
-.monitor-inner::after {
-  content: ''; position: absolute; inset: 0; border-radius: 6px;
-  box-shadow: inset 0 0 60px rgba(51,255,102,.04); pointer-events: none;
+/* load: type drives in from the left, jar powers up. One sequence, once. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 span { animation: drive .7s cubic-bezier(.16,.84,.3,1) both; }
+  .hero h1 .w2 { animation-delay: .07s; } .hero h1 .w3 { animation-delay: .14s; }
+  @keyframes drive { from { transform: translateX(-9vw) skewX(-14deg); opacity: 0; } to { transform: none; opacity: 1; } }
+  .jar img { animation: power 1.3s .25s ease-out both; }
+  @keyframes power { from { opacity: 0; filter: brightness(.3) saturate(.3); } 60% { filter: brightness(1.5) saturate(1.3); } to { opacity: 1; filter: none; } }
+  .hero-foot { animation: rise .6s .5s ease-out both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 }
 
-/* ── CRT screen — FIXED SIZE, no reflow ── */
-.crt {
-  position: relative;
-  background: var(--crt-bg);
-  padding: 22px 24px 18px;
-  height: 260px;       /* LOCKED — never changes */
-  overflow: hidden;
-}
-.crt::before {
-  content: ''; position: absolute; inset: 0;
-  background: repeating-linear-gradient(180deg, rgba(0,0,0,.15) 0px, rgba(0,0,0,.15) 1px, transparent 1px, transparent 3px);
-  pointer-events: none; z-index: 3;
-}
-.crt::after {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.45) 100%);
-  pointer-events: none; z-index: 3;
-}
+/* ── sections ── */
+.band { background: rgba(0,0,0,.86); padding: clamp(56px, 9vw, 120px) var(--pad); border-top: 1px solid rgba(232,178,58,.14); }
+.inner { max-width: 1180px; margin: 0 auto; }
+h2 { font-size: clamp(2.8rem, 8.4vw, 6.4rem); color: var(--bone); }
+.lead { color: var(--smoke); max-width: 52ch; margin-top: 14px; }
 
-/* Interference */
-.crt-spike {
-  position: absolute; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.05) 10%, rgba(255,255,255,.7) 30%, rgba(255,255,255,.9) 50%, rgba(255,255,255,.7) 70%, rgba(255,255,255,.05) 90%, transparent 100%);
-  z-index: 5; opacity: 0; pointer-events: none; filter: blur(.5px);
-  box-shadow: 0 0 8px rgba(255,255,255,.4), 0 0 20px rgba(255,255,255,.15);
-}
-.crt-noise {
-  position: absolute; inset: 0; z-index: 4; opacity: 0; pointer-events: none;
-  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px);
-}
+/* free track */
+.track { display: grid; grid-template-columns: minmax(0, 420px) 1fr; gap: clamp(24px, 5vw, 72px); align-items: center; }
+.track .cover img { width: 100%; height: auto; box-shadow: 0 0 80px rgba(232,178,58,.16); }
+.track h2 { color: var(--gold); }
+.player { margin-top: 26px; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; max-width: 560px; }
+.play { width: 68px; height: 68px; border-radius: 50%; border: 2px solid var(--gold); background: transparent; color: var(--gold); font-size: 1.3rem; cursor: pointer; display: grid; place-items: center; transition: background .15s, color .15s; }
+.play:hover, .play.on { background: var(--gold); color: #000; }
+.viz { width: 100%; height: 68px; display: block; }
+.player small { grid-column: 2; color: var(--smoke); font-size: .86rem; margin-top: -8px; }
+.track .cta { margin-top: 26px; }
+@media (max-width: 760px) { .track { grid-template-columns: 1fr; } .track .cover { max-width: 340px; } }
+
+/* coming up: a real sequence, so it is set as one */
+.queue { margin-top: clamp(26px, 4vw, 48px); border-top: 2px solid var(--bone); }
+.queue li { list-style: none; display: grid; grid-template-columns: 9.5rem 1fr; gap: 8px clamp(16px, 4vw, 56px); align-items: baseline; padding: clamp(18px, 2.6vw, 30px) 0; border-bottom: 1px solid rgba(236,231,218,.22); }
+.queue .when { font-family: var(--display); font-style: italic; font-weight: 700; text-transform: uppercase; font-size: 1.2rem; letter-spacing: .04em; color: var(--acid); }
+.queue h3 { font-size: clamp(2.2rem, 6.2vw, 4.6rem); color: var(--bone); }
+.queue li:first-child h3 { color: var(--gold); }
+.queue p { color: var(--smoke); margin-top: 8px; max-width: 54ch; }
+@media (max-width: 640px) { .queue li { grid-template-columns: 1fr; } }
+
+/* lore + monitor */
+.lore { display: grid; grid-template-columns: 1fr minmax(0, 600px); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.lore h2 { color: var(--bone); }
+.lore h2 em { font-style: inherit; color: var(--gold); display: block; }
+@media (max-width: 900px) { .lore { grid-template-columns: 1fr; } }
+
+.monitor-bezel { background: linear-gradient(180deg, #2a2d30 0%, #1a1c1e 40%, #111314 100%); border-radius: 14px; padding: 14px 14px 12px; box-shadow: 0 2px 0 #333638, inset 0 1px 0 rgba(255,255,255,.06), 0 8px 40px rgba(0,0,0,.6); }
+.monitor-top { display: flex; align-items: center; justify-content: space-between; padding: 0 6px 10px; font-size: .68rem; color: #6a6a70; letter-spacing: .08em; }
+.monitor-top i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--crt-green); box-shadow: 0 0 6px var(--crt-green); margin-right: 6px; }
+.monitor-top i + i { background: var(--gold); box-shadow: 0 0 6px var(--gold); }
+.monitor-inner { background: #080808; border-radius: 6px; border: 2px solid #0c0d0e; overflow: hidden; }
+.crt { position: relative; background: var(--crt-bg); padding: 22px 24px 18px; height: 260px; overflow: hidden; }
+.crt::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, rgba(0,0,0,.15) 0 1px, transparent 1px 3px); pointer-events: none; z-index: 3; }
+.crt::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.45) 100%); pointer-events: none; z-index: 3; }
+.crt-spike { position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.8) 30%, rgba(255,255,255,.9) 50%, rgba(255,255,255,.8) 70%, transparent); z-index: 5; opacity: 0; pointer-events: none; box-shadow: 0 0 8px rgba(255,255,255,.4); }
+.crt-noise { position: absolute; inset: 0; z-index: 4; opacity: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(255,255,255,.03) 2px 4px); }
 .crt-noise.flash { animation: noiseFlash .12s steps(2) forwards; }
 @keyframes noiseFlash { 0% { opacity: 0; } 25% { opacity: .8; } 50% { opacity: .4; } 75% { opacity: .9; } 100% { opacity: 0; } }
-.crt-burst {
-  position: absolute; inset: 0; z-index: 6; opacity: 0; pointer-events: none; background: white;
-}
+.crt-burst { position: absolute; inset: 0; z-index: 6; opacity: 0; pointer-events: none; background: #fff; }
 .crt-burst.flash { animation: burstFlash .08s ease-out forwards; }
 @keyframes burstFlash { 0% { opacity: .6; } 100% { opacity: 0; } }
-.crt-static-bar {
-  position: absolute; left: 0; right: 0; height: 0; z-index: 5; pointer-events: none;
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,.15) 20%, rgba(255,255,255,.35) 50%, rgba(255,255,255,.15) 80%, transparent);
-  opacity: 0;
-}
+.crt-static-bar { position: absolute; left: 0; right: 0; height: 0; z-index: 5; pointer-events: none; background: linear-gradient(180deg, transparent, rgba(255,255,255,.35) 50%, transparent); opacity: 0; }
 .crt-static-bar.sweep { animation: barSweep .3s ease-out forwards; }
 @keyframes barSweep { 0% { opacity: .7; height: 4px; } 50% { opacity: .5; height: 8px; } 100% { opacity: 0; height: 2px; } }
-
-/* Header inside CRT */
-.crt-header {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 14px; padding-bottom: 10px;
-  border-bottom: 1px solid rgba(51,255,102,.15);
-  position: relative; z-index: 2;
-}
+.crt-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(51,255,102,.15); position: relative; z-index: 2; font-family: 'VT323', monospace; text-transform: uppercase; }
 .crt-status { display: flex; align-items: center; gap: 8px; }
-.crt-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--crt-green); box-shadow: 0 0 4px var(--crt-green);
-  animation: ledPulse 2.4s ease-in-out infinite;
-}
-.crt-dot.warn { background: var(--gold); box-shadow: 0 0 4px var(--gold); }
-.crt-dot.err { background: #ff4444; box-shadow: 0 0 4px #ff4444; }
-.crt-title {
-  font-family: 'VT323', monospace; font-size: .9rem; letter-spacing: .1em;
-  color: var(--crt-green); text-shadow: 0 0 8px var(--crt-green-glow); text-transform: uppercase;
-}
-.crt-freq {
-  font-family: 'VT323', monospace; font-size: .78rem;
-  color: var(--crt-green-dim); text-shadow: 0 0 6px rgba(51,255,102,.1);
-}
-
-/* ── Text area — absolutely positioned inside fixed .crt ── */
-.crt-body {
-  position: absolute;
-  top: 70px;    /* below header */
-  left: 24px;
-  right: 24px;
-  bottom: 18px;
-  z-index: 2;
-  overflow: hidden;
-}
-
-.tx-line {
-  font-family: 'VT323', monospace;
-  font-size: clamp(1rem, 2.2vw, 1.18rem);
-  line-height: 1.65;
-  color: var(--crt-green);
-  text-shadow: 0 0 6px var(--crt-green-glow), 0 0 20px rgba(51,255,102,.08);
-  white-space: pre-wrap;
-  margin-bottom: 3px;
-  opacity: 0;
-  transition: opacity .35s var(--ease);
-}
+.crt-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--crt-green); box-shadow: 0 0 4px var(--crt-green); }
+.crt-dot.warn { background: var(--gold); box-shadow: 0 0 4px var(--gold); } .crt-dot.err { background: #ff4444; box-shadow: 0 0 4px #ff4444; }
+.crt-title { font-size: .95rem; letter-spacing: .1em; color: var(--crt-green); }
+.crt-freq { font-size: .85rem; color: var(--crt-green-dim); white-space: nowrap; }
+.crt-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 520px) { .crt-freq { display: none; } }
+.crt-body { position: absolute; top: 70px; left: 24px; right: 24px; bottom: 18px; z-index: 2; overflow: hidden; }
+.tx-line { font-family: 'VT323', monospace; font-size: clamp(1.05rem, 2.2vw, 1.22rem); line-height: 1.5; color: var(--crt-green); text-shadow: 0 0 6px rgba(51,255,102,.15); white-space: pre-wrap; margin-bottom: 3px; opacity: 0; transition: opacity .35s; }
 .tx-line.visible { opacity: 1; }
 .tx-line.glitch { animation: txGlitch .25s steps(3) forwards; }
-.tx-line.lost { animation: txLost 1.4s var(--ease) forwards; }
-.tx-tag {
-  font-size: .82rem; letter-spacing: .08em;
-  color: var(--crt-green-dim); display: block; margin-bottom: 1px;
-}
-.tx-tag.warn { color: var(--gold); text-shadow: 0 0 6px rgba(232,178,58,.2); }
-.tx-tag.err { color: #ff4444; text-shadow: 0 0 6px rgba(255,68,68,.2); }
-
-@keyframes txGlitch {
-  0% { opacity: 1; transform: skewX(0); filter: none; }
-  33% { opacity: .7; transform: skewX(-4deg) translateX(-2px); filter: hue-rotate(90deg) brightness(2); }
-  66% { opacity: .3; transform: skewX(6deg) translateX(3px); filter: hue-rotate(-60deg); }
-  100% { opacity: 1; transform: skewX(0); filter: none; }
-}
-@keyframes txLost {
-  0% { opacity: 1; filter: none; }
-  15% { opacity: .8; transform: skewX(-2deg); }
-  35% { opacity: .5; transform: translateX(5px) skewX(4deg); filter: brightness(1.5); }
-  55% { opacity: .25; letter-spacing: .2em; }
-  75% { opacity: .08; letter-spacing: .5em; filter: blur(2px); }
-  100% { opacity: 0; letter-spacing: .8em; filter: blur(3px); }
-}
-
-/* Signal lost message — inside the fixed body */
-.tx-lost-msg {
-  display: none;
-  font-family: 'VT323', monospace; font-size: 1rem; letter-spacing: .12em;
-  color: #ff4444; text-shadow: 0 0 8px rgba(255,68,68,.3);
-  text-align: center; text-transform: uppercase;
-  padding: 8px 0 0;
-  animation: lostPulse 1s ease-in-out infinite;
-}
+.tx-line.lost { animation: txLost 1.4s ease forwards; }
+.tx-tag { font-size: .85rem; letter-spacing: .08em; color: var(--crt-green-dim); display: block; }
+.tx-tag.warn { color: var(--gold); } .tx-tag.err { color: #ff4444; }
+@keyframes txGlitch { 0% { transform: none; } 33% { opacity: .7; transform: skewX(-4deg) translateX(-2px); filter: hue-rotate(90deg) brightness(2); } 66% { opacity: .3; transform: skewX(6deg) translateX(3px); } 100% { opacity: 1; transform: none; filter: none; } }
+@keyframes txLost { 0% { opacity: 1; } 35% { opacity: .5; transform: translateX(5px) skewX(4deg); } 75% { opacity: .08; letter-spacing: .5em; filter: blur(2px); } 100% { opacity: 0; letter-spacing: .8em; filter: blur(3px); } }
+.tx-lost-msg { display: none; font-family: 'VT323', monospace; font-size: 1rem; letter-spacing: .12em; color: #ff4444; text-align: center; text-transform: uppercase; padding-top: 8px; }
 .tx-lost-msg.show { display: block; }
-@keyframes lostPulse { 0%, 100% { opacity: .4; } 50% { opacity: 1; } }
 
-.monitor-bottom {
-  display: flex; align-items: center; justify-content: center; padding: 8px 8px 0;
-}
-.monitor-badge {
-  font-family: 'Chakra Petch', monospace; font-size: .46rem;
-  letter-spacing: .18em; text-transform: uppercase; color: #444;
-  background: linear-gradient(180deg, #222 0%, #1a1a1a 100%);
-  padding: 2px 10px; border-radius: 2px; border: 1px solid #2a2a2a;
-}
+/* crew: a manifest, read across */
+.crew { margin-top: clamp(26px, 4vw, 48px); border-top: 2px solid var(--bone); }
+.crew li { list-style: none; display: grid; grid-template-columns: minmax(0, 2fr) 1fr 1fr; gap: 6px clamp(16px, 3vw, 40px); align-items: baseline; padding: clamp(12px, 1.8vw, 20px) 0; border-bottom: 1px solid rgba(236,231,218,.22); }
+.crew .name { font-size: clamp(2.6rem, 6.6vw, 5.2rem); color: var(--bone); transition: color .15s; white-space: nowrap; }
+.crew li:hover .name { color: var(--gold); }
+.crew .role { color: var(--bone); }
+.crew .line { color: var(--smoke); font-style: italic; }
+@media (max-width: 760px) { .crew li { grid-template-columns: 1fr; } .crew .name { font-size: 15vw; } }
 
-/* ── Capture ── */
-.capture-section { margin-top: 40px; width: 100%; max-width: 480px; }
-.capture-label {
-  font-family: 'Chakra Petch', monospace; text-transform: uppercase;
-  letter-spacing: .14em; font-size: .66rem; color: var(--acid); margin-bottom: 12px;
-}
-.capture { display: flex; gap: 10px; flex-wrap: wrap; }
-.capture input[type="email"] {
-  flex: 1; min-width: 200px; background: var(--raised);
-  border: 1px solid var(--line); color: var(--ash);
-  font-family: 'Chakra Petch', monospace; letter-spacing: .06em;
-  font-size: .84rem; padding: 14px 16px; border-radius: 2px; transition: border-color .15s;
-}
-.capture input[type="email"]::placeholder { color: var(--faint); }
-.capture input[type="email"]:focus { outline: 2px solid var(--acid); outline-offset: 2px; border-color: var(--acid); }
-.btn-gold {
-  display: inline-flex; align-items: center; gap: .5em;
-  font-family: 'Chakra Petch', monospace; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .14em; font-size: .8rem; padding: 14px 24px;
-  border: 1px solid transparent; border-radius: 2px; cursor: pointer;
-  background: var(--gold); color: #000;
-  transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s;
-}
-.btn-gold:hover, .btn-gold:focus-visible {
-  background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 0 0 3px #e8b23a38;
-}
-.capture-success {
-  display: none; font-family: 'Chakra Petch', monospace; text-transform: uppercase;
-  letter-spacing: .14em; font-size: .76rem; color: var(--acid); padding: 16px 0;
-}
-.capture-success.show { display: block; }
+/* tapes */
+.tapes { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.tapes h2 { font-size: clamp(2.4rem, 6.6vw, 5rem); }
+
+/* join */
+.join-band { background: transparent; text-align: left; }
+.join-band h2 { color: var(--gold); font-size: clamp(3rem, 11vw, 9rem); }
+.capture { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; max-width: 640px; }
+.capture input[type=email] { flex: 1; min-width: 220px; background: rgba(0,0,0,.7); border: 2px solid var(--bone); color: var(--bone); font: inherit; font-size: 1.1rem; padding: 14px 16px; border-radius: 0; }
+.capture input[type=email]::placeholder { color: var(--smoke); }
+.capture input[type=email]:focus { outline: none; border-color: var(--acid); }
 .capture.hide { display: none; }
+.done { display: none; margin-top: 24px; font-family: var(--display); font-style: italic; font-weight: 700; text-transform: uppercase; font-size: 1.6rem; color: var(--acid); }
+.done.show { display: block; }
+.done a { color: var(--gold); }
+.err { color: #ff7a7a; margin-top: 10px; min-height: 1.4em; font-size: .95rem; }
 
-/* ── American Band Section ── */
-.ab-section {
-  margin-top: 40px;
-  width: 100%;
-  max-width: 560px;
-  text-align: center;
-}
-.ab-divider {
-  display: flex; align-items: center; gap: 16px;
-  margin-bottom: 28px;
-}
-.ab-divider::before, .ab-divider::after {
-  content: ''; flex: 1; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold) 40%, var(--gold) 60%, transparent);
-  opacity: .3;
-}
-.ab-divider span {
-  font-family: 'VT323', monospace; font-size: .88rem;
-  color: var(--gold); letter-spacing: .2em; text-transform: uppercase;
-  text-shadow: 0 0 8px rgba(232,178,58,.2);
-  white-space: nowrap;
-}
-.ab-badge {
-  display: inline-block;
-  font-family: 'Chakra Petch', monospace; font-size: .56rem;
-  letter-spacing: .18em; text-transform: uppercase;
-  color: var(--gold); border: 1px solid rgba(232,178,58,.3);
-  padding: 4px 14px; border-radius: 2px; margin-bottom: 16px;
-}
-.ab-title {
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(1.6rem, 6vw, 2.8rem);
-  line-height: .92; letter-spacing: .02em;
-  margin-bottom: 10px;
-}
-.ab-title .ac { color: var(--gold); }
-.ab-sub {
-  color: var(--dim); font-size: .86rem;
-  max-width: 440px; margin: 0 auto 24px;
-  line-height: 1.6;
-}
-.ab-cover {
-  width: clamp(180px, 40vw, 280px);
-  margin: 0 auto 24px;
-}
-.ab-cover img { width: 100%; height: auto; display: block; border-radius: 4px; }
-.ab-form-wrap {
-  max-width: 420px; margin: 0 auto;
-}
-.ab-capture-label {
-  font-family: 'Chakra Petch', monospace; text-transform: uppercase;
-  letter-spacing: .14em; font-size: .62rem; color: var(--gold); margin-bottom: 10px;
-}
-.ab-capture { display: flex; gap: 10px; flex-wrap: wrap; }
-.ab-capture input[type="email"] {
-  flex: 1; min-width: 180px; background: var(--raised);
-  border: 1px solid rgba(232,178,58,.2); color: var(--ash);
-  font-family: 'Chakra Petch', monospace; letter-spacing: .06em;
-  font-size: .84rem; padding: 14px 16px; border-radius: 2px; transition: border-color .15s;
-}
-.ab-capture input[type="email"]::placeholder { color: var(--faint); }
-.ab-capture input[type="email"]:focus { outline: 2px solid var(--gold); outline-offset: 2px; border-color: var(--gold); }
-.btn-ab {
-  display: inline-flex; align-items: center; gap: .5em;
-  font-family: 'Chakra Petch', monospace; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .14em; font-size: .78rem; padding: 14px 20px;
-  border: 1px solid var(--gold); border-radius: 2px; cursor: pointer;
-  background: transparent; color: var(--gold);
-  transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s, color .15s;
-}
-.btn-ab:hover, .btn-ab:focus-visible {
-  background: var(--gold); color: #000; transform: translateY(-2px);
-  box-shadow: 0 0 0 3px #e8b23a38;
-}
-.ab-download {
-  display: none; text-align: center; padding: 20px 0 0;
-}
-.ab-download.show { display: block; }
-.ab-download-msg {
-  font-family: 'VT323', monospace; font-size: 1rem;
-  color: var(--gold); letter-spacing: .08em; margin-bottom: 14px;
-  text-shadow: 0 0 8px rgba(232,178,58,.15);
-}
-.btn-download {
-  display: inline-flex; align-items: center; gap: .5em;
-  font-family: 'Chakra Petch', monospace; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .14em; font-size: .82rem; padding: 16px 28px;
-  border: none; border-radius: 2px; cursor: pointer;
-  background: var(--gold); color: #000; text-decoration: none;
-  transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s;
-}
-.btn-download:hover, .btn-download:focus-visible {
-  background: var(--gold-bright); transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(232,178,58,.3);
-}
-.ab-capture.hide { display: none; }
-
-/* ── Next transmissions ── */
-.next-up { margin-top: 48px; width: 100%; max-width: 480px; }
-.next-label {
-  font-family: 'VT323', monospace; font-size: .95rem; letter-spacing: .2em;
-  color: var(--gold); text-transform: uppercase; text-shadow: 0 0 8px rgba(232,178,58,.2); margin-bottom: 18px;
-}
-.next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-@media (max-width: 520px) { .next-grid { grid-template-columns: 1fr; } }
-.next-card {
-  background: var(--raised); border: 1px solid rgba(232,178,58,.18); border-radius: 4px; padding: 18px 14px;
-}
-.next-tag { font-family: 'Chakra Petch', monospace; font-size: .54rem; letter-spacing: .18em; text-transform: uppercase; color: var(--acid); display: block; margin-bottom: 6px; }
-.next-title { font-family: 'Anton', sans-serif; font-size: 1.35rem; line-height: 1; letter-spacing: .02em; }
-.next-title .ac { color: var(--gold); }
-
-/* ── YouTube ── */
-.yt { margin-top: 40px; width: 100%; max-width: 480px; }
-.btn-yt {
-  display: inline-flex; align-items: center; gap: .6em;
-  font-family: 'Chakra Petch', monospace; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .14em; font-size: .78rem; padding: 14px 24px; border-radius: 2px;
-  border: 1px solid rgba(255,255,255,.18); color: var(--ash); background: transparent;
-  transition: transform .15s var(--ease), border-color .15s, background .15s;
-}
-.btn-yt svg { width: 18px; height: 18px; fill: #ff0033; }
-.btn-yt:hover { border-color: #ff0033; background: rgba(255,0,51,.08); transform: translateY(-2px); }
-.yt-sub { color: var(--faint); font-size: .78rem; margin-top: 10px; }
-
-.sync-link {
-  margin-top: 36px; font-family: 'Chakra Petch', monospace;
-  font-size: .66rem; text-transform: uppercase; letter-spacing: .16em;
-}
-.sync-link a {
-  color: var(--gold); border-bottom: 1px solid var(--line); padding-bottom: 2px;
-  transition: color .15s, border-color .15s;
-}
-.sync-link a:hover, .sync-link a:focus-visible { color: var(--gold-bright); border-color: var(--gold-bright); }
-
-footer {
-  position: relative; z-index: 2; text-align: center;
-  padding: 28px 24px 36px; border-top: 1px solid rgba(255,255,255,.04);
-  color: var(--faint); font-size: .72rem; line-height: 1.7;
-}
+footer { background: #000; padding: 34px var(--pad) 44px; border-top: 1px solid rgba(232,178,58,.14); color: var(--smoke); font-size: .9rem; display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between; }
 footer a { color: var(--gold); }
-.footer-ascap {
-  font-family: 'Chakra Petch', monospace; font-size: .58rem;
-  letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-top: 6px;
-}
-
-:focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-  .tx-line { opacity: 1 !important; }
-  .tx-lost-msg.show { display: none; }
-  .crt-noise, .crt-burst, .crt-static-bar, .crt-spike { display: none !important; }
-}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } .tx-line { opacity: 1 !important; } .crt-noise, .crt-burst, .crt-static-bar, .crt-spike { display: none !important; } }
 </style>
 </head>
 <body>
 
-<main class="page" style="position:relative;z-index:2">
+<header class="top">
+  <a class="mark" href="#top" aria-label="D'YEA, back to top">D'YEA</a>
+  <nav aria-label="Sections">
+    <a href="#free-track">Free track</a>
+    <a href="#coming">Coming up</a>
+    <a href="#crew">Crew</a>
+    <a class="join" href="#join">Join</a>
+  </nav>
+</header>
 
-  <div class="jar-wrap">
-    <img src="hero.webp" fetchpriority="high" decoding="async" alt="D'YEA — Funk in a Jar" width="520" height="auto">
-  </div>
+<main id="top" class="layer">
 
-  <p class="eyebrow">Signal re-routing · Bassstar Sector</p>
-  <h1>Funk Rock Re<span class="ac">con</span><br>Transmiss<span class="ac">ion</span></h1>
-  <p class="tagline">The Bassstar Mission is being prepared for relaunch</p>
-  <p class="sub">13 tracks, remastered, remixed plus new tracks ATMOS mixed and special guest appearances.</p>
-
-  <!-- ═══ AMERICAN BAND BONUS TRACK ═══ -->
-  <section class="ab-section" id="american-band">
-    <div class="ab-divider"><span>/// Bonus Intercept ///</span></div>
-    <span class="ab-badge">Classified Transmission</span>
-    <h2 class="ab-title">American <span class="ac">Band</span></h2>
-    <p class="ab-sub">D'YEA's take on the classic — rewritten, re-fired, and unreleased. Drop your email to unlock the free download.</p>
-    <div class="ab-cover" id="ab-cover-wrap">
-      <img src="ab-cover.webp" loading="lazy" decoding="async" alt="D'YEA — American Band" width="280" height="280">
+  <section class="hero">
+    <h1 class="disp"><span>Funk</span> <span class="w2">rock</span> <span class="w3">recon</span></h1>
+    <div class="jar"><img src="hero.webp" alt="A glass jar of glowing gold and green funk, labelled D'YEA" width="1040" height="1300" fetchpriority="high"></div>
+    <div class="hero-foot">
+      <p class="hook">Where funk don't grow, I get my funk from a jar.</p>
+      <p class="say">The Bassstar Mission is coming back: remastered, remixed, with new tracks. Start with a free one.</p>
+      <div class="cta">
+        <a class="btn solid" href="/american-band"><span>Get the free track</span></a>
+        <a class="btn line" href="#join"><span>Join the crew list</span></a>
+      </div>
     </div>
-    <a class="btn-download" href="/american-band">Unlock the free download ▶</a>
   </section>
 
-  <div class="monitor" aria-label="Intercepted lyric transmission">
-    <div class="monitor-bezel">
-      <div class="monitor-top">
-        <div class="monitor-indicators">
-          <div class="monitor-led"></div>
-          <div class="monitor-led amber"></div>
-          <span class="monitor-label">Signal Lock</span>
+  <section class="band" id="free-track">
+    <div class="inner track">
+      <div class="cover"><img src="ab-cover.webp" alt="American Band cover art: a gold V-shaped guitar over a planet" width="800" height="800" loading="lazy"></div>
+      <div>
+        <h2 class="disp">American Band</h2>
+        <p class="lead">Our take on the classic, with the verses rewritten. It isn't on the album and it isn't for sale. It's a free download for the crew.</p>
+        <div class="player">
+          <button class="play" id="play" type="button" aria-label="Play a 30 second preview">▶</button>
+          <canvas class="viz" id="viz" aria-hidden="true"></canvas>
+          <small id="play-note">30 second preview</small>
         </div>
-        <span class="monitor-model">Bassstar Nav-Com // Mk.III</span>
+        <audio id="aud" src="american-band-preview.mp3" preload="none"></audio>
+        <div class="cta"><a class="btn solid" href="/american-band"><span>Download the full track</span></a></div>
       </div>
-      <div class="monitor-inner">
-        <div class="crt" id="crt-screen">
-          <div class="crt-noise" id="crt-noise" aria-hidden="true"></div>
-          <div class="crt-burst" id="crt-burst" aria-hidden="true"></div>
-          <div class="crt-spike" id="crt-spike" aria-hidden="true"></div>
-          <div class="crt-header">
-            <div class="crt-status">
-              <div class="crt-dot" id="crt-dot"></div>
-              <span class="crt-title" id="crt-title">Intercepted Signal</span>
+    </div>
+  </section>
+
+  <section class="band" id="coming">
+    <div class="inner">
+      <h2 class="disp">Coming up</h2>
+      <ol class="queue">
+        <li>
+          <span class="when">First</span>
+          <div><h3 class="disp">Is This Real</h3><p>The new single. The first new D'YEA recording since the original mission.</p></div>
+        </li>
+        <li>
+          <span class="when">Then</span>
+          <div><h3 class="disp">Bassstar Mission, remastered</h3><p>The 25th anniversary edition. 13 tracks remastered and remixed, plus new tracks, Atmos mixes and special guests.</p></div>
+        </li>
+        <li>
+          <span class="when">And on wax</span>
+          <div><h3 class="disp">Limited vinyl</h3><p>One short pressing. People on the crew list get the pre-order before anyone else.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" id="lore">
+    <div class="inner lore">
+      <div>
+        <h2 class="disp">Funk is a <em>substance.</em></h2>
+        <p class="lead">Bottled, weaponized, and scarce in the dead zones. D'YEA and the crew hunt it across the galaxy in the Bassstar, a lowrider that is also a spaceship.</p>
+        <p class="lead">The monitor is picking up pieces of the album. The signal comes and goes.</p>
+      </div>
+      <div class="monitor" aria-label="Lyrics from the album, arriving as a broken transmission">
+        <div class="monitor-bezel">
+          <div class="monitor-top"><span><i></i><i></i>SIGNAL LOCK</span><span>BASSSTAR NAV-COM MK.III</span></div>
+          <div class="monitor-inner">
+            <div class="crt" id="crt-screen">
+              <div class="crt-noise" id="crt-noise" aria-hidden="true"></div>
+              <div class="crt-burst" id="crt-burst" aria-hidden="true"></div>
+              <div class="crt-spike" id="crt-spike" aria-hidden="true"></div>
+              <div class="crt-header">
+                <div class="crt-status"><div class="crt-dot" id="crt-dot"></div><span class="crt-title" id="crt-title">Intercepted signal</span></div>
+                <span class="crt-freq" id="crt-freq">FREQ 001.BSM</span>
+              </div>
+              <div class="crt-body" id="tx-body"></div>
             </div>
-            <span class="crt-freq" id="crt-freq">FREQ 001.BSM</span>
-          </div>
-          <div class="crt-body" id="tx-body">
-            <!-- lines injected here — lost msg too -->
           </div>
         </div>
       </div>
-      <div class="monitor-bottom">
-        <span class="monitor-badge">Sonic Throne Industries</span>
+    </div>
+  </section>
+
+  <section class="band" id="crew">
+    <div class="inner">
+      <h2 class="disp">The crew</h2>
+      <ul class="crew">
+        <li><span class="name disp">D'Yea</span><span class="role">Vocals, guitar, bass</span><span class="line">The title hero.</span></li>
+        <li><span class="name disp">Gene Heinous</span><span class="role">Vocals, rhymes, bass</span><span class="line">Wonderman, in demand.</span></li>
+        <li><span class="name disp">Sonic</span><span class="role">Keys, production</span><span class="line">Master of Disaster.</span></li>
+        <li><span class="name disp">Outlaw</span><span class="role">Lead guitar</span><span class="line">Flames from his fingertips.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="tapes">
+    <div class="inner tapes">
+      <div>
+        <h2 class="disp">The rehearsal tapes</h2>
+        <p class="lead">Hours of footage from the room where the album was built are being pulled off tape. They go up on YouTube first.</p>
       </div>
+      <a class="btn line" href="https://www.youtube.com/@bassstarmission" target="_blank" rel="noopener"><span>Subscribe on YouTube</span></a>
     </div>
-  </div>
+  </section>
 
-  <div class="next-up">
-    <p class="next-label">/// Next transmissions ///</p>
-    <div class="next-grid">
-      <div class="next-card"><span class="next-tag">New single</span><div class="next-title">Is This <span class="ac">Real</span></div></div>
-      <div class="next-card"><span class="next-tag">25th anniversary</span><div class="next-title">Bassstar <span class="ac">Mission</span><br>Remastered</div></div>
+  <section class="band join-band" id="join">
+    <div class="inner">
+      <h2 class="disp">Get on our frequency</h2>
+      <p class="lead">One email when something drops: the single, the album, the vinyl pre-order. Nothing else.</p>
+      <form class="capture" id="capture-form" action="https://formspree.io/f/mykqkpel" method="POST">
+        <input type="hidden" name="_subject" value="D'YEA — New crew member">
+        <input type="hidden" name="source" value="homepage">
+        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+        <input type="email" name="email" placeholder="Email" aria-label="Email address" autocomplete="email" required>
+        <button class="btn solid" type="submit"><span>Join the crew list</span></button>
+      </form>
+      <p class="err" id="capture-err" role="alert"></p>
+      <p class="done" id="capture-done">You're on the crew list. <a href="/american-band">Grab the free track.</a></p>
     </div>
-  </div>
-
-  <div class="yt">
-    <a class="btn-yt" href="https://www.youtube.com/@bassstarmission" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"/></svg>
-      YouTube channel — launching soon
-    </a>
-    <p class="yt-sub">Video transmissions begin shortly. Subscribe now and be there when the first one drops.</p>
-  </div>
-
-  <div class="capture-section">
-    <p class="capture-label">Get on our frequency</p>
-    <form class="capture" id="capture-form" action="https://formspree.io/f/mykqkpel" method="POST">
-      <input type="hidden" name="_subject" value="D'YEA — New crew member">
-      <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
-      <input type="email" name="email" placeholder="EMAIL" aria-label="Email address" required>
-      <button class="btn-gold" type="submit">Initiate</button>
-    </form>
-    <div class="capture-success" id="capture-success">Signal locked — you're on the crew roster.</div>
-  </div>
-
-  <div class="sync-link">
-    <a href="mailto:licensing@dyea.music?subject=D%27YEA%20sync%20inquiry">Sync & licensing inquiries →</a>
-  </div>
-
+  </section>
 </main>
 
-<footer style="position:relative;z-index:2">
-  <p>© 2003–2026 D'YEA · Sonic Throne Publishing</p>
-  <p class="footer-ascap">Published with ASCAP</p>
+<footer class="layer">
+  <span>© 2003–2026 D'YEA. Sonic Throne Publishing, published with ASCAP.</span>
+  <a href="mailto:licensing@dyea.music?subject=D%27YEA%20sync%20inquiry">Sync and licensing inquiries</a>
 </footer>
 
+<script src="rain.js" defer></script>
 <script>
-(function() {
-  var MAX_VISIBLE = 6;
-  var body = document.getElementById('tx-body');
-  var noiseEl = document.getElementById('crt-noise');
-  var burstEl = document.getElementById('crt-burst');
-  var spikeEl = document.getElementById('crt-spike');
-  var dotEl = document.getElementById('crt-dot');
-  var titleEl = document.getElementById('crt-title');
-  var freqEl = document.getElementById('crt-freq');
-  var screen = document.getElementById('crt-screen');
+/* preview player with a live spectrum drawn from the audio itself */
+(function () {
+  var a = document.getElementById('aud'), b = document.getElementById('play'), c = document.getElementById('viz'), note = document.getElementById('play-note');
+  var g = c.getContext('2d'), an = null, data = null, raf = 0, N = 44;
+  function fit() { var r = Math.min(devicePixelRatio || 1, 2); c.width = c.clientWidth * r; c.height = c.clientHeight * r; draw(); }
+  function draw() {
+    var w = c.width, h = c.height, bw = w / N; g.clearRect(0, 0, w, h);
+    for (var i = 0; i < N; i++) {
+      var v = data ? data[Math.floor(i * data.length * .7 / N)] / 255 : 0;
+      var bh = Math.max(h * .05, v * h);
+      g.fillStyle = v > .72 ? '#2BE04F' : '#E8B23A';
+      g.fillRect(i * bw + bw * .18, h - bh, bw * .64, bh);
+    }
+  }
+  function loop() { an.getByteFrequencyData(data); draw(); raf = requestAnimationFrame(loop); }
+  function wire() {
+    if (an) return;
+    try { var AC = window.AudioContext || window.webkitAudioContext, ctx = new AC(), src = ctx.createMediaElementSource(a);
+      an = ctx.createAnalyser(); an.fftSize = 128; an.smoothingTimeConstant = .8; data = new Uint8Array(an.frequencyBinCount);
+      src.connect(an); an.connect(ctx.destination); if (ctx.state === 'suspended') ctx.resume();
+    } catch (e) { an = null; data = null; }
+  }
+  b.addEventListener('click', function () {
+    if (a.paused) { wire(); a.play().catch(function () { note.textContent = "The preview wouldn't play. Download the full track instead."; }); } else a.pause();
+  });
+  a.addEventListener('play', function () { b.textContent = '❚❚'; b.classList.add('on'); b.setAttribute('aria-label', 'Pause the preview'); if (an) loop(); });
+  a.addEventListener('pause', function () { b.textContent = '▶'; b.classList.remove('on'); b.setAttribute('aria-label', 'Play a 30 second preview'); cancelAnimationFrame(raf); });
+  a.addEventListener('ended', function () { if (data) data.fill(0); draw(); });
+  addEventListener('resize', fit); fit();
+})();
 
-  // Create the lost message element inside the body
-  var lostEl = document.createElement('div');
-  lostEl.className = 'tx-lost-msg';
-  lostEl.textContent = '/// Signal lost — recalibrating ///';
+/* email capture */
+(function () {
+  var f = document.getElementById('capture-form'), ok = document.getElementById('capture-done'), er = document.getElementById('capture-err');
+  f.addEventListener('submit', async function (e) {
+    e.preventDefault(); var btn = f.querySelector('button span'), was = btn.textContent; er.textContent = ''; btn.textContent = 'Joining…'; f.querySelector('button').disabled = true;
+    try { var r = await fetch(f.action, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } }); if (!r.ok) throw 0; f.classList.add('hide'); ok.classList.add('show'); }
+    catch (x) { er.textContent = "That didn't go through. Check the address and try again."; btn.textContent = was; f.querySelector('button').disabled = false; }
+  });
+})();
 
-  var sequences = [
-    {
-      title: 'Mission File 01 — Right Now',
-      freq: 'FREQ 001.BSM',
-      lines: [
-        { tag: 'signal acquired', text: "Right now in a daze of emergency" },
-        { text: "and in a maze of convergency" },
-        { tag: 'decoding', text: "Right now in the reality of the prophecies" },
-        { text: "of dreams from centuries ago, in the throes, ready to blow" },
-        { tag: 'signal weak', text: "Right now on a digital break, against the pivotal lake", glitch: true },
-        { text: "that connects the way we feel and the way we think" },
-        { tag: 'signal degrading', text: "Right now and the sinistry of man", glitch: true },
-        { tag: 'signal lost', text: "ri\u2591ht n\u2591w tru\u2591h is a gui\u2591e and lo\u2591e is a pr\u2591\u2591e", lost: true },
-      ]
-    },
-    {
-      title: 'Mission File 03 — Bassstar',
-      freq: 'FREQ 003.BSM',
-      lines: [
-        { tag: 'signal acquired', text: "Rollin' in the back of a funky-ass car \u2014" },
-        { text: "I'm a Bassstar. Kneel where you are." },
-        { tag: 'decoding', text: "Where funk don't grow, I get my funk from a jar" },
-        { tag: 'signal weak', text: "Bassstar rockin' on Bassstar Avenue", glitch: true },
-        { text: "Check your aptitude. Adjust your amplitude." },
-        { tag: 'signal lost', text: "SCR\u2591\u2591M BA\u2591\u2591STAR \u2014 li\u2591\u2591n' it, k\u2591ck\u2591n\u2591 \u2591t!", lost: true },
-      ]
-    },
-    {
-      title: 'Mission File 04 — Phaser',
-      freq: 'FREQ 004.BSM',
-      lines: [
-        { tag: 'signal acquired', text: "I write the raps that make the whole world sing" },
-        { text: "I even got a panda named Ling Ling" },
-        { tag: 'decoding', text: "Wanna see Gene Heinous do his thing, thing" },
-        { text: "HELL yeah" },
-        { tag: 'signal weak', text: "Sonic is my backbone when I lay my fat backtrack on", glitch: true },
-        { tag: 'signal degrading', text: "he's the Bastard who will blow your ass to outer space!", glitch: true },
-        { tag: 'signal lost', text: "Li\u2591e is a pha\u2591e in ph\u2591\u2591es", lost: true },
-      ]
-    },
-    {
-      title: 'Mission File 08 — All Around The World',
-      freq: 'FREQ 008.BSM',
-      lines: [
-        { tag: 'signal acquired', text: "Mack with the fat track, guaranteed to stone ya" },
-        { tag: 'decoding', text: "D'YEA rocks the pops with the rock that drops the tops" },
-        { text: "Heinous starts to drop as the crowd starts to rock" },
-        { tag: 'signal weak', text: "D'YEA's like Wonderman \u2014 in demand", glitch: true },
-        { text: "Flyin' up on all you villains" },
-        { tag: 'signal lost', text: "He's A\u2588\u2588 Aro\u2591nd Th\u2591 \u2591o\u2591ld!", lost: true },
-      ]
-    },
-    {
-      title: 'Mission File 01 — Right Now',
-      freq: 'FREQ 001.BSM',
-      lines: [
-        { tag: 'signal acquired', text: "Right now in the days of mystics and greed" },
-        { tag: 'decoding', text: "and the rise of imperialistic machines" },
-        { tag: 'signal weak', text: "the ministries of propaganda, so now y'all stand up", glitch: true },
-        { tag: 'signal lost', text: "ri\u2591ht n\u2591w ri\u2591ht n\u2591w ri\u2591\u2591t n\u2591\u2591", lost: true },
-      ]
-    },
-    {
-      title: 'Mission File 03 — Bassstar',
-      freq: 'FREQ 003.BSM',
-      lines: [
-        { tag: 'signal acquired', text: "Gene Heinous on the mic, so let me flow this" },
-        { tag: 'decoding', text: "Sonic with the sub-bass soul that will blow this" },
-        { text: "Got the 18s kickin' in the trunk" },
-        { tag: 'signal weak', text: "Rollin' in the Grand Marquis", glitch: true },
-        { tag: 'signal lost', text: "Ba\u2591\u2591star s\u2591und thi\u2591ker th\u2591n m\u2591la\u2591\u2591es", lost: true },
-      ]
-    },
+/* lyric monitor */
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { document.getElementById('tx-body').innerHTML = '<div class="tx-line visible">Where funk don\'t grow, I get my funk from a jar</div><div class="tx-line visible">Life is a phase in phases</div>'; return; }
+  var MAX = 6, body = document.getElementById('tx-body'), noiseEl = document.getElementById('crt-noise'), burstEl = document.getElementById('crt-burst'), spikeEl = document.getElementById('crt-spike'), dotEl = document.getElementById('crt-dot'), titleEl = document.getElementById('crt-title'), freqEl = document.getElementById('crt-freq'), screen = document.getElementById('crt-screen');
+  var lostEl = document.createElement('div'); lostEl.className = 'tx-lost-msg'; lostEl.textContent = '/// Signal lost, recalibrating ///';
+  var S = [
+    { title: 'Mission file 01: Right Now', freq: 'FREQ 001.BSM', lines: [
+      { tag: 'signal acquired', text: "Right now in a daze of emergency" }, { text: "and in a maze of convergency" },
+      { tag: 'decoding', text: "Right now in the reality of the prophecies" }, { text: "of dreams from centuries ago, in the throes, ready to blow" },
+      { tag: 'signal weak', text: "Right now on a digital break, against the pivotal lake", glitch: 1 }, { text: "that connects the way we feel and the way we think" },
+      { tag: 'signal degrading', text: "Right now and the sinistry of man", glitch: 1 },
+      { tag: 'signal lost', text: "ri░ht n░w tru░h is a gui░e and lo░e is a pr░░e", lost: 1 } ] },
+    { title: 'Mission file 03: Bassstar', freq: 'FREQ 003.BSM', lines: [
+      { tag: 'signal acquired', text: "Rollin' in the back of a funky-ass car —" }, { text: "I'm a Bassstar. Kneel where you are." },
+      { tag: 'decoding', text: "Where funk don't grow, I get my funk from a jar" },
+      { tag: 'signal weak', text: "Bassstar rockin' on Bassstar Avenue", glitch: 1 }, { text: "Check your aptitude. Adjust your amplitude." },
+      { tag: 'signal lost', text: "SCR░░M BA░░STAR — li░░n' it, k░ck░n░ ░t!", lost: 1 } ] },
+    { title: 'Mission file 04: Phaser', freq: 'FREQ 004.BSM', lines: [
+      { tag: 'signal acquired', text: "I write the raps that make the whole world sing" }, { text: "I even got a panda named Ling Ling" },
+      { tag: 'decoding', text: "Wanna see Gene Heinous do his thing, thing" }, { text: "HELL yeah" },
+      { tag: 'signal weak', text: "Sonic is my backbone when I lay my fat backtrack on", glitch: 1 },
+      { tag: 'signal degrading', text: "he's the Bastard who will blow your ass to outer space!", glitch: 1 },
+      { tag: 'signal lost', text: "Li░e is a pha░e in ph░░es", lost: 1 } ] },
+    { title: 'Mission file 08: All Around The World', freq: 'FREQ 008.BSM', lines: [
+      { tag: 'signal acquired', text: "Mack with the fat track, guaranteed to stone ya" },
+      { tag: 'decoding', text: "D'YEA rocks the pops with the rock that drops the tops" }, { text: "Heinous starts to drop as the crowd starts to rock" },
+      { tag: 'signal weak', text: "D'YEA's like Wonderman — in demand", glitch: 1 }, { text: "Flyin' up on all you villains" },
+      { tag: 'signal lost', text: "He's A██ Aro░nd Th░ ░o░ld!", lost: 1 } ] }
   ];
-
-  var seqIdx = 0;
-  var lineEls = [];
-  var spikeInterval, noiseInterval;
-
-  function triggerSpike() {
-    var y = Math.floor(Math.random() * screen.offsetHeight);
-    spikeEl.style.top = y + 'px';
-    spikeEl.style.opacity = '1';
-    spikeEl.style.transition = 'none';
-    setTimeout(function() { spikeEl.style.transition = 'opacity .15s'; spikeEl.style.opacity = '0'; }, 60 + Math.random() * 80);
+  var idx = 0, els = [], t1, t2;
+  function spike() { spikeEl.style.top = Math.floor(Math.random() * screen.offsetHeight) + 'px'; spikeEl.style.transition = 'none'; spikeEl.style.opacity = '1'; setTimeout(function () { spikeEl.style.transition = 'opacity .15s'; spikeEl.style.opacity = '0'; }, 60 + Math.random() * 80); }
+  function flash(el) { el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
+  function bar() { var d = document.createElement('div'); d.className = 'crt-static-bar'; d.style.top = Math.floor(Math.random() * screen.offsetHeight) + 'px'; screen.appendChild(d); void d.offsetWidth; d.classList.add('sweep'); setTimeout(function () { d.remove(); }, 400); }
+  function add(item) {
+    var d = document.createElement('div'); d.className = 'tx-line';
+    if (item.tag) { var s = document.createElement('span'); s.className = 'tx-tag' + (/lost|degrading/.test(item.tag) ? ' err' : /weak/.test(item.tag) ? ' warn' : ''); s.textContent = '// ' + item.tag; d.appendChild(s); }
+    d.appendChild(document.createTextNode(item.text)); body.appendChild(d); requestAnimationFrame(function () { d.classList.add('visible'); }); els.push(d);
+    while (els.length > MAX) { var o = els.shift(); o.style.opacity = '0'; (function (x) { setTimeout(function () { x.remove(); }, 350); })(o); }
+    return d;
   }
-  function triggerNoise() { noiseEl.classList.remove('flash'); void noiseEl.offsetWidth; noiseEl.classList.add('flash'); }
-  function triggerBurst() { burstEl.classList.remove('flash'); void burstEl.offsetWidth; burstEl.classList.add('flash'); }
-  function triggerStaticBar() {
-    var bar = document.createElement('div');
-    bar.className = 'crt-static-bar';
-    bar.style.top = Math.floor(Math.random() * screen.offsetHeight) + 'px';
-    screen.appendChild(bar);
-    void bar.offsetWidth; bar.classList.add('sweep');
-    setTimeout(function() { bar.remove(); }, 400);
-  }
-  function startInterference() {
-    spikeInterval = setInterval(function() {
-      if (Math.random() < .35) triggerSpike();
-      if (Math.random() < .2) triggerStaticBar();
-    }, 800);
-    noiseInterval = setInterval(function() { if (Math.random() < .25) triggerNoise(); }, 2200);
-  }
-  function stopInterference() { clearInterval(spikeInterval); clearInterval(noiseInterval); }
-  function heavyInterference() {
-    triggerBurst();
-    setTimeout(triggerNoise, 50); setTimeout(triggerSpike, 100);
-    setTimeout(triggerStaticBar, 120); setTimeout(triggerSpike, 200);
-    setTimeout(triggerNoise, 300); setTimeout(triggerStaticBar, 350);
-  }
-
-  function clearLines() {
-    lineEls.forEach(function(el) { el.remove(); });
-    lineEls = [];
-    if (lostEl.parentNode) lostEl.remove();
-    lostEl.classList.remove('show');
-  }
-
-  function addLine(item) {
-    var div = document.createElement('div');
-    div.className = 'tx-line';
-    var html = '';
-    if (item.tag) {
-      var cls = 'tx-tag';
-      if (item.tag.indexOf('lost') > -1 || item.tag.indexOf('degrading') > -1) cls += ' err';
-      else if (item.tag.indexOf('weak') > -1) cls += ' warn';
-      html += '<span class="' + cls + '">// ' + item.tag + '</span>';
-    }
-    html += item.text;
-    div.innerHTML = html;
-    body.appendChild(div);
-    requestAnimationFrame(function() { div.classList.add('visible'); });
-    lineEls.push(div);
-
-    // Fade out oldest if over max
-    while (lineEls.length > MAX_VISIBLE) {
-      var old = lineEls.shift();
-      old.style.opacity = '0';
-      (function(el) { setTimeout(function() { el.remove(); }, 350); })(old);
-    }
-    return div;
-  }
-
-  function runSequence() {
-    var seq = sequences[seqIdx % sequences.length];
-    clearLines();
-    titleEl.textContent = seq.title;
-    freqEl.textContent = seq.freq;
-    dotEl.className = 'crt-dot';
-    startInterference();
-
+  function run() {
+    var seq = S[idx % S.length]; els.forEach(function (e) { e.remove(); }); els = []; lostEl.remove(); lostEl.classList.remove('show');
+    titleEl.textContent = seq.title; freqEl.textContent = seq.freq; dotEl.className = 'crt-dot';
+    t1 = setInterval(function () { if (Math.random() < .35) spike(); if (Math.random() < .2) bar(); }, 800);
+    t2 = setInterval(function () { if (Math.random() < .25) flash(noiseEl); }, 2200);
     var delay = 0;
-    seq.lines.forEach(function(item, i) {
+    seq.lines.forEach(function (item, i) {
       delay += item.lost ? 2200 : item.glitch ? 1500 : 1000;
-      setTimeout(function() {
-        if (item.lost) dotEl.className = 'crt-dot err';
-        else if (item.glitch) dotEl.className = 'crt-dot warn';
-
-        var div = addLine(item);
-        if (item.glitch) setTimeout(function() { triggerSpike(); div.classList.add('glitch'); }, 400);
-        if (item.lost) setTimeout(function() { heavyInterference(); div.classList.add('lost'); }, 600);
-
+      setTimeout(function () {
+        dotEl.className = 'crt-dot' + (item.lost ? ' err' : item.glitch ? ' warn' : '');
+        var d = add(item);
+        if (item.glitch) setTimeout(function () { spike(); d.classList.add('glitch'); }, 400);
+        if (item.lost) setTimeout(function () { flash(burstEl); setTimeout(function () { flash(noiseEl); }, 50); setTimeout(spike, 100); setTimeout(bar, 120); d.classList.add('lost'); }, 600);
         if (i === seq.lines.length - 1) {
-          setTimeout(function() {
-            stopInterference();
-            body.appendChild(lostEl);
-            lostEl.classList.add('show');
-            dotEl.className = 'crt-dot err';
-          }, 1600);
-          setTimeout(function() { seqIdx++; runSequence(); }, 5000);
+          setTimeout(function () { clearInterval(t1); clearInterval(t2); body.appendChild(lostEl); lostEl.classList.add('show'); }, 1600);
+          setTimeout(function () { idx++; run(); }, 5000);
         }
       }, delay);
     });
   }
-
-  setTimeout(runSequence, 1000);
-})();
-
-(function() {
-  var form = document.getElementById('capture-form');
-  var success = document.getElementById('capture-success');
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var btn = form.querySelector('button');
-    btn.textContent = 'Transmitting\u2026';
-    btn.disabled = true;
-    try {
-      var res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-      if (res.ok) { form.classList.add('hide'); success.classList.add('show'); }
-      else { btn.textContent = 'Error \u2014 retry'; btn.disabled = false; }
-    } catch(err) { btn.textContent = 'Error \u2014 retry'; btn.disabled = false; }
-  });
+  var started = false;
+  new IntersectionObserver(function (en, ob) { if (en[0].isIntersecting && !started) { started = true; ob.disconnect(); run(); } }, { threshold: .3 }).observe(screen);
 })();
 </script>
-
-<script src="rain.js" defer></script>
 </body>
 </html>
