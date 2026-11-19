@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D'YEA — Mission Deck</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Chakra+Petch:wght@500;700&family=Space+Grotesk:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #E8B23A; --gold-bright: #FFC94D; --acid: #2BE04F; --red: #ff5a5a;
+  --ash: #ECE7DA; --dim: #9A93A6; --faint: #6B6675;
+  --panel: #0b0b0c; --line: rgba(232,178,58,.16); --hair: rgba(255,255,255,.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #000; color: var(--ash);
+  font-family: 'Space Grotesk', system-ui, sans-serif; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+a { color: var(--gold); }
+::selection { background: var(--acid); color: #000; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+
+.mono { font-family: 'Chakra Petch', monospace; text-transform: uppercase; letter-spacing: .16em; }
+.crt { font-family: 'VT323', monospace; letter-spacing: .08em; }
+
+header { text-align: center; padding: 8px 0 28px; }
+.eyebrow { font-family: 'VT323', monospace; font-size: 1rem; letter-spacing: .2em; color: var(--acid); text-transform: uppercase; }
+h1 { font-family: 'Anton', sans-serif; font-size: clamp(2.2rem, 9vw, 4.2rem); line-height: .9; letter-spacing: .02em; margin: 10px 0 12px; }
+h1 .ac { color: var(--gold); }
+.lede { color: var(--dim); font-size: .95rem; max-width: 560px; margin: 0 auto; }
+.stamp { margin-top: 12px; font-size: .58rem; color: var(--faint); }
+
+h2 { font-family: 'Anton', sans-serif; font-size: clamp(1.4rem, 5vw, 2rem); letter-spacing: .03em; line-height: 1; }
+h2 .ac { color: var(--gold); }
+.sec { margin-top: 48px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.sec-tag { font-size: .58rem; color: var(--gold); }
+.sec-sub { color: var(--dim); font-size: .88rem; margin: -4px 0 16px; }
+
+/* mission clock */
+.clock { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px 16px 14px; }
+.clock-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.clock-day { font-family: 'VT323', monospace; font-size: 1.5rem; color: var(--acid); text-shadow: 0 0 10px rgba(43,224,79,.25); }
+.clock-phase { font-size: .6rem; color: var(--gold); }
+.bar { position: relative; display: flex; height: 26px; margin: 26px 0 8px; border-radius: 3px; background: #141416; }
+.seg { height: 100%; border-right: 2px solid #000; display: grid; place-items: center; font-family: 'VT323', monospace; font-size: .95rem; color: var(--faint); background: #17171a; }
+.seg:first-child { border-radius: 3px 0 0 3px; } .seg:last-child { border-right: 0; border-radius: 0 3px 3px 0; }
+.seg.past { background: rgba(43,224,79,.16); color: var(--acid); }
+.seg.now { background: rgba(232,178,58,.2); color: var(--gold-bright); }
+.here { position: absolute; top: -8px; bottom: -8px; width: 2px; background: var(--gold-bright); box-shadow: 0 0 10px var(--gold); }
+.here span { position: absolute; top: -17px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-family: 'VT323', monospace; font-size: .85rem; color: var(--gold-bright); letter-spacing: .1em; }
+.here.edge-l span { left: 0; transform: none; } .here.edge-r span { left: auto; right: 0; transform: none; }
+.bar-ends { display: flex; justify-content: space-between; font-family: 'VT323', monospace; font-size: .85rem; color: var(--faint); }
+
+/* filter */
+.filter { position: sticky; top: 0; z-index: 5; background: rgba(0,0,0,.92); backdrop-filter: blur(6px); padding: 10px 0; margin-top: 28px; border-bottom: 1px solid var(--hair); }
+.filter-row { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.filter-row::-webkit-scrollbar { display: none; }
+.chip-btn { flex: none; font-family: 'Chakra Petch', monospace; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; padding: 8px 12px; border-radius: 2px; border: 1px solid var(--line); background: transparent; color: var(--dim); cursor: pointer; }
+.chip-btn[aria-pressed="true"] { background: var(--gold); color: #000; border-color: var(--gold); }
+.chip-btn:focus-visible { outline: 2px solid var(--acid); outline-offset: 2px; }
+
+/* rows */
+.rows { display: grid; gap: 6px; }
+.row { display: grid; grid-template-columns: 62px 1fr auto; gap: 12px; align-items: start; background: var(--panel); border: 1px solid var(--hair); border-left: 3px solid #26262a; border-radius: 4px; padding: 11px 12px; }
+.row.key { border-left-color: var(--gold); background: linear-gradient(90deg, rgba(232,178,58,.07), var(--panel) 60%); }
+.row.done { opacity: .55; } .row.done .r-title { text-decoration: line-through; text-decoration-color: var(--faint); }
+.r-date { font-family: 'VT323', monospace; font-size: 1.05rem; line-height: 1.15; color: var(--acid); white-space: nowrap; }
+.r-date small { display: block; font-size: .8rem; color: var(--faint); }
+.r-title { font-weight: 500; font-size: .95rem; line-height: 1.3; }
+.row.key .r-title { font-family: 'Anton', sans-serif; font-weight: 400; font-size: 1.15rem; letter-spacing: .03em; }
+.r-note { color: var(--dim); font-size: .82rem; margin-top: 3px; }
+.who { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
+.who span { font-family: 'Chakra Petch', monospace; font-size: .52rem; letter-spacing: .14em; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; border: 1px solid var(--hair); color: var(--dim); }
+.who span.me { border-color: var(--gold); color: var(--gold); }
+.flag { font-family: 'VT323', monospace; font-size: .95rem; letter-spacing: .1em; padding: 1px 7px; border-radius: 2px; white-space: nowrap; }
+.flag.next { color: #000; background: var(--gold); }
+.flag.due { color: var(--red); border: 1px solid var(--red); }
+.flag.ok { color: var(--acid); }
+.empty { color: var(--faint); font-size: .85rem; padding: 10px 2px; }
+
+.phase { margin-top: 30px; }
+.phase-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.phase-n { font-family: 'VT323', monospace; font-size: 1.3rem; color: var(--gold); }
+.phase-name { font-family: 'Anton', sans-serif; font-size: 1.25rem; letter-spacing: .03em; }
+.phase-span { font-size: .56rem; color: var(--faint); margin-left: auto; }
+.phase-goal { color: var(--dim); font-size: .86rem; margin-bottom: 10px; }
+.phase.current .phase-name { color: var(--gold-bright); }
+
+/* lanes */
+.lanes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
+.lane { background: var(--panel); border: 1px solid var(--hair); border-radius: 4px; padding: 14px; }
+.lane h3 { font-family: 'Anton', sans-serif; font-weight: 400; font-size: 1.1rem; letter-spacing: .03em; }
+.lane .on { font-size: .54rem; color: var(--acid); margin: 4px 0 8px; display: block; }
+.lane p { color: var(--dim); font-size: .84rem; }
+
+/* tracker */
+.trk { display: grid; gap: 4px; }
+.trk-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 12px; background: var(--panel); border: 1px solid var(--hair); border-radius: 4px; }
+.trk-name { font-size: .9rem; } .trk-name small { display: block; color: var(--faint); font-size: .76rem; }
+.pill { flex: none; font-family: 'Chakra Petch', monospace; font-size: .52rem; letter-spacing: .14em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; border: 1px solid currentColor; }
+.pill.live { color: var(--acid); } .pill.wip { color: var(--gold); } .pill.todo { color: var(--dim); } .pill.unk { color: var(--red); }
+
+.decisions { display: grid; gap: 6px; counter-reset: d; }
+.dec { background: var(--panel); border: 1px solid var(--hair); border-radius: 4px; padding: 12px 12px 12px 44px; position: relative; font-size: .9rem; }
+.dec::before { counter-increment: d; content: counter(d, decimal-leading-zero); position: absolute; left: 12px; top: 11px; font-family: 'VT323', monospace; font-size: 1.1rem; color: var(--gold); }
+.dec small { display: block; color: var(--dim); font-size: .8rem; margin-top: 2px; }
+
+footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--hair); text-align: center; color: var(--faint); font-size: .72rem; }
+@media (max-width: 480px) { .row { grid-template-columns: 60px 1fr; } .row .flag { grid-column: 2; justify-self: start; margin-top: 2px; } .phase-span { margin-left: 0; width: 100%; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">/// Crew eyes only · Mission deck ///</p>
+  <h1>Bassstar Mission<br><span class="ac">Relaunch Plan</span></h1>
+  <p class="lede">Where we are, what's next, and who's on what for the next twelve months. Dates are proposed until the band confirms them.</p>
+  <p class="stamp mono" id="stamp"></p>
+</header>
+
+<section class="clock" aria-label="Mission clock">
+  <div class="clock-top">
+    <span class="clock-day" id="clock-day"></span>
+    <span class="clock-phase mono" id="clock-phase"></span>
+  </div>
+  <div class="bar" id="bar"></div>
+  <div class="bar-ends"><span>NOV 2026</span><span>NOV 2027</span></div>
+</section>
+
+<div class="filter" role="group" aria-label="Show actions for">
+  <div class="filter-row" id="filter"></div>
+</div>
+
+<section class="sec" id="next">
+  <div class="sec-head"><h2>Next <span class="ac">up</span></h2><span class="sec-tag mono" id="next-tag"></span></div>
+  <div class="rows" id="next-rows"></div>
+</section>
+
+<section class="sec" id="roadmap">
+  <div class="sec-head"><h2>The <span class="ac">roadmap</span></h2><span class="sec-tag mono">5 phases · 12 months</span></div>
+  <div id="phases"></div>
+</section>
+
+<section class="sec" id="lanes">
+  <div class="sec-head"><h2>Six <span class="ac">lanes</span></h2><span class="sec-tag mono">How the record earns</span></div>
+  <p class="sec-sub">No gigs. Every lane runs off the same set of masters and artwork, which is why Phase 0 matters most.</p>
+  <div class="lanes" id="lane-grid"></div>
+</section>
+
+<section class="sec" id="assets">
+  <div class="sec-head"><h2>Asset <span class="ac">tracker</span></h2><span class="sec-tag mono" id="asset-tag"></span></div>
+  <div class="trk" id="trk"></div>
+</section>
+
+<section class="sec" id="decisions">
+  <div class="sec-head"><h2>Open <span class="ac">calls</span></h2><span class="sec-tag mono">Band decisions</span></div>
+  <div class="decisions" id="dec"></div>
+</section>
+
+<footer>
+  <p>D'YEA · Sonic Throne Publishing · Internal planning page, not linked from the public site.</p>
+</footer>
+</div>
+
+<script type="application/json" id="deck-data">
+{
+  "updated": "2026-11-19",
+  "start": "2026-11-19",
+  "end": "2027-11-19",
+  "people": { "jason": "Jason", "billy": "Billy", "sonic": "Sonic", "jerry": "Jerry", "prod": "Production", "all": "Whole band" },
+  "phases": [
+    { "n": 0, "name": "Lock the assets", "from": "2026-11-19", "to": "2026-12-06",
+      "goal": "Come out of the studio with every file the next year depends on, and get the paperwork signed while everyone is in one room.",
+      "items": [
+        { "d": "2026-11-20", "t": "Open the DistroKid account (Musician Plus)", "who": ["jason"], "n": "Artist name exactly D'YEA, label Sonic Throne." },
+        { "d": "2026-11-22", "t": "Answer: do the 2003 session files or multitracks still exist?", "who": ["sonic"], "n": "Decides whether real instrumentals and an Atmos mix are possible." },
+        { "d": "2026-11-24", "t": "Studio day: remaster the album", "who": ["all"], "key": true, "n": "Leave with: 24-bit WAV masters, a streaming-loudness set, a separate vinyl master, instrumentals where possible, and the final Is This Real." },
+        { "d": "2026-11-24", "t": "Sign the one-page split sheet at the studio", "who": ["jason", "billy", "sonic", "jerry"], "n": "Blocks distribution splits, sync submissions and PRO registration. Jason brings it printed." },
+        { "d": "2026-12-01", "t": "Confirm PRO registration", "who": ["billy", "sonic", "jerry"], "n": "Billy and Sonic: confirm ASCAP status. Jerry: verify the existing registration is as a writer." },
+        { "d": "2026-12-04", "t": "Signed releases from the session players on the album", "who": ["jason"], "n": "One page each. Sync libraries reject tracks without them." },
+        { "d": "2026-12-04", "t": "Settle the Right Now lyric: prose or prize?", "who": ["billy"], "n": "Needed for the lyric sheet and sync metadata." }
+      ] },
+    { "n": 1, "name": "Build the machine", "from": "2026-12-07", "to": "2027-01-14",
+      "goal": "Artwork, metadata, email and video get built once so every later release is a repeat of the same steps.",
+      "items": [
+        { "d": "2026-12-11", "t": "Master metadata sheet for all tracks", "who": ["prod"], "n": "Credits, ISRCs, BPM, key, moods, sounds-like. Reused for every platform." },
+        { "d": "2026-12-14", "t": "Start capturing the Mini DV rehearsal tapes", "who": ["jason"], "n": "Real-time capture. A few tapes a week, label each by date." },
+        { "d": "2026-12-15", "t": "Email list moves to Kit, site forms rewired", "who": ["jason", "prod"], "n": "Lets us actually email the people who signed up." },
+        { "d": "2026-12-16", "t": "Single cover for Is This Real approved", "who": ["billy", "jason"], "n": "3000 x 3000, no small type." },
+        { "d": "2026-12-18", "t": "Upload Is This Real for a Jan 15 release", "who": ["jason", "prod"], "n": "Four weeks of lead time is what gets a Spotify editorial pitch considered." },
+        { "d": "2026-12-18", "t": "First sync submission: Bassstar, All Around The World, Phaser", "who": ["prod", "jason"], "n": "Crucial Music, non-exclusive. American Band goes in their cover box." },
+        { "d": "2027-01-04", "t": "YouTube: channel trailer and first official audio videos", "who": ["prod"], "n": "Built in the site's CRT look. First three rehearsal clips scheduled." },
+        { "d": "2027-01-08", "t": "Site: Is This Real teaser and countdown live", "who": ["prod"] },
+        { "d": "2027-01-11", "t": "Album cover and vinyl jacket art approved", "who": ["billy", "jason", "sonic", "jerry"], "n": "The pre-order cannot open without it." }
+      ] },
+    { "n": 2, "name": "First 90 days", "from": "2027-01-15", "to": "2027-04-15",
+      "goal": "One release every five weeks, the vinyl pre-order in the middle, and a steady drip of archive footage to give people a reason to come back.",
+      "items": [
+        { "d": "2027-01-15", "t": "Is This Real: out everywhere", "who": ["all"], "key": true, "n": "Email blast, YouTube premiere, everyone posts the same day. From here: one rehearsal clip and two Shorts every week." },
+        { "d": "2027-01-18", "t": "Decide the vinyl format: single or double LP", "who": ["all"], "n": "About 20 minutes fits a side cleanly. All 13 tracks means a double." },
+        { "d": "2027-01-22", "t": "Sync page for music supervisors goes live", "who": ["prod"], "n": "Previews, tags and a licensing contact per track." },
+        { "d": "2027-01-25", "t": "Pressing plant quotes compared and one chosen", "who": ["jason", "billy"], "n": "300 to 500 copies. Quotes gathered by Production." },
+        { "d": "2027-02-01", "t": "Vinyl pre-order opens", "who": ["all"], "key": true, "n": "Six weeks. The count decides the pressing size, so nobody fronts money for copies that have no buyer." },
+        { "d": "2027-02-19", "t": "Second single: Bassstar (remastered)", "who": ["prod", "jason"] },
+        { "d": "2027-03-14", "t": "Pre-order closes, pressing count locked", "who": ["jason"] },
+        { "d": "2027-03-17", "t": "Order placed with the plant", "who": ["jason"], "n": "Plants run three to five months from here." },
+        { "d": "2027-03-26", "t": "Third single: All Around The World (remastered)", "who": ["prod", "jason"] },
+        { "d": "2027-04-02", "t": "Press and college radio outreach", "who": ["prod", "billy"], "n": "Tampa Bay outlets first. The 2003 Weekly Planet piece is the hook." },
+        { "d": "2027-04-15", "t": "90-day review", "who": ["all"], "n": "List size, pre-orders, streams, sync status. Adjust the plan." }
+      ] },
+    { "n": 3, "name": "The album", "from": "2027-04-16", "to": "2027-06-30",
+      "goal": "The full remaster lands on the anniversary weekend of the first show, with the jukebox and video pushes riding on it.",
+      "items": [
+        { "d": "2027-04-23", "t": "Album uploaded for a May 28 release", "who": ["jason", "prod"], "n": "TouchTunes and YouTube Content ID opted in at upload." },
+        { "d": "2027-05-28", "t": "Bassstar Mission, 25th Anniversary Remaster: out everywhere", "who": ["all"], "key": true, "n": "The Friday of the weekend we first played the State Theatre, May 30, 2003. Full album page and visualizer go live." },
+        { "d": "2027-06-04", "t": "Jukebox push around Tampa Bay", "who": ["billy", "jerry", "jason"], "n": "Once we're in the TouchTunes catalog, plays in local bars are what keep us there." },
+        { "d": "2027-06-11", "t": "Second sync submission", "who": ["prod"] },
+        { "d": "2027-06-18", "t": "Approve vinyl test pressings", "who": ["sonic", "billy"], "n": "Date moves with the plant's schedule." }
+      ] },
+    { "n": 4, "name": "Year one", "from": "2027-07-01", "to": "2027-11-19",
+      "goal": "Ship the vinyl, widen the sync reach, turn the tapes into something longer, and decide what comes after.",
+      "items": [
+        { "d": "2027-07-30", "t": "Vinyl ships to pre-order buyers", "who": ["jason"], "key": true, "n": "Window is late July through August depending on the plant." },
+        { "d": "2027-08-20", "t": "Remaining copies on sale, including Europe", "who": ["billy", "prod"] },
+        { "d": "2027-09-10", "t": "Wider sync push: more libraries, edit and instrumental pack", "who": ["prod", "sonic"] },
+        { "d": "2027-10-15", "t": "The rehearsal tapes cut into a short documentary", "who": ["prod", "jason"] },
+        { "d": "2027-11-19", "t": "Year-one review and what's next", "who": ["all"], "n": "New material, and whether to mark the May 2028 anniversary with something of its own." }
+      ] }
+  ],
+  "lanes": [
+    { "t": "Streaming", "on": "On from Jan 15", "p": "DistroKid to Spotify, Apple and the rest. Small per play, but it is where everything else points." },
+    { "t": "Limited vinyl", "on": "Pre-order Feb 1", "p": "300 to 500 copies, sized by pre-orders. The biggest single payday of the year." },
+    { "t": "Sync licensing", "on": "Submitting Dec 18", "p": "TV, film and ads through Crucial Music plus our own page for supervisors. Slow, but one placement can beat a year of streams." },
+    { "t": "Jukebox", "on": "With the album, May 28", "p": "TouchTunes in bars. Modest money, strong local presence." },
+    { "t": "YouTube", "on": "Channel live Jan 4", "p": "Official audio, the rehearsal archive and Shorts. Content ID collects when anyone else uses the songs." },
+    { "t": "Direct to fans", "on": "List growing now", "p": "The email list and the American Band download. It is the only audience we own, and it is who buys the vinyl." }
+  ],
+  "assets": [
+    { "t": "Landing site and email capture", "s": "live" },
+    { "t": "American Band download page", "s": "live" },
+    { "t": "YouTube channel", "n": "Branded. No videos yet.", "s": "wip" },
+    { "t": "Lyrics", "n": "4 of 13 recovered", "s": "wip" },
+    { "t": "PRO registrations", "n": "1 of 4 confirmed", "s": "wip" },
+    { "t": "Remastered album masters", "n": "Studio, Nov 24", "s": "todo" },
+    { "t": "Is This Real final master", "n": "Studio, Nov 24", "s": "todo" },
+    { "t": "Vinyl master", "n": "Separate from the digital master", "s": "todo" },
+    { "t": "Session files and multitracks", "n": "Waiting on Sonic", "s": "unk" },
+    { "t": "Instrumental versions", "n": "Depends on session files", "s": "unk" },
+    { "t": "Split sheet, signed", "s": "todo" },
+    { "t": "Session player releases", "s": "todo" },
+    { "t": "Single and album artwork", "s": "todo" },
+    { "t": "DistroKid account", "s": "todo" },
+    { "t": "Email sender (Kit)", "s": "todo" },
+    { "t": "Sync submission", "s": "todo" },
+    { "t": "Mini DV footage digitized", "n": "0 tapes captured", "s": "todo" }
+  ],
+  "decisions": [
+    { "t": "Single or double LP?", "n": "Due Jan 18. Double carries all 13 tracks and costs roughly twice as much to press." },
+    { "t": "Which tracks are the three singles?", "n": "Proposed: Is This Real, Bassstar, All Around The World." },
+    { "t": "Is an Atmos mix realistic?", "n": "Only with the original multitracks. Waiting on the session-file answer." },
+    { "t": "Are the release dates right?", "n": "Jan 15 single, Feb 1 pre-order, May 28 album. All movable until the first upload." },
+    { "t": "Where does the pre-order live?", "n": "Bandcamp handles payment and shipping addresses. Our own page keeps more of each sale." }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('deck-data').textContent);
+  var MON = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  function dt(s) { var p = s.split('-'); return new Date(+p[0], p[1] - 1, +p[2]); }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  var start = dt(D.start), end = dt(D.end), DAY = 864e5;
+  var filter = 'everyone';
+  try { var h = location.hash.slice(1); if (D.people[h] && h !== 'all') filter = h; } catch (e) {}
+
+  var all = [];
+  D.phases.forEach(function (ph) { ph.items.forEach(function (it) { it.date = dt(it.d); it.phase = ph.n; all.push(it); }); });
+  all.sort(function (a, b) { return a.date - b.date; });
+  function mine(it) { return filter === 'everyone' || it.who.indexOf(filter) > -1 || it.who.indexOf('all') > -1; }
+  function open(it) { return !it.done; }
+
+  document.getElementById('stamp').textContent = 'Updated ' + MON[dt(D.updated).getMonth()] + ' ' + dt(D.updated).getDate() + ', ' + dt(D.updated).getFullYear();
+
+  /* clock */
+  var total = (end - start) / DAY, dayN = Math.round((today - start) / DAY) + 1;
+  var cur = D.phases.filter(function (p) { return today >= dt(p.from) && today <= dt(p.to); })[0];
+  document.getElementById('clock-day').textContent = dayN < 1 ? 'T-MINUS ' + (1 - dayN) + ' DAYS' : dayN > total ? 'YEAR ONE COMPLETE' : 'DAY ' + dayN + ' OF ' + Math.round(total);
+  document.getElementById('clock-phase').textContent = cur ? 'Phase ' + cur.n + ' · ' + cur.name : '';
+  var bar = document.getElementById('bar');
+  D.phases.forEach(function (p) {
+    var s = el('div', 'seg', String(p.n));
+    s.style.width = ((dt(p.to) - dt(p.from)) / DAY + 1) / (total + 1) * 100 + '%';
+    s.title = 'Phase ' + p.n + ': ' + p.name;
+    if (today > dt(p.to)) s.classList.add('past'); else if (cur && cur.n === p.n) s.classList.add('now');
+    bar.appendChild(s);
+  });
+  var pct = Math.max(0, Math.min(100, (today - start) / (end - start) * 100));
+  var here = el('div', 'here' + (pct < 14 ? ' edge-l' : pct > 86 ? ' edge-r' : ''));
+  here.style.left = pct + '%'; here.appendChild(el('span', null, 'YOU ARE HERE')); bar.appendChild(here);
+
+  /* rows */
+  var nextOpen = null;
+  function row(it) {
+    var r = el('div', 'row' + (it.key ? ' key' : '') + (it.done ? ' done' : ''));
+    var d = el('div', 'r-date', MON[it.date.getMonth()] + ' ' + it.date.getDate());
+    d.appendChild(el('small', null, String(it.date.getFullYear()))); r.appendChild(d);
+    var b = el('div'); b.appendChild(el('div', 'r-title', it.t));
+    if (it.n) b.appendChild(el('div', 'r-note', it.n));
+    var w = el('div', 'who');
+    it.who.forEach(function (k) { w.appendChild(el('span', (k === filter || (k === 'all' && filter !== 'everyone')) ? 'me' : null, D.people[k])); });
+    b.appendChild(w); r.appendChild(b);
+    var f = it.done ? el('span', 'flag ok', 'DONE') : it.date < today ? el('span', 'flag due', 'DUE') : it === nextOpen ? el('span', 'flag next', 'NEXT') : null;
+    if (f) r.appendChild(f);
+    return r;
+  }
+
+  function render() {
+    var list = all.filter(mine);
+    nextOpen = list.filter(function (it) { return open(it) && it.date >= today; })[0] || null;
+
+    var nx = document.getElementById('next-rows'); nx.textContent = '';
+    var upcoming = list.filter(open).slice(0, 5);
+    upcoming.forEach(function (it) { nx.appendChild(row(it)); });
+    if (!upcoming.length) nx.appendChild(el('p', 'empty', 'Nothing open here.'));
+    document.getElementById('next-tag').textContent = filter === 'everyone' ? 'Whole crew' : 'For ' + D.people[filter];
+
+    var ps = document.getElementById('phases'); ps.textContent = '';
+    D.phases.forEach(function (p) {
+      var sec = el('div', 'phase' + (cur && cur.n === p.n ? ' current' : ''));
+      var hd = el('div', 'phase-head');
+      hd.appendChild(el('span', 'phase-n', 'PHASE ' + p.n));
+      hd.appendChild(el('span', 'phase-name', p.name));
+      var a = dt(p.from), z = dt(p.to);
+      hd.appendChild(el('span', 'phase-span mono', MON[a.getMonth()] + ' ' + a.getDate() + ' to ' + MON[z.getMonth()] + ' ' + z.getDate() + (cur && cur.n === p.n ? ' · now' : '')));
+      sec.appendChild(hd); sec.appendChild(el('p', 'phase-goal', p.goal));
+      var rows = el('div', 'rows'), items = p.items.filter(mine);
+      items.forEach(function (it) { rows.appendChild(row(it)); });
+      if (!items.length) rows.appendChild(el('p', 'empty', 'Nothing for ' + D.people[filter] + ' in this phase.'));
+      sec.appendChild(rows); ps.appendChild(sec);
+    });
+
+    [].forEach.call(document.querySelectorAll('.chip-btn'), function (b) { b.setAttribute('aria-pressed', String(b.dataset.k === filter)); });
+  }
+
+  /* filter chips */
+  var fr = document.getElementById('filter');
+  [['everyone', 'Everyone'], ['jason', 'Jason'], ['billy', 'Billy'], ['sonic', 'Sonic'], ['jerry', 'Jerry'], ['prod', 'Production']].forEach(function (p) {
+    var b = el('button', 'chip-btn', p[1]); b.type = 'button'; b.dataset.k = p[0];
+    b.addEventListener('click', function () {
+      filter = p[0];
+      try { history.replaceState(null, '', filter === 'everyone' ? location.pathname : '#' + filter); } catch (e) {}
+      render();
+    });
+    fr.appendChild(b);
+  });
+
+  /* lanes, assets, decisions */
+  var lg = document.getElementById('lane-grid');
+  D.lanes.forEach(function (l) { var c = el('div', 'lane'); c.appendChild(el('h3', null, l.t)); c.appendChild(el('span', 'on mono', l.on)); c.appendChild(el('p', null, l.p)); lg.appendChild(c); });
+  var LBL = { live: 'Live', wip: 'In progress', todo: 'To do', unk: 'Unknown' }, tk = document.getElementById('trk'), live = 0;
+  D.assets.forEach(function (a) {
+    if (a.s === 'live') live++;
+    var r = el('div', 'trk-row'), n = el('div', 'trk-name', a.t);
+    if (a.n) n.appendChild(el('small', null, a.n));
+    r.appendChild(n); r.appendChild(el('span', 'pill ' + a.s, LBL[a.s])); tk.appendChild(r);
+  });
+  document.getElementById('asset-tag').textContent = live + ' of ' + D.assets.length + ' live';
+  var dc = document.getElementById('dec');
+  D.decisions.forEach(function (d) { var c = el('div', 'dec', d.t); c.appendChild(el('small', null, d.n)); dc.appendChild(c); });
+
+  render();
+})();
+</script>
+</body>
+</html>
