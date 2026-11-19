@@ -85,6 +85,19 @@ h2 .ac { color: var(--gold); }
 .flag.ok { color: var(--acid); }
 .empty { color: var(--faint); font-size: .85rem; padding: 10px 2px; }
 
+/* one person's list */
+.me-head { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 6px; padding: 18px 16px; }
+.me-head h2 { font-size: clamp(2rem, 8vw, 3.2rem); color: var(--gold-bright); }
+.me-role { color: var(--dim); margin-top: 6px; font-size: .92rem; }
+.me-count { font-family: 'VT323', monospace; font-size: 1.25rem; color: var(--acid); margin-top: 10px; letter-spacing: .06em; }
+.me-sub { font-family: 'Anton', sans-serif; font-weight: 400; font-size: 1.2rem; letter-spacing: .03em; margin: 28px 0 4px; }
+.me-hint { color: var(--dim); font-size: .84rem; margin-bottom: 10px; }
+.box { width: 20px; height: 20px; border: 2px solid var(--gold); border-radius: 3px; display: inline-grid; place-items: center; font-size: .8rem; color: #000; }
+.box.on { background: var(--acid); border-color: var(--acid); }
+.me-back { margin-top: 28px; font-family: 'Chakra Petch', monospace; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; padding: 12px 16px; background: transparent; color: var(--gold); border: 1px solid var(--gold); border-radius: 2px; cursor: pointer; }
+.me-back:hover { background: var(--gold); color: #000; }
+[hidden] { display: none !important; }
+
 .phase { margin-top: 30px; }
 .phase-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
 .phase-n { font-family: 'VT323', monospace; font-size: 1.3rem; color: var(--gold); }
@@ -140,6 +153,17 @@ footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--hair);
   <div class="filter-row" id="filter"></div>
 </div>
 
+<section class="sec" id="mine" hidden>
+  <div class="me-head"><h2 id="me-name"></h2><p class="me-role" id="me-role"></p><p class="me-count" id="me-count"></p></div>
+  <h3 class="me-sub">Your tasks</h3>
+  <p class="me-hint">The things only you can do, in date order.</p>
+  <div class="rows" id="me-rows"></div>
+  <h3 class="me-sub">Whole-band dates</h3>
+  <p class="me-hint">Everyone is needed for these.</p>
+  <div class="rows" id="me-band"></div>
+  <button class="me-back" id="me-back" type="button">See the full plan</button>
+</section>
+
 <section class="sec" id="next">
   <div class="sec-head"><h2>Next <span class="ac">up</span></h2><span class="sec-tag mono" id="next-tag"></span></div>
   <div class="rows" id="next-rows"></div>
@@ -173,103 +197,634 @@ footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--hair);
 
 <script type="application/json" id="deck-data">
 {
-  "updated": "2026-11-19",
-  "start": "2026-11-19",
-  "end": "2027-11-19",
-  "people": { "jason": "Jason", "billy": "Billy", "sonic": "Sonic", "jerry": "Jerry", "prod": "Production", "all": "Whole band" },
-  "phases": [
-    { "n": 0, "name": "Lock the assets", "from": "2026-11-19", "to": "2026-12-06",
-      "goal": "Come out of the studio with every file the next year depends on, and get the paperwork signed while everyone is in one room.",
-      "items": [
-        { "d": "2026-11-20", "t": "Open the DistroKid account (Musician Plus)", "who": ["jason"], "n": "Artist name exactly D'YEA, label Sonic Throne." },
-        { "d": "2026-11-22", "t": "Answer: do the 2003 session files or multitracks still exist?", "who": ["sonic"], "n": "Decides whether real instrumentals and an Atmos mix are possible." },
-        { "d": "2026-11-24", "t": "Studio day: remaster the album", "who": ["all"], "key": true, "n": "Leave with: 24-bit WAV masters, a streaming-loudness set, a separate vinyl master, instrumentals where possible, and the final Is This Real." },
-        { "d": "2026-11-24", "t": "Sign the one-page split sheet at the studio", "who": ["jason", "billy", "sonic", "jerry"], "n": "Blocks distribution splits, sync submissions and PRO registration. Jason brings it printed." },
-        { "d": "2026-12-01", "t": "Confirm PRO registration", "who": ["billy", "sonic", "jerry"], "n": "Billy and Sonic: confirm ASCAP status. Jerry: verify the existing registration is as a writer." },
-        { "d": "2026-12-04", "t": "Signed releases from the session players on the album", "who": ["jason"], "n": "One page each. Sync libraries reject tracks without them." },
-        { "d": "2026-12-04", "t": "Settle the Right Now lyric: prose or prize?", "who": ["billy"], "n": "Needed for the lyric sheet and sync metadata." }
-      ] },
-    { "n": 1, "name": "Build the machine", "from": "2026-12-07", "to": "2027-01-14",
-      "goal": "Artwork, metadata, email and video get built once so every later release is a repeat of the same steps.",
-      "items": [
-        { "d": "2026-12-11", "t": "Master metadata sheet for all tracks", "who": ["prod"], "n": "Credits, ISRCs, BPM, key, moods, sounds-like. Reused for every platform." },
-        { "d": "2026-12-14", "t": "Start capturing the Mini DV rehearsal tapes", "who": ["jason"], "n": "Real-time capture. A few tapes a week, label each by date." },
-        { "d": "2026-12-15", "t": "Email list moves to Kit, site forms rewired", "who": ["jason", "prod"], "n": "Lets us actually email the people who signed up." },
-        { "d": "2026-12-16", "t": "Single cover for Is This Real approved", "who": ["billy", "jason"], "n": "3000 x 3000, no small type." },
-        { "d": "2026-12-18", "t": "Upload Is This Real for a Jan 15 release", "who": ["jason", "prod"], "n": "Four weeks of lead time is what gets a Spotify editorial pitch considered." },
-        { "d": "2026-12-18", "t": "First sync submission: Bassstar, All Around The World, Phaser", "who": ["prod", "jason"], "n": "Crucial Music, non-exclusive. American Band goes in their cover box." },
-        { "d": "2027-01-04", "t": "YouTube: channel trailer and first official audio videos", "who": ["prod"], "n": "Built in the site's CRT look. First three rehearsal clips scheduled." },
-        { "d": "2027-01-08", "t": "Site: Is This Real teaser and countdown live", "who": ["prod"] },
-        { "d": "2027-01-11", "t": "Album cover and vinyl jacket art approved", "who": ["billy", "jason", "sonic", "jerry"], "n": "The pre-order cannot open without it." }
-      ] },
-    { "n": 2, "name": "First 90 days", "from": "2027-01-15", "to": "2027-04-15",
-      "goal": "One release every five weeks, the vinyl pre-order in the middle, and a steady drip of archive footage to give people a reason to come back.",
-      "items": [
-        { "d": "2027-01-15", "t": "Is This Real: out everywhere", "who": ["all"], "key": true, "n": "Email blast, YouTube premiere, everyone posts the same day. From here: one rehearsal clip and two Shorts every week." },
-        { "d": "2027-01-18", "t": "Decide the vinyl format: single or double LP", "who": ["all"], "n": "About 20 minutes fits a side cleanly. All 13 tracks means a double." },
-        { "d": "2027-01-22", "t": "Sync page for music supervisors goes live", "who": ["prod"], "n": "Previews, tags and a licensing contact per track." },
-        { "d": "2027-01-25", "t": "Pressing plant quotes compared and one chosen", "who": ["jason", "billy"], "n": "300 to 500 copies. Quotes gathered by Production." },
-        { "d": "2027-02-01", "t": "Vinyl pre-order opens", "who": ["all"], "key": true, "n": "Six weeks. The count decides the pressing size, so nobody fronts money for copies that have no buyer." },
-        { "d": "2027-02-19", "t": "Second single: Bassstar (remastered)", "who": ["prod", "jason"] },
-        { "d": "2027-03-14", "t": "Pre-order closes, pressing count locked", "who": ["jason"] },
-        { "d": "2027-03-17", "t": "Order placed with the plant", "who": ["jason"], "n": "Plants run three to five months from here." },
-        { "d": "2027-03-26", "t": "Third single: All Around The World (remastered)", "who": ["prod", "jason"] },
-        { "d": "2027-04-02", "t": "Press and college radio outreach", "who": ["prod", "billy"], "n": "Tampa Bay outlets first. The 2003 Weekly Planet piece is the hook." },
-        { "d": "2027-04-15", "t": "90-day review", "who": ["all"], "n": "List size, pre-orders, streams, sync status. Adjust the plan." }
-      ] },
-    { "n": 3, "name": "The album", "from": "2027-04-16", "to": "2027-06-30",
-      "goal": "The full remaster lands on the anniversary weekend of the first show, with the jukebox and video pushes riding on it.",
-      "items": [
-        { "d": "2027-04-23", "t": "Album uploaded for a May 28 release", "who": ["jason", "prod"], "n": "TouchTunes and YouTube Content ID opted in at upload." },
-        { "d": "2027-05-28", "t": "Bassstar Mission, 25th Anniversary Remaster: out everywhere", "who": ["all"], "key": true, "n": "The Friday of the weekend we first played the State Theatre, May 30, 2003. Full album page and visualizer go live." },
-        { "d": "2027-06-04", "t": "Jukebox push around Tampa Bay", "who": ["billy", "jerry", "jason"], "n": "Once we're in the TouchTunes catalog, plays in local bars are what keep us there." },
-        { "d": "2027-06-11", "t": "Second sync submission", "who": ["prod"] },
-        { "d": "2027-06-18", "t": "Approve vinyl test pressings", "who": ["sonic", "billy"], "n": "Date moves with the plant's schedule." }
-      ] },
-    { "n": 4, "name": "Year one", "from": "2027-07-01", "to": "2027-11-19",
-      "goal": "Ship the vinyl, widen the sync reach, turn the tapes into something longer, and decide what comes after.",
-      "items": [
-        { "d": "2027-07-30", "t": "Vinyl ships to pre-order buyers", "who": ["jason"], "key": true, "n": "Window is late July through August depending on the plant." },
-        { "d": "2027-08-20", "t": "Remaining copies on sale, including Europe", "who": ["billy", "prod"] },
-        { "d": "2027-09-10", "t": "Wider sync push: more libraries, edit and instrumental pack", "who": ["prod", "sonic"] },
-        { "d": "2027-10-15", "t": "The rehearsal tapes cut into a short documentary", "who": ["prod", "jason"] },
-        { "d": "2027-11-19", "t": "Year-one review and what's next", "who": ["all"], "n": "New material, and whether to mark the May 2028 anniversary with something of its own." }
-      ] }
-  ],
-  "lanes": [
-    { "t": "Streaming", "on": "On from Jan 15", "p": "DistroKid to Spotify, Apple and the rest. Small per play, but it is where everything else points." },
-    { "t": "Limited vinyl", "on": "Pre-order Feb 1", "p": "300 to 500 copies, sized by pre-orders. The biggest single payday of the year." },
-    { "t": "Sync licensing", "on": "Submitting Dec 18", "p": "TV, film and ads through Crucial Music plus our own page for supervisors. Slow, but one placement can beat a year of streams." },
-    { "t": "Jukebox", "on": "With the album, May 28", "p": "TouchTunes in bars. Modest money, strong local presence." },
-    { "t": "YouTube", "on": "Channel live Jan 4", "p": "Official audio, the rehearsal archive and Shorts. Content ID collects when anyone else uses the songs." },
-    { "t": "Direct to fans", "on": "List growing now", "p": "The email list and the American Band download. It is the only audience we own, and it is who buys the vinyl." }
-  ],
-  "assets": [
-    { "t": "Landing site and email capture", "s": "live" },
-    { "t": "American Band download page", "s": "live" },
-    { "t": "YouTube channel", "n": "Branded. No videos yet.", "s": "wip" },
-    { "t": "Lyrics", "n": "4 of 13 recovered", "s": "wip" },
-    { "t": "PRO registrations", "n": "1 of 4 confirmed", "s": "wip" },
-    { "t": "Remastered album masters", "n": "Studio, Nov 24", "s": "todo" },
-    { "t": "Is This Real final master", "n": "Studio, Nov 24", "s": "todo" },
-    { "t": "Vinyl master", "n": "Separate from the digital master", "s": "todo" },
-    { "t": "Session files and multitracks", "n": "Waiting on Sonic", "s": "unk" },
-    { "t": "Instrumental versions", "n": "Depends on session files", "s": "unk" },
-    { "t": "Split sheet, signed", "s": "todo" },
-    { "t": "Session player releases", "s": "todo" },
-    { "t": "Single and album artwork", "s": "todo" },
-    { "t": "DistroKid account", "s": "todo" },
-    { "t": "Email sender (Kit)", "s": "todo" },
-    { "t": "Sync submission", "s": "todo" },
-    { "t": "Mini DV footage digitized", "n": "0 tapes captured", "s": "todo" }
-  ],
-  "decisions": [
-    { "t": "Single or double LP?", "n": "Due Jan 18. Double carries all 13 tracks and costs roughly twice as much to press." },
-    { "t": "Which tracks are the three singles?", "n": "Proposed: Is This Real, Bassstar, All Around The World." },
-    { "t": "Is an Atmos mix realistic?", "n": "Only with the original multitracks. Waiting on the session-file answer." },
-    { "t": "Are the release dates right?", "n": "Jan 15 single, Feb 1 pre-order, May 28 album. All movable until the first upload." },
-    { "t": "Where does the pre-order live?", "n": "Bandcamp handles payment and shipping addresses. Our own page keeps more of each sale." }
-  ]
+ "updated": "2026-11-19",
+ "start": "2026-11-19",
+ "end": "2027-11-19",
+ "people": {
+  "jason": "Jason",
+  "billy": "Billy",
+  "sonic": "Sonic",
+  "jerry": "Jerry",
+  "prod": "Production",
+  "all": "Whole band"
+ },
+ "phases": [
+  {
+   "n": 0,
+   "name": "Lock the assets",
+   "from": "2026-11-19",
+   "to": "2026-12-06",
+   "goal": "Come out of the studio with every file the next year depends on, and get the paperwork signed while everyone is in one room.",
+   "items": [
+    {
+     "d": "2026-11-20",
+     "t": "Open the DistroKid account (Musician Plus)",
+     "who": [
+      "jason"
+     ],
+     "n": "Artist name exactly D'YEA, label Sonic Throne."
+    },
+    {
+     "d": "2026-11-22",
+     "t": "Answer: do the 2003 session files or multitracks still exist?",
+     "who": [
+      "sonic"
+     ],
+     "n": "Decides whether real instrumentals and an Atmos mix are possible."
+    },
+    {
+     "d": "2026-11-24",
+     "t": "Studio day: remaster the album",
+     "who": [
+      "all"
+     ],
+     "key": true,
+     "n": "Leave with: 24-bit WAV masters, a streaming-loudness set, a separate vinyl master, instrumentals where possible, and the final Is This Real."
+    },
+    {
+     "d": "2026-11-24",
+     "t": "Sign the one-page split sheet at the studio",
+     "who": [
+      "jason",
+      "billy",
+      "sonic",
+      "jerry"
+     ],
+     "n": "Blocks distribution splits, sync submissions and PRO registration. Jason brings it printed."
+    },
+    {
+     "d": "2026-11-24",
+     "t": "Export every studio deliverable before leaving",
+     "who": [
+      "sonic"
+     ],
+     "n": "Digital masters, streaming set, vinyl master, instrumentals, Is This Real. Copied to two drives."
+    },
+    {
+     "d": "2026-11-29",
+     "t": "Dig out 2003 photos, flyers and anything with the band on it",
+     "who": [
+      "billy",
+      "jerry"
+     ],
+     "n": "Phone photos of prints are fine. Needed for artwork, video and press."
+    },
+    {
+     "d": "2026-12-01",
+     "t": "Confirm PRO registration",
+     "who": [
+      "billy",
+      "sonic",
+      "jerry"
+     ],
+     "n": "Billy and Sonic: confirm ASCAP status. Jerry: verify the existing registration is as a writer."
+    },
+    {
+     "d": "2026-12-04",
+     "t": "Signed releases from the session players on the album",
+     "who": [
+      "jason"
+     ],
+     "n": "One page each. Sync libraries reject tracks without them."
+    },
+    {
+     "d": "2026-12-04",
+     "t": "Settle the Right Now lyric: prose or prize?",
+     "who": [
+      "billy"
+     ],
+     "n": "Needed for the lyric sheet and sync metadata."
+    }
+   ]
+  },
+  {
+   "n": 1,
+   "name": "Build the machine",
+   "from": "2026-12-07",
+   "to": "2027-01-14",
+   "goal": "Artwork, metadata, email and video get built once so every later release is a repeat of the same steps.",
+   "items": [
+    {
+     "d": "2026-12-08",
+     "t": "BPM and key for all 13 tracks",
+     "who": [
+      "sonic"
+     ],
+     "n": "Feeds the metadata sheet and every sync submission."
+    },
+    {
+     "d": "2026-12-11",
+     "t": "Master metadata sheet for all tracks",
+     "who": [
+      "prod"
+     ],
+     "n": "Credits, ISRCs, BPM, key, moods, sounds-like. Reused for every platform."
+    },
+    {
+     "d": "2026-12-11",
+     "t": "Instrumental or TV mixes of Bassstar, All Around The World and Phaser",
+     "who": [
+      "sonic"
+     ],
+     "n": "Only possible if the session files exist."
+    },
+    {
+     "d": "2026-12-11",
+     "t": "Call it: is an Atmos mix possible?",
+     "who": [
+      "sonic"
+     ],
+     "n": "Yes only with the original multitracks."
+    },
+    {
+     "d": "2026-12-14",
+     "t": "Start capturing the Mini DV rehearsal tapes",
+     "who": [
+      "jason"
+     ],
+     "n": "Real-time capture. A few tapes a week, label each by date."
+    },
+    {
+     "d": "2026-12-15",
+     "t": "Email list moves to Kit, site forms rewired",
+     "who": [
+      "jason",
+      "prod"
+     ],
+     "n": "Lets us actually email the people who signed up."
+    },
+    {
+     "d": "2026-12-16",
+     "t": "Single cover for Is This Real approved",
+     "who": [
+      "billy",
+      "jason"
+     ],
+     "n": "3000 x 3000, no small type."
+    },
+    {
+     "d": "2026-12-18",
+     "t": "Upload Is This Real for a Jan 15 release",
+     "who": [
+      "jason",
+      "prod"
+     ],
+     "n": "Four weeks of lead time is what gets a Spotify editorial pitch considered."
+    },
+    {
+     "d": "2026-12-18",
+     "t": "First sync submission: Bassstar, All Around The World, Phaser",
+     "who": [
+      "prod",
+      "jason"
+     ],
+     "n": "Crucial Music, non-exclusive. American Band goes in their cover box."
+    },
+    {
+     "d": "2026-12-20",
+     "t": "Write out the lyrics for the seven songs still missing",
+     "who": [
+      "billy",
+      "jason"
+     ],
+     "n": "I Am D'Yea, Divine-A-Abolic, Kick A Little Revolution, Sweet Home Galaxy, Break Down The Walls, Are You Down With D'Yea, D'Yealand."
+    },
+    {
+     "d": "2027-01-04",
+     "t": "YouTube: channel trailer and first official audio videos",
+     "who": [
+      "prod"
+     ],
+     "n": "Built in the site's CRT look. First three rehearsal clips scheduled."
+    },
+    {
+     "d": "2027-01-04",
+     "t": "Watch the first captured tapes and mark the best moments",
+     "who": [
+      "jerry"
+     ],
+     "n": "Timestamps for the strongest playing and anything funny. Production cuts the clips."
+    },
+    {
+     "d": "2027-01-08",
+     "t": "Site: Is This Real teaser and countdown live",
+     "who": [
+      "prod"
+     ]
+    },
+    {
+     "d": "2027-01-08",
+     "t": "Record a one-minute story behind Is This Real",
+     "who": [
+      "billy"
+     ],
+     "n": "Phone video or voice memo. Used in the release-day post and email."
+    },
+    {
+     "d": "2027-01-11",
+     "t": "Album cover and vinyl jacket art approved",
+     "who": [
+      "billy",
+      "jason",
+      "sonic",
+      "jerry"
+     ],
+     "n": "The pre-order cannot open without it."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "name": "First 90 days",
+   "from": "2027-01-15",
+   "to": "2027-04-15",
+   "goal": "One release every five weeks, the vinyl pre-order in the middle, and a steady drip of archive footage to give people a reason to come back.",
+   "items": [
+    {
+     "d": "2027-01-15",
+     "t": "Is This Real: out everywhere",
+     "who": [
+      "all"
+     ],
+     "key": true,
+     "n": "Email blast, YouTube premiere, everyone posts the same day. From here: one rehearsal clip and two Shorts every week."
+    },
+    {
+     "d": "2027-01-18",
+     "t": "Decide the vinyl format: single or double LP",
+     "who": [
+      "all"
+     ],
+     "n": "About 20 minutes fits a side cleanly. All 13 tracks means a double."
+    },
+    {
+     "d": "2027-01-18",
+     "t": "Sequence the vinyl sides",
+     "who": [
+      "sonic"
+     ],
+     "n": "Running order and side breaks, about 20 minutes a side."
+    },
+    {
+     "d": "2027-01-22",
+     "t": "Sync page for music supervisors goes live",
+     "who": [
+      "prod"
+     ],
+     "n": "Previews, tags and a licensing contact per track."
+    },
+    {
+     "d": "2027-01-25",
+     "t": "Pressing plant quotes compared and one chosen",
+     "who": [
+      "jason",
+      "billy"
+     ],
+     "n": "300 to 500 copies. Quotes gathered by Production."
+    },
+    {
+     "d": "2027-01-25",
+     "t": "List of European contacts for the vinyl",
+     "who": [
+      "billy"
+     ],
+     "n": "Shops, DJs, friends abroad. Anyone who would buy or stock it."
+    },
+    {
+     "d": "2027-02-01",
+     "t": "Vinyl pre-order opens",
+     "who": [
+      "all"
+     ],
+     "key": true,
+     "n": "Six weeks. The count decides the pressing size, so nobody fronts money for copies that have no buyer."
+    },
+    {
+     "d": "2027-02-12",
+     "t": "Film a guitar playthrough of Bassstar",
+     "who": [
+      "jerry"
+     ],
+     "n": "A phone on a stand is enough. Goes out with the second single."
+    },
+    {
+     "d": "2027-02-12",
+     "t": "Record a breakdown of the Bassstar verse",
+     "who": [
+      "jason"
+     ],
+     "n": "One minute to camera. Goes out with the second single."
+    },
+    {
+     "d": "2027-02-19",
+     "t": "Second single: Bassstar (remastered)",
+     "who": [
+      "prod",
+      "jason"
+     ]
+    },
+    {
+     "d": "2027-03-14",
+     "t": "Pre-order closes, pressing count locked",
+     "who": [
+      "jason"
+     ]
+    },
+    {
+     "d": "2027-03-17",
+     "t": "Order placed with the plant",
+     "who": [
+      "jason"
+     ],
+     "n": "Plants run three to five months from here."
+    },
+    {
+     "d": "2027-03-19",
+     "t": "Record the story behind All Around The World",
+     "who": [
+      "billy"
+     ],
+     "n": "Goes out with the third single."
+    },
+    {
+     "d": "2027-03-26",
+     "t": "Third single: All Around The World (remastered)",
+     "who": [
+      "prod",
+      "jason"
+     ]
+    },
+    {
+     "d": "2027-04-02",
+     "t": "Press and college radio outreach",
+     "who": [
+      "prod",
+      "billy"
+     ],
+     "n": "Tampa Bay outlets first. The 2003 Weekly Planet piece is the hook."
+    },
+    {
+     "d": "2027-04-15",
+     "t": "90-day review",
+     "who": [
+      "all"
+     ],
+     "n": "List size, pre-orders, streams, sync status. Adjust the plan."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "name": "The album",
+   "from": "2027-04-16",
+   "to": "2027-06-30",
+   "goal": "The full remaster lands on the anniversary weekend of the first show, with the jukebox and video pushes riding on it.",
+   "items": [
+    {
+     "d": "2027-04-23",
+     "t": "Album uploaded for a May 28 release",
+     "who": [
+      "jason",
+      "prod"
+     ],
+     "n": "TouchTunes and YouTube Content ID opted in at upload."
+    },
+    {
+     "d": "2027-05-21",
+     "t": "Line up your release-day post",
+     "who": [
+      "all"
+     ],
+     "n": "Production sends the artwork, link and a caption to start from."
+    },
+    {
+     "d": "2027-05-28",
+     "t": "Bassstar Mission, 25th Anniversary Remaster: out everywhere",
+     "who": [
+      "all"
+     ],
+     "key": true,
+     "n": "The Friday of the weekend we first played the State Theatre, May 30, 2003. Full album page and visualizer go live."
+    },
+    {
+     "d": "2027-06-04",
+     "t": "Jukebox push around Tampa Bay",
+     "who": [
+      "billy",
+      "jerry",
+      "jason"
+     ],
+     "n": "Once we're in the TouchTunes catalog, plays in local bars are what keep us there."
+    },
+    {
+     "d": "2027-06-11",
+     "t": "Second sync submission",
+     "who": [
+      "prod"
+     ]
+    },
+    {
+     "d": "2027-06-18",
+     "t": "Approve vinyl test pressings",
+     "who": [
+      "sonic",
+      "billy"
+     ],
+     "n": "Date moves with the plant's schedule."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "name": "Year one",
+   "from": "2027-07-01",
+   "to": "2027-11-19",
+   "goal": "Ship the vinyl, widen the sync reach, turn the tapes into something longer, and decide what comes after.",
+   "items": [
+    {
+     "d": "2027-07-30",
+     "t": "Vinyl ships to pre-order buyers",
+     "who": [
+      "jason"
+     ],
+     "key": true,
+     "n": "Window is late July through August depending on the plant."
+    },
+    {
+     "d": "2027-08-20",
+     "t": "Remaining copies on sale, including Europe",
+     "who": [
+      "billy",
+      "prod"
+     ]
+    },
+    {
+     "d": "2027-09-10",
+     "t": "Wider sync push: more libraries, edit and instrumental pack",
+     "who": [
+      "prod",
+      "sonic"
+     ]
+    },
+    {
+     "d": "2027-10-15",
+     "t": "The rehearsal tapes cut into a short documentary",
+     "who": [
+      "prod",
+      "jason"
+     ]
+    },
+    {
+     "d": "2027-11-19",
+     "t": "Year-one review and what's next",
+     "who": [
+      "all"
+     ],
+     "n": "New material, and whether to mark the May 2028 anniversary with something of its own."
+    }
+   ]
+  }
+ ],
+ "lanes": [
+  {
+   "t": "Streaming",
+   "on": "On from Jan 15",
+   "p": "DistroKid to Spotify, Apple and the rest. Small per play, but it is where everything else points."
+  },
+  {
+   "t": "Limited vinyl",
+   "on": "Pre-order Feb 1",
+   "p": "300 to 500 copies, sized by pre-orders. The biggest single payday of the year."
+  },
+  {
+   "t": "Sync licensing",
+   "on": "Submitting Dec 18",
+   "p": "TV, film and ads through Crucial Music plus our own page for supervisors. Slow, but one placement can beat a year of streams."
+  },
+  {
+   "t": "Jukebox",
+   "on": "With the album, May 28",
+   "p": "TouchTunes in bars. Modest money, strong local presence."
+  },
+  {
+   "t": "YouTube",
+   "on": "Channel live Jan 4",
+   "p": "Official audio, the rehearsal archive and Shorts. Content ID collects when anyone else uses the songs."
+  },
+  {
+   "t": "Direct to fans",
+   "on": "List growing now",
+   "p": "The email list and the American Band download. It is the only audience we own, and it is who buys the vinyl."
+  }
+ ],
+ "assets": [
+  {
+   "t": "Landing site and email capture",
+   "s": "live"
+  },
+  {
+   "t": "American Band download page",
+   "s": "live"
+  },
+  {
+   "t": "YouTube channel",
+   "n": "Branded. No videos yet.",
+   "s": "wip"
+  },
+  {
+   "t": "Lyrics",
+   "n": "4 of 13 recovered",
+   "s": "wip"
+  },
+  {
+   "t": "PRO registrations",
+   "n": "1 of 4 confirmed",
+   "s": "wip"
+  },
+  {
+   "t": "Remastered album masters",
+   "n": "Studio, Nov 24",
+   "s": "todo"
+  },
+  {
+   "t": "Is This Real final master",
+   "n": "Studio, Nov 24",
+   "s": "todo"
+  },
+  {
+   "t": "Vinyl master",
+   "n": "Separate from the digital master",
+   "s": "todo"
+  },
+  {
+   "t": "Session files and multitracks",
+   "n": "Waiting on Sonic",
+   "s": "unk"
+  },
+  {
+   "t": "Instrumental versions",
+   "n": "Depends on session files",
+   "s": "unk"
+  },
+  {
+   "t": "Split sheet, signed",
+   "s": "todo"
+  },
+  {
+   "t": "Session player releases",
+   "s": "todo"
+  },
+  {
+   "t": "Single and album artwork",
+   "s": "todo"
+  },
+  {
+   "t": "DistroKid account",
+   "s": "todo"
+  },
+  {
+   "t": "Email sender (Kit)",
+   "s": "todo"
+  },
+  {
+   "t": "Sync submission",
+   "s": "todo"
+  },
+  {
+   "t": "Mini DV footage digitized",
+   "n": "0 tapes captured",
+   "s": "todo"
+  }
+ ],
+ "decisions": [
+  {
+   "t": "Single or double LP?",
+   "n": "Due Jan 18. Double carries all 13 tracks and costs roughly twice as much to press."
+  },
+  {
+   "t": "Which tracks are the three singles?",
+   "n": "Proposed: Is This Real, Bassstar, All Around The World."
+  },
+  {
+   "t": "Is an Atmos mix realistic?",
+   "n": "Only with the original multitracks. Waiting on the session-file answer."
+  },
+  {
+   "t": "Are the release dates right?",
+   "n": "Jan 15 single, Feb 1 pre-order, May 28 album. All movable until the first upload."
+  },
+  {
+   "t": "Where does the pre-order live?",
+   "n": "Bandcamp handles payment and shipping addresses. Our own page keeps more of each sale."
+  }
+ ],
+ "roles": {
+  "jason": "Gene Heinous. Driving the relaunch.",
+  "billy": "D'Yea. Vocals, guitar, bass.",
+  "sonic": "Keys and production.",
+  "jerry": "Outlaw. Lead guitar.",
+  "prod": "Claude. Builds, submissions, edits, and upkeep of this plan."
+ }
 }
 </script>
 
@@ -321,11 +876,33 @@ footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--hair);
     it.who.forEach(function (k) { w.appendChild(el('span', (k === filter || (k === 'all' && filter !== 'everyone')) ? 'me' : null, D.people[k])); });
     b.appendChild(w); r.appendChild(b);
     var f = it.done ? el('span', 'flag ok', 'DONE') : it.date < today ? el('span', 'flag due', 'DUE') : it === nextOpen ? el('span', 'flag next', 'NEXT') : null;
+    if (!f && filter !== 'everyone' && it.who.indexOf(filter) > -1) f = el('span', 'box');
     if (f) r.appendChild(f);
     return r;
   }
 
+  function show(id, on) { document.getElementById(id).hidden = !on; }
+  function renderMine() {
+    var own = all.filter(function (it) { return it.who.indexOf(filter) > -1; });
+    var band = all.filter(function (it) { return it.who.indexOf('all') > -1; });
+    var openOwn = own.filter(open);
+    nextOpen = openOwn.filter(function (it) { return it.date >= today; })[0] || null;
+    document.getElementById('me-name').textContent = D.people[filter] + (filter === 'prod' ? ' list' : "'s list");
+    document.getElementById('me-role').textContent = D.roles[filter] || '';
+    var due = openOwn.filter(function (it) { return it.date < today; }).length;
+    document.getElementById('me-count').textContent = openOwn.length + ' OPEN TASKS' + (due ? ' / ' + due + ' DUE' : '') + (nextOpen ? ' / NEXT: ' + MON[nextOpen.date.getMonth()] + ' ' + nextOpen.date.getDate() : '');
+    var a = document.getElementById('me-rows'); a.textContent = '';
+    own.forEach(function (it) { a.appendChild(row(it)); });
+    if (!own.length) a.appendChild(el('p', 'empty', 'Nothing assigned yet.'));
+    var b = document.getElementById('me-band'); b.textContent = '';
+    nextOpen = null; band.forEach(function (it) { b.appendChild(row(it)); });
+  }
   function render() {
+    var personal = filter !== 'everyone';
+    ['next', 'roadmap', 'lanes', 'assets', 'decisions'].forEach(function (id) { show(id, !personal); });
+    show('mine', personal);
+    [].forEach.call(document.querySelectorAll('.chip-btn'), function (b) { b.setAttribute('aria-pressed', String(b.dataset.k === filter)); });
+    if (personal) { renderMine(); return; }
     var list = all.filter(mine);
     nextOpen = list.filter(function (it) { return open(it) && it.date >= today; })[0] || null;
 
@@ -379,6 +956,7 @@ footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--hair);
   var dc = document.getElementById('dec');
   D.decisions.forEach(function (d) { var c = el('div', 'dec', d.t); c.appendChild(el('small', null, d.n)); dc.appendChild(c); });
 
+  document.getElementById('me-back').addEventListener('click', function () { filter = 'everyone'; try { history.replaceState(null, '', location.pathname); } catch (e) {} render(); window.scrollTo(0, 0); });
   render();
 })();
 </script>
